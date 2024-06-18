@@ -1,0 +1,421 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handle();
+
+?>
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015744886 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1015744886'); </script>
+
+    <?php
+    \Portal\Utility::writeMetaData('', '','','en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script
+        id="fsc-api"
+        src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.5/fastspring-builder.min.js"
+        type="text/javascript"
+        data-storefront="bitethebytes.onfastspring.com/popup-company">
+    </script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var shown = sessionStorage.getItem('alreadyShow');
+
+            if (shown != "shown")
+            {
+                $("#info-window").modal('show');
+                sessionStorage.setItem('alreadyShow', 'shown');
+            }
+        }
+    </script>
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+
+<body class="loading-overlay-showing"
+      data-loading-overlay
+      data-plugin-options="{'hideDelay': 500, 'effect': 'percentageProgress1'}">
+<div class="loading-overlay loading-overlay-percentage bg-color-dark-scale-5">
+    <div class="page-loader-progress-wrapper">
+        <span class="page-loader-progress text-color-light">0</span>
+        <span class="page-loader-progress-symbol text-color-light">%</span>
+    </div>
+</div>
+
+<?php
+include 'php/gdpr.php';
+?>
+
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main" class="main pb-5">
+
+        <?php
+
+        if(!isset($_SERVER['HTTP_USER_AGENT']))
+        {
+            echo '<section class="section border-0 m-0" data-video-path="video/Trailer_04.mp4" data-plugin-video-background style="height: 100vh">';
+        } else
+        {
+            $browserName = \Portal\Utility::getBrowser($_SERVER['HTTP_USER_AGENT']);
+
+            if($browserName == 'Safari')
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 style="background-image: url(../img/pages/World-Creator-01.webp); 
+                                 background-size: cover; 
+                                 background-position: center; 
+                                 height: 100vh;">';
+            } else
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 data-video-path="video/Trailer_04.mp4"
+                                 data-plugin-video-background
+                                 style="height: 100vh">';
+            }
+        }
+
+        ?>
+        <div class="container text-center z-index-1 h-100">
+            <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                <p class="text-12 line-height-1 font-weight-bold text-color-light appear-animation"
+                   data-appear-animation="fadeInDownShorter"
+                   data-plugin-options="{'minWindowWidth': 0}">World Creator</p>
+                <p class="text-15 mb-5 line-height-1 font-weight-extra-bold text-color-light appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="300">ENDBENUTZER-LIZENZVERTRAG</p>
+                <p class="text-6 mb-4 line-height-2 font-weight-bold text-color-light opacity-9 appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="500">Zuletzt aktualisiert: 22. November 2022</p>
+            </div>
+            <a href="#main"
+               class="slider-scroll-button slider-scroll-button-light position-absolute bottom-10 left-50pct transform3dx-n50"
+               data-hash
+               data-hash-offset="67"></a>
+        </div>
+
+        <?php
+        echo '</section>';
+        ?>
+
+        <div id="main" class="container bg-color-dark-scale-5">
+            <div class="row pt-5 pb-5">
+                <div class="col pl-3 pr-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <p class="font-weight-normal text-4 mb-2 text-justify">World Creator ist sowohl eine dauerhafte als auch eine abonnementbasierte Website, die eine Softwareanwendung namensWorld Creator (die "Software") zur Erstellung digitaler Terrains und digitaler Landschaften für Digital Artists für ihre Projekte (der "Service") und eine Bibliothek mit Texturen, Modellen und HDRs für Digital Artists für ihre Projekte (der "Service") anbietet. Diese Website, www.world-creator.com (die "Website"), ist Eigentum von BiteTheBytes GmbH ("BiteTheBytes") und wird von ihr betrieben. Dieser Endbenutzer-Lizenzvertrag (dieser "Vertrag", "EULA", "Lizenz") gilt für alle Benutzer des Dienstes (gemeinsam oder einzeln "Sie", "Benutzer", "Kunde", "Lizenznehmer").</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Wenn Sie diesen Vertrag im Namen eines Unternehmens oder einer anderen juristischen Person abschließen, versichern Sie, dass Sie befugt sind, dieses Unternehmen und seine Tochtergesellschaften an diese Bedingungen zu binden, wobei sich die Begriffe "Sie" oder "Ihr" auf dieses Unternehmen, seine Tochtergesellschaften und die mit ihm verbundenen Nutzer beziehen. Wenn Sie nicht über eine solche Befugnis verfügen oder wenn Sie mit diesen Bedingungen nicht einverstanden sind, dürfen Sie diese Vereinbarung nicht akzeptieren und die Dienste nicht nutzen.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">1. Akzeptanz</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Diese Vereinbarung ist eine rechtliche Vereinbarung zwischen Ihnen und BiteTheBytes und regelt Ihre Nutzung des Dienstes und der damit verbundenen Produkte und Dienstleistungen, die Ihnen von BiteTheBytes zur Verfügung gestellt werden. Der Zweck dieser Vereinbarung und der Lizenz besteht darin, Ihnen die Nutzung des von BiteTheBytes bereitgestellten Dienstes während der Laufzeit zu den in dieser Vereinbarung genannten Bedingungen zu ermöglichen, um Produkte für den persönlichen und/oder kommerziellen Gebrauch ("Kundenvermögen") zu entwickeln, je nachdem, was unter Ihre Lizenz fällt. Diese EULA tritt frühestens ab dem Datum in Kraft, an dem Sie diese EULA zum ersten Mal akzeptieren, auf den Service zugreifen oder ihn anderweitig nutzen (das "Startdatum").</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">2. Konten</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Um den Service nutzen zu können, müssen Sie eine unbefristete und/oder eine abonnementbasierte Lizenz über die Website erwerben.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie dürfen unter keinen Umständen, weder absichtlich noch durch Fahrlässigkeit oder Untätigkeit, anderen Personen als dem Lizenznehmer den Zugang zu Ihrem Konto gestatten oder ermöglichen, es sei denn, Sie haben eine ausdrückliche schriftliche Genehmigung von BiteTheBytes.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">3. Internetzugang</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Eine Hochgeschwindigkeits-Internetverbindung ist für die ordnungsgemäße Übertragung und den Zugriff auf den Service erforderlich. Sie sind für die Beschaffung und Wartung der Netzwerkverbindungen verantwortlich, die Ihr Netzwerk mit dem Service verbinden.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Wir sind nicht dafür verantwortlich, Sie über Upgrades, Korrekturen oder Erweiterungen einer Software zu informieren oder für die Kompromittierung von Daten, einschließlich Ihrer Daten, die über Computernetzwerke oder Telekommunikationseinrichtungen (einschließlich, aber nicht beschränkt auf das Internet) übertragen werden, die nicht BiteTheBytes oder unseren Partnern gehören, von ihnen betrieben oder kontrolliert werden. Wir übernehmen keine Verantwortung für die Zuverlässigkeit oder Leistung der in diesem Abschnitt beschriebenen Verbindungen.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">4. Der Dienst</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Der Service umfasst eine maschinenlesbare Objektcode-Version eines Softwareprogramms namensWorld Creator und alle Derivate der Software (zusammenfassend als "Software" bezeichnet) - einschließlich aller möglichen Dateien, die von der Software exportiert werden - sowie eine Bibliothek mit Texturen, Pinseln, zusätzlichen Generatoren (einschließlich aller möglichen exportierten Dateien), Substanzdesigner-Dateien, HDRs und Modellen ("BiteTheBytes Assets") und die dazugehörige Bedienungsanleitung und sonstige Dokumentation (zusammenfassend als "Dokumentation" bezeichnet).</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Die Zahlung der entsprechenden Gebühren berechtigt Sie zur Nutzung des Dienstes und zum Hinzufügen von BiteTheBytes-Vermögenswerten zu Ihrem Kundenvermögen. Es ist Ihnen oder Dritten strengstens untersagt, BiteTheBytes-Assets oder Kunden-Assets in anderen Produkten oder Dienstleistungen zu verwenden oder Produkte und Dienstleistungen zu entwickeln, die mit den Produkten und Dienstleistungen von BiteTheBytes konkurrieren.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">5. Erstattungspolitik</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Der Service ist erstattungsfähig, wenn Sie die Software NICHT von der Website heruntergeladen, installiert und aktiviert haben (z.B.World Creator 1, 2, 2022.x oder höher installiert UND während des Anmeldevorgangs beim Ausführen der Anwendung aktiviert haben) oder wenn Sie kein BiteTheBytes-Asset von der Website heruntergeladen haben (z.B. ein Material heruntergeladen haben).</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie haben keinen Anspruch auf eine Rückerstattung, wenn Sie auf andere Weise gegen die Nutzungsbedingungen dieser Vereinbarung verstoßen haben und/oder für Käufe, die außerhalb der Website oder nicht direkt bei uns getätigt wurden. Darüber hinaus haben Sie möglicherweise keinen Anspruch auf eine Rückerstattung, wenn BiteTheBytes feststellt, dass Sie die Rückerstattungsrichtlinie missbrauchen.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">6. Zugang</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Als Gegenleistung für die Zahlung der entsprechenden Gebühren und unter der Voraussetzung, dass Sie diese Bedingungen einhalten, gewährt BiteTheBytes Ihnen Zugang zum Dienst und ermöglicht Ihnen den Zugriff auf den Dienst und dessen Nutzung. Sollte BiteTheBytes nicht in der Lage sein, die entsprechenden Zahlungen zu einem beliebigen Zeitpunkt zu verarbeiten, kann Ihr Zugang zum Service nach dem Ermessen von BiteTheBytes ausgesetzt oder beendet werden.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">7. Erteilung der Lizenz</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Vorbehaltlich der Einschränkungen in den Abschnitten 8 und 9 gewährt BiteTheBytes dem Lizenznehmer hiermit eine eingeschränkte, nicht übertragbare und nicht ausschließliche Lizenz für den Dienst ausschließlich für interne Geschäftszwecke des Lizenznehmers.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">8. Lizenzeinschränkungen für die Nutzung der Software</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Der Lizenznehmer ist berechtigt, die Software nur in maschinenlesbarer Objektcodeform zu verwenden, und es ist dem Lizenznehmer nicht gestattet: (1) die Software, die Dokumentation oder die Rechte des Lizenznehmers hieraus abzutreten, unterzulizenzieren, zu verkaufen, zu vertreiben, zu übertragen, zu verpfänden, zu verleasen, zu vermieten, zu teilen oder zu exportieren; (2) die Kopierschutzmechanismen in der Software zu verändern oder zu umgehen oder den Quellcode der Software zurückzuentwickeln, zu dekompilieren, zu disassemblieren oder anderweitig zu versuchen, diesen zu ermitteln; (3) die Software oder die Dokumentation zu verändern, anzupassen, zu übersetzen oder davon abgeleitete Werke zu erstellen; (4) die Software oder die Dokumentation in einem anderen Projekt als einem vom Lizenznehmer erstellten Projekt (ein "autorisiertes Projekt") zu verwenden oder deren Verwendung zu gestatten; (5) zu gestatten oder zuzulassen, dass jemand (mit Ausnahme des Lizenznehmers und der autorisierten Mitarbeiter des Lizenznehmers, soweit diese an einem autorisierten Projekt arbeiten) die Software oder die Dokumentation verwendet oder darauf zugreift; (6) die Software oder die Dokumentation zu kopieren oder zu installieren, sofern dies nicht ausdrücklich in dieser Vereinbarung vorgesehen ist; (7) Maßnahmen zu ergreifen oder zu unterlassen, die sich nachteilig auf die Marken, Dienstleistungsmarken, Patente, Geschäftsgeheimnisse, Urheberrechte oder andere geistige Eigentumsrechte von BiteTheBytes oder von Dritten mit geistigen Eigentumsrechten an der Software (jeweils ein "Drittlizenzgeber") auswirken könnten.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Der Lizenznehmer darf nur eine einzige Kopie der Software auf bis zu zwei (2) Computern ("Originalinstallation") installieren und verwenden, auf denen der Lizenznehmer der alleinige Nutzer der Software ist, es sei denn, dem Lizenznehmer wurde eine "Floating-Lizenz" erteilt, in diesem Fall darf der Lizenznehmer die Software auf mehr als einem Computer installieren; allerdings darf der Lizenznehmer zu keinem Zeitpunkt mehr Kopien der Software verwenden als die Gesamtzahl der vom Lizenznehmer erworbenen gültigen Softwarelizenzen.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Um eine nicht lizenzierte Nutzung der Software zu verhindern, muss sich der Lizenznehmer über die Software anmelden, um die Software zu aktivieren und auf sie zuzugreifen. Die Erteilung eines Ersatzes für die Lizenzschlüsseldatei liegt im Ermessen von BiteTheBytes.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">BiteTheBytes kann nicht haftbar gemacht werden, wenn der Lizenznehmer nicht über die beim Kauf angegebene E-Mail-Adresse erreicht werden kann. BiteTheBytes wird eine angemessene Anzahl von Versuchen unternehmen, die Informationen im Falle einer fehlgeschlagenen Zustellung erneut zu versenden. Der Lizenznehmer ist dafür verantwortlich, BiteTheBytes über alle Änderungen der Kontaktdaten des Lizenznehmers zu informieren.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Um einen solchen Austausch des Lizenzcodes zu erleichtern, kann BiteTheBytes von Zeit zu Zeit Benachrichtigungen innerhalb der Software bereitstellen, um den Lizenznehmer über das Auslaufen der bestehenden Lizenz oder des Wartungsplans zu informieren.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Jede Verletzung oder versuchte Umgehung dieser Klausel kann zur sofortigen Beendigung dieser Vereinbarung und/oder zur dauerhaften Aussetzung des Zugriffs auf die Vermögenswerte führen.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">9. Lizenzeinschränkungen für die Nutzung von BiteTheBytes Assets</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Die BiteTheBytes-Assets dürfen nur für die Erstellung von Kunden-Assets verwendet werden, die in Ihre eigenen einzigartigen Kreationen integriert werden.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie dürfen BiteTheBytes-Vermögenswerte (in modifizierter Form oder im Originalformat) nicht an Dritte verkaufen, lizenzieren oder anderweitig zugänglich machen, und zwar auf eine eigenständige oder weiterverbreitete Art und Weise, die der von BiteTheBytes im Rahmen dieser Vereinbarung bereitgestellten gleich oder ähnlich ist. Jede Verletzung oder versuchte Umgehung dieser Klausel kann zur sofortigen Beendigung dieser Vereinbarung und / oder zur dauerhaften Sperrung des Zugangs zum Service führen.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Jede Verletzung oder versuchte Umgehung dieser Klausel kann zur sofortigen Beendigung dieser Vereinbarung und/oder zur dauerhaften Aussetzung des Zugriffs auf die Vermögenswerte führen.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">10. Zustimmung zur Verwendung der Daten</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie erklären sich damit einverstanden, dass BiteTheBytes technische Informationen und Daten, die im Rahmen der Ihnen erbrachten Supportleistungen im Zusammenhang mit dem Service gesammelt werden, sammeln und verwenden darf und dass BiteTheBytes allgemeine, nicht kundenspezifische Informationen an seine verbundenen Unternehmen und Partner weitergeben darf, jedoch keine kundenspezifischen Daten, und auch nicht an andere Dritte.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">BiteTheBytes, verbundene Unternehmen und Partner können solche allgemeinen Informationen für verschiedene Metriken verwenden. BiteTheBytes darf diese Informationen ausschließlich dazu verwenden, den Service, seine Produkte und Dienstleistungen zu verbessern oder den Kunden maßgeschneiderte Dienstleistungen oder Technologien anzubieten und wird diese Informationen ohne Ihre Zustimmung nicht in einer Form weitergeben, die Sie persönlich identifiziert.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">11. Rechte an geistigem Eigentum</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">BiteTheBytes besitzt alle Rechte, Titel, Urheberrechte und andere geistige Eigentumsrechte und -interessen, einschließlich, aber nicht beschränkt auf alle Marken, Dienstleistungsmarken und Handelsnamen an dem Service, der Software, dem Material, der Dokumentation und allen Kopien davon und behält alle diese Rechte sowie alle anderen Produkte und Dienstleistungen. Mit Ausnahme der in dieser EULA ausdrücklich gewährten Rechte werden Ihnen keine Lizenzen, Rechte oder Anteile an Patenten, Marken, Urheberrechten, Handelsnamen oder Dienstleistungsmarken gewährt. Der Service wird lizenziert, nicht verkauft.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie verpflichten sich, gegenüber BiteTheBytes keine Ansprüche, Klagen oder Verfahren wegen Verletzung von Patenten, Patentrechten oder anderen geistigen Eigentumsrechten geltend zu machen.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie sind nicht verpflichtet, BiteTheBytes Ideen, Feedback oder Vorschläge zum Service oder zu Produkten oder Dienstleistungen von BiteTheBytes (zusammenfassend "Feedback") zu übermitteln. Soweit Sie BiteTheBytes Feedback zur Verfügung stellen, erklären Sie sich damit einverstanden, BiteTheBytes alle Rechte, Titel und Interessen an diesem Feedback abzutreten und erkennen an, dass BiteTheBytes dieses Feedback frei verwenden, reproduzieren, modifizieren, verteilen, herstellen, herstellen lassen, verkaufen, zum Verkauf anbieten, importieren und anderweitig verwerten darf, ohne dass Sie dafür eine Vergütung oder sonstige Gegenleistung erhalten.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">12. Geistiges Eigentum der Nutzer</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Durch die Nutzung des Dienstes können Sie Kunden-Assets erzeugen. Mit Ausnahme der im BiteTheBytes-Service enthaltenen Materialien sind alle geistigen Eigentumsrechte und Titel an Kunden-Assets geistiges Eigentum des Kunden.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">13. Elektronische Kommunikation</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie erklären sich damit einverstanden, Mitteilungen von uns auf elektronischem Wege zu erhalten. Wir kommunizieren mit Ihnen per E-Mail oder durch Veröffentlichung von Mitteilungen im Service. Sie erklären sich damit einverstanden, dass alle Vereinbarungen, Mitteilungen, Offenlegungen und andere Mitteilungen, die wir Ihnen elektronisch zukommen lassen, alle gesetzlichen Anforderungen an die Schriftform dieser Mitteilungen erfüllen.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">14. Eingeschränkte Garantie und Haftung</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">BITETHEBYTES LEHNT AUSDRÜCKLICH UND IM VOLLEN GESETZLICH ZULÄSSIGEN UMFANG JEGLICHE GEWÄHRLEISTUNG FÜR DIE SOFTWARE AB. DIE SOFTWARE UND DIE DAZUGEHÖRIGE DOKUMENTATION WERDEN OHNE MÄNGELGEWÄHR BEREITGESTELLT, OHNE AUSDRÜCKLICHE, STILLSCHWEIGENDE ODER GESETZLICHE GARANTIE, EINSCHLIESSLICH UND OHNE EINSCHRÄNKUNG DER STILLSCHWEIGENDEN GARANTIE DER MARKTGÄNGIGKEIT, DER EIGNUNG FÜR EINEN BESTIMMTEN ZWECK ODER DER NICHTVERLETZUNG VON RECHTEN. BITETHEBYTES LEHNT JEGLICHE GARANTIE FÜR DIE SICHERHEIT, ZUVERLÄSSIGKEIT, RECHTZEITIGKEIT UND LEISTUNG DER SOFTWARE AB. DAS GESAMTE RISIKO, DAS SICH AUS DER NUTZUNG ODER LEISTUNG DER SOFTWARE ERGIBT, LIEGT BEIM LIZENZNEHMER.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">IN KEINEM FALL HAFTET BITETHEBYTES FÜR SCHÄDEN JEGLICHER ART (EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF SCHÄDEN AUS ENTGANGENEM GEWINN, GESCHÄFTSUNTERBRECHUNG, VERLUST VON GESCHÄFTSINFORMATIONEN ODER ANDEREN VERMÖGENSSCHÄDEN), DIE SICH AUS DER NUTZUNG ODER DER UNFÄHIGKEIT ZUR NUTZUNG DIESER SOFTWARE ERGEBEN, SELBST WENN DIE JEWEILIGE PARTEI AUF DIE MÖGLICHKEIT SOLCHER SCHÄDEN HINGEWIESEN WURDE. UNTER KEINEN UMSTÄNDEN HAFTET BITETHEBYTES GEGENÜBER EINEM LIZENZNEHMER AUFGRUND DER NUTZUNG ODER DES MISSBRAUCHS DES SOFTWAREPRODUKTS DURCH DIESEN BENUTZER. DIESE HAFTUNGSBESCHRÄNKUNG GILT, UM DIE EINFORDERUNG VON INDIREKTEN, ZUFÄLLIGEN, FOLGE-, BESONDEREN, EXEMPLARISCHEN SCHÄDEN UND SCHADENSERSATZ MIT STRAFCHARAKTER ZU VERHINDERN, UNABHÄNGIG DAVON, OB EIN SOLCHER ANSPRUCH AUF GEWÄHRLEISTUNG, VERTRAG, UNERLAUBTER HANDLUNG (EINSCHLIESSLICH FAHRLÄSSIGKEIT) ODER ANDERWEITIG BERUHT (AUCH WENN BITETHEBYTES AUF DIE MÖGLICHKEIT SOLCHER SCHÄDEN HINGEWIESEN WURDE). DIESE HAFTUNGSBESCHRÄNKUNG GILT UNABHÄNGIG DAVON, OB DIE SCHÄDEN AUS DER NUTZUNG ODER DEM MISSBRAUCH DER SOFTWARE UND DEM VERTRAUEN AUF DIE SOFTWARE, AUS DER UNFÄHIGKEIT ZUR NUTZUNG DES SOFTWAREPRODUKTS ODER AUS DER UNTERBRECHUNG, AUSSETZUNG ODER BEENDIGUNG DER SOFTWARE (EINSCHLIESSLICH SOLCHER SCHÄDEN, DIE DURCH DRITTE ENTSTANDEN SIND) ENTSTEHEN. DIESE EINSCHRÄNKUNG GILT UNGEACHTET DES FEHLENS EINES WESENTLICHEN ZWECKS EINES BESCHRÄNKTEN RECHTSMITTELS UND IM GRÖSSTMÖGLICHEN GESETZLICH ZULÄSSIGEN UMFANG.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">15. Laufzeit und Beendigung</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Dieser Vertrag tritt mit der Annahme der Bedingungen durch den Lizenznehmer in Kraft und bleibt bis zur Kündigung in Kraft. Wenn der Lizenznehmer gegen diese Vereinbarung verstößt, kann BiteTheBytes die hierin gewährte Lizenz durch Mitteilung an den Lizenznehmer beenden. Im Falle der Beendigung der Lizenz wird der Lizenznehmer entweder alle Kopien der Software und der Dokumentation, die sich im Besitz des Lizenznehmers befinden, an BiteTheBytes zurückgeben oder auf schriftliche Anweisung von BiteTheBytes alle diese Kopien vernichten. Im letzteren Fall muss der Lizenznehmer auf Verlangen von BiteTheBytes eine von einem Vertreter des Lizenznehmers unterzeichnete Bescheinigung vorlegen, die bestätigt, dass die vorgenannte Vernichtung erfolgt ist.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">16. Vertraulichkeit</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Der Lizenznehmer erklärt sich damit einverstanden, dass die Software (einschließlich des an den Lizenznehmer lizenzierten Quellcodes), die BiteTheBytes-Vermögenswerte und die Dokumentation geschützte und vertrauliche Informationen von BiteTheBytes bzw. den Drittlizenzgebern sind und dass alle diese Informationen und alle diesbezüglichen Mitteilungen (zusammenfassend "vertrauliche Informationen") vertraulich und ein grundlegendes und wichtiges Geschäftsgeheimnis von BiteTheBytes oder den Drittlizenzgebern sind. Der Lizenznehmer darf vertrauliche Informationen nur an Mitarbeiter des Lizenznehmers weitergeben, die an einem autorisierten Projekt arbeiten und diese vertraulichen Informationen kennen müssen, und er muss alle Empfänger vertraulicher Informationen darauf hinweisen, dass diese nur wie in diesem Vertrag genehmigt verwendet werden dürfen. Der Lizenznehmer darf ohne die ausdrückliche schriftliche Zustimmung von BiteTheBytes, die nicht unbillig verweigert werden darf, keine vertraulichen Informationen offenlegen oder sie auf andere Weise anderen Mitarbeitern des Lizenznehmers oder Dritten zugänglich machen. Der Lizenznehmer verpflichtet sich, die vertraulichen Informationen von den vertraulichen Informationen und Materialien anderer zu trennen, um eine Vermischung zu verhindern, soweit dies vernünftigerweise möglich ist.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Der Lizenznehmer ist verpflichtet, angemessene Sicherheitsmaßnahmen zu ergreifen, die nicht weniger als ein angemessenes Maß an Sorgfalt erfordern, um die Software, die Dokumentation, die Lizenzschlüsseldatei und alle anderen vertraulichen Informationen streng vertraulich und sicher aufzubewahren. BiteTheBytes kann im Rahmen der Nutzung der Software und der Dokumentation bestimmte angemessene Sicherheitsmaßnahmen verlangen, mit deren Einhaltung sich der Lizenznehmer einverstanden erklärt. Der Lizenznehmer erkennt an, dass Schadensersatz in Geld unter Umständen keine ausreichende Abhilfe für die unbefugte Offenlegung vertraulicher Informationen darstellt und dass BiteTheBytes berechtigt ist, ohne Verzicht auf andere Rechte oder Rechtsbehelfe eine Unterlassungsverfügung oder einen angemessenen Rechtsbehelf zu beantragen, der von einem zuständigen Gericht für angemessen erachtet wird.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">17. Benachrichtigung</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">BiteTheBytes behält sich das Recht vor, die EULA jederzeit nach eigenem Ermessen zu aktualisieren oder zu überarbeiten. BiteTheBytes wird solche Änderungen in seinem BiteTheBytes-Service und/oder auf seiner Website veröffentlichen und/oder Ihnen diese Änderungen per E-Mail oder auf andere Weise in einer von BiteTheBytes festgelegten geeigneten Weise mitteilen, und diese zusätzlichen oder überarbeiteten Bedingungen werden mit sofortiger Wirkung Teil der EULA. Bitte überprüfen Sie den BiteTheBytes-Service, die EULA oder die Website regelmäßig auf Änderungen. Ihre fortgesetzte Nutzung von BiteTheBytes stellt Ihre verbindliche Annahme der EULA dar, einschließlich aller von BiteTheBytes vorgenommenen Änderungen oder Modifikationen, wie oben erlaubt.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">18. Trennbarkeit</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sollte eine Bestimmung dieses Vertrages ungültig sein, so gilt diese Bestimmung als von diesem Vertrag trennbar und berührt nicht die Gültigkeit und Durchsetzbarkeit anderer Teile oder Bestimmungen dieses Vertrages.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">19. Zuweisung</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Ohne die vorherige schriftliche Zustimmung von BiteTheBytes dürfen Sie Ihre Rechte oder Verpflichtungen aus dieser EULA nicht abtreten, übertragen, lizenzieren oder in irgendeiner anderen Weise mit ihnen handeln. BiteTheBytes kann jederzeit alle oder einige seiner Rechte oder Verpflichtungen im Rahmen dieser EULA abtreten, übertragen, untervergeben oder auf andere Weise mit ihnen handeln, ohne Sie davon in Kenntnis zu setzen.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">20. Keine Partnerschaft</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Diese Vereinbarung stellt keine Partnerschaft oder ein Joint Venture zwischen BiteTheBytes und Ihnen dar und darf auch nicht als solche ausgelegt werden. Keine der Parteien hat das Recht, die andere Partei in irgendeiner Weise zu binden, und nichts in dieser Vereinbarung überträgt Rechte jeglicher Art an Dritte.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4">21. Überleben und geltendes Recht</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Alle Abschnitte überdauern die Beendigung oder das Auslaufen dieser Vereinbarung. Sollte eine Bestimmung dieser Vereinbarung für ungültig erklärt werden, bleibt der Rest dieser Vereinbarung in Kraft. Diese EULA unterliegt dem Recht von 36039 Fulda, DEUTSCHLAND.</p>
+                    <p class="font-weight-normal text-4 mb-2">Jede Partei erklärt sich damit einverstanden, sich der persönlichen und ausschließlichen Gerichtsbarkeit der Gerichte in 36039 Fulda, DEUTSCHLAND zu unterwerfen.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+</body>
+</html>

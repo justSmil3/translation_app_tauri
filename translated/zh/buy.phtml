@@ -1,0 +1,2103 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handle();
+
+?>
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015744886 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1015744886'); </script>
+
+    <!-- Clarity tracking code for https://www.world-creator.com/ -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ltec5sffsx");
+    </script>
+
+    <?php
+    \Portal\Utility::writeMetaData('', '','','en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script
+            id="fsc-api"
+            src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.5/fastspring-builder.min.js"
+            type="text/javascript"
+            data-storefront="bitethebytes.onfastspring.com/popup-company">
+    </script>
+
+    <!--
+    <script
+            id="fsc-api"
+            src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.5/fastspring-builder.min.js"
+            type="text/javascript"
+            data-storefront="bitethebytes.test.onfastspring.com/popup-company">
+    </script>
+    -->
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var shown = sessionStorage.getItem('alreadyShow');
+
+            if (shown != "shown")
+            {
+                $("#info-window").modal('show');
+                sessionStorage.setItem('alreadyShow', 'shown');
+            }
+        }
+    </script>
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+
+<body class="loading-overlay-showing"
+      data-loading-overlay
+      data-plugin-options="{'hideDelay': 500, 'effect': 'percentageProgress1'}">
+<div class="loading-overlay loading-overlay-percentage bg-color-dark-scale-5">
+    <div class="page-loader-progress-wrapper">
+        <span class="page-loader-progress text-color-light">0</span>
+        <span class="page-loader-progress-symbol text-color-light">%</span>
+    </div>
+</div>
+
+<?php
+include 'php/gdpr.php';
+?>
+
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main" class="main pb-5">
+
+        <?php
+
+        if(!isset($_SERVER['HTTP_USER_AGENT']))
+        {
+            echo '<section class="section border-0 m-0" data-video-path="video/Trailer_03.mp4" data-plugin-video-background style="height: 100vh">';
+        } else
+        {
+            $browserName = \Portal\Utility::getBrowser($_SERVER['HTTP_USER_AGENT']);
+
+            if($browserName == 'Safari')
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 style="background-image: url(../img/pages/World-Creator-01.webp); 
+                                 background-size: cover; 
+                                 background-position: center; 
+                                 height: 100vh;">';
+            } else
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 data-video-path="video/Trailer_03.mp4"
+                                 data-plugin-video-background
+                                 style="height: 100vh">';
+            }
+        }
+
+        ?>
+        <div class="container text-center z-index-1 h-100">
+            <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                <p class="text-12 line-height-1 font-weight-bold text-color-light appear-animation"
+                   data-appear-animation="fadeInDownShorter"
+                   data-plugin-options="{'minWindowWidth': 0}">立即获取</p>
+                <p class="text-15 mb-5 line-height-1 font-weight-extra-bold text-color-light appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="300">WORLD CREATOR</p>
+                <p class="text-10 mb-4 line-height-2 font-weight-bold text-color-light opacity-9 appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="500">现在就开始创建令人惊叹的地形</p>
+                <a href="#main"
+                   class="btn btn-rounded btn-primary btn-modern font-weight-bold text-3 py-3 btn-px-5 mt-2 appear-animation"
+                   data-hash
+                   data-hash-offset="40"
+                   data-appear-animation="fadeInUpShorter"
+                   data-appear-animation-delay="700"
+                   data-appear-animation-duration="1.2s"
+                   data-plugin-options="{'minWindowWidth': 0}">立即购买</a>
+            </div>
+            <a href="#main"
+               class="slider-scroll-button slider-scroll-button-light position-absolute bottom-10 left-50pct transform3dx-n50"
+               data-hash
+               data-hash-offset="40"></a>
+        </div>
+
+        <?php
+        echo '</section>';
+        ?>
+
+        <div id="main" class="container bg-color-dark-scale-5">
+            <div class="row text-center pt-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h3 class="text-transform-none text-14 font-weight-bold line-height-2 pt-5 pb-5">选择许可证</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5">
+            <div class="row pt-5 pb-5">
+                <div class="col-12 col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="card border-0 bg-color-dark-scale-2 mt-3">
+                        <div class="card-body">
+                            <p class="font-weight-bold text-9 text-sm-7 text-xl-9 text-color-light pb-3">便装</p>
+                            <p class="card-text text-color-grey pb-2">适用于不以商业用途为目标的业余爱好者。</p>
+                            <ul class="list list-icons">
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-user"></i> 1 Seat / 2 Workstations<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_seat"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-infinity"></i> Perpetual License<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_perpetual"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-paper-plane"></i> Floating License<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_floating"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-globe"></i> 1 Year of Maintenance<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_oneyearofupdates"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-redo"></i> <span class="font-weight-bold">50%</span> for Maintenance Renewal<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_pricingmaintenancerenewal"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-layer-group"></i> Assets<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_samples"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-ticket-alt"></i> Quality Online Support<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_qualitysupport"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-box"></i> Bridge Export and Tools<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_bridge"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-dollar-sign"></i>  <span class="font-weight-bold">没有</span> Commercial Use<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_nocommercial"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-cloud-download-alt"></i> <span class="font-weight-bold">没有</span> Legacy Downloads<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_nolegacy"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-arrows-alt"></i> <span class="font-weight-bold">有限公司</span> Terrain Size<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_limitedexport"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                            </ul>
+                            <span class="card-text text-color-grey">* 最大精度 1 米</span><br>
+                            <span class="card-text text-color-grey">* 仅限 Windows</span>
+                            <p class="pt-5 pb-4">
+                                <?php
+
+                                echo '<span class="font-weight-medium text-3 text-sm-4 text-xl-5 text-color-light pt-2">$</span><span class="font-weight-bold text-9 text-sm-7 text-xl-9 text-color-light">' . number_format(\Portal\Sales::getPrice(\Portal\LicenseType::Casual, \Portal\ModelType::Perpetual),0,"","") . '</span>';
+
+                                if(\Portal\Sales::$Sale != \Portal\SaleType::None)
+                                {
+                                    echo '<span class="price text-4">Save&nbsp;<span class="font-weight-medium text-2">$</span>' . number_format(\Portal\Sales::getSave(\Portal\LicenseType::Casual, \Portal\ModelType::Perpetual),0,"","") . ' /&nbsp;' . \Portal\Sales::getDiscount() . '%</span>';
+                                }
+                                ?>
+                                <br>
+                                <span class="text-1 text-color-grey">一次性收费</span>
+                            </p>
+                            <a href="#"
+                               class="btn btn-rounded btn-primary btn-modern btn-block text-4"
+                               data-fsc-action="Add,Checkout"
+                               data-fsc-item-path-value="world-creator-perpetual-standard"><i class="text-color-light fas fa-shopping-cart"></i>购买</a>
+                            <div class="pt-1 text-center"><a class="popup-with-form text-2 text-color-grey" href="#form_requirements">系统要求</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="card border-0 bg-color-dark-scale-2 mt-3">
+                        <div class="card-body">
+                            <p class="font-weight-bold text-9 text-sm-7 text-xl-9 text-color-light pb-3">专业</p>
+                            <p class="card-text text-color-grey pb-2">适用于最多有 5 名员工的专业人士和企业。</p>
+                            <ul class="list list-icons">
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-user"></i> 1 Seat / 2 Workstations<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_seat"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-infinity"></i> Perpetual License<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_perpetual"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-paper-plane"></i> Floating License<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_floating"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-globe"></i> 1 Year of Maintenance<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_oneyearofupdates"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-redo"></i> <span class="font-weight-bold">50%</span> for Maintenance Renewal<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_pricingmaintenancerenewal"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-layer-group"></i> Assets<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_samples"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-ticket-alt"></i> Quality Online Support<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_qualitysupport"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-box"></i> Bridge Export and Tools<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_bridge"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-dollar-sign"></i> Commercial Use<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_commercial"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-cloud-download-alt"></i> Legacy Downloads<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_legacy"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-arrows-alt"></i> Unlimited Terrain Size<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_export"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                            </ul>
+                            <span class="card-text text-color-grey">* 没有限制</span><br>
+                            <span class="card-text text-color-grey">* 仅限 Windows</span>
+                            <p class="pt-5 pb-4">
+                                <?php
+                                echo '<span class="font-weight-medium text-3 text-sm-4 text-xl-5 text-color-light">$</span><span class="font-weight-bold text-9 text-sm-7 text-xl-9 text-color-light">' . number_format(\Portal\Sales::getPrice(\Portal\LicenseType::Professional, \Portal\ModelType::Perpetual),0,"","") . '</span>';
+
+                                if(\Portal\Sales::$Sale != \Portal\SaleType::None)
+                                {
+                                    echo '<span class="price text-4">Save&nbsp;<span class="font-weight-medium text-2">$</span>' . number_format(\Portal\Sales::getSave(\Portal\LicenseType::Professional, \Portal\ModelType::Perpetual),0,"","") . ' /&nbsp;' . \Portal\Sales::getDiscount() . '%</span>';
+                                }
+                                ?>
+                                <br>
+                                <span class="text-1 text-color-grey">一次性收费</span>
+                            </p>
+                            <a href="#"
+                               class="btn btn-rounded btn-primary btn-modern btn-block text-4"
+                               data-fsc-action="Add,Checkout"
+                               data-fsc-item-path-value="world-creator-perpetual-indie"><i class="text-color-light fas fa-shopping-cart"></i> BUY</a>
+                            <div class="pt-1 text-center"><a class="popup-with-form text-2 text-color-grey" href="#form_requirements">系统要求</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="card border-0 bg-color-dark-scale-2 mt-3">
+                        <div class="card-body">
+                            <p class="font-weight-bold text-9 text-sm-7 text-xl-9 text-color-light pb-3">公司</p>
+                            <p class="card-text text-color-grey pb-2">适用于员工人数超过 5 人的企业。</p>
+                            <ul class="list list-icons">
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-user"></i> 1 Seat / 2 Workstations<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_seat"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <?php
+                                    if(\Portal\Sales::$Sale == \Portal\SaleType::None)
+                                    {
+                                        echo '<li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-certificate"></i> Perpetual or Rental License<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_perpetualorrental"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>';
+                                    }
+                                    else
+                                    {
+                                        echo '<li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-infinity"></i> Perpetual License<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_perpetual"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>';
+                                    }
+                                ?>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-paper-plane"></i> Floating License<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_floating"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-globe"></i> 1 Year of Maintenance<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_oneyearofupdates"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-redo"></i> <span class="font-weight-bold">50%</span> for Maintenance Renewal<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_pricingmaintenancerenewal"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-layer-group"></i> Assets<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_samples"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-ticket-alt"></i> Premium Online Support<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_premiumsupport"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-box"></i> Bridge Export and Tools<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_bridge"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-dollar-sign"></i> Commercial Use<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_commercial"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-cloud-download-alt"></i> Legacy Downloads<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_legacy"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                                <li class="text-color-light font-weight-extra-light text-3"><i class="text-color-light fas fa-arrows-alt"></i> Unlimited Terrain Size<a class="popup-with-form text-2 text-color-grey text-color-hover-primary float-right" href="#form_info_export"><i class="text-color-grey text-color-hover-light fas fa-question-circle"></i></a></li>
+                            </ul>
+                            <span class="card-text text-color-grey">* 没有限制</span><br>
+                            <span class="card-text text-color-grey">* 仅限 Windows</span><br>
+                            <div class="row">
+                                <?php
+                                    if(\Portal\Sales::$Sale == \Portal\SaleType::None)
+                                    {
+                                        echo '
+                                        <div class="col-6">
+                                            <p class="pt-5 pb-4">
+                                                <span class="font-weight-medium text-3 text-sm-4 text-xl-5 text-color-light">$</span><span class="font-weight-bold text-9 text-sm-7 text-xl-9 text-color-light">' . number_format(\Portal\Sales::getPrice(\Portal\LicenseType::Company, \Portal\ModelType::Yearly),0,"","") . '</span>
+                                                <br>
+                                                <span class="text-1 text-color-grey">使用一年</span>
+                                            </p>
+                                            <a href="#"
+                                               class="btn btn-rounded btn-primary btn-modern btn-block text-4"
+                                               data-fsc-action="Add,Checkout"
+                                               data-fsc-item-path-value="world-creator-enterprise-annually"><i class="text-color-light fas fa-shopping-cart"></i> RENT</a>
+                                        </div>';
+
+                                        echo '
+                                        <div class="col-6">';
+                                    }
+                                    else
+                                    {
+                                        echo '
+                                        <div class="col">';
+                                    }
+
+                                    echo '
+                                    <p class="pt-5 pb-4">
+                                        <span class="font-weight-medium text-3 text-sm-4 text-xl-5 text-color-light">$</span><span class="font-weight-bold text-9 text-sm-7 text-xl-9 text-color-light">' . number_format(\Portal\Sales::getPrice(\Portal\LicenseType::Company, \Portal\ModelType::Perpetual),0,"","") . '</span>';
+
+                                    if(\Portal\Sales::$Sale != \Portal\SaleType::None)
+                                    {
+                                    echo '      
+                                        <span class="price text-4">Save&nbsp;<span class="font-weight-medium text-2">$</span>' . number_format(\Portal\Sales::getSave(\Portal\LicenseType::Company, \Portal\ModelType::Perpetual),0,"","") . ' /&nbsp;' . \Portal\Sales::getDiscount() . '%</span>';
+                                    }
+                                    echo '
+                                        <br>
+                                        <span class="text-1 text-color-grey">一次性收费</span>
+                                    </p>
+                                    <a href="#"
+                                       class="btn btn-rounded btn-primary btn-modern btn-block text-4"
+                                       data-fsc-action="Add,Checkout"
+                                       data-fsc-item-path-value="world-creator-perpetual-enterprise"><i class="text-color-light fas fa-shopping-cart"></i> BUY</a>
+                                    </div>';
+                                ?>
+                            </div>
+                            <div class="pt-1 text-center"><a class="popup-with-form text-2 text-color-grey" href="#form_requirements">系统要求</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_seat"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">1 个座位 - 2 个工作站</div>
+                                <p class="mb-4 text-justify">您可以获得一个用户（如您自己）的席位，并在两个不同的工作站（如家庭/工作站）上运行World Creator 。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_perpetual"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">永久许可证</div>
+                                <p class="mb-4 text-justify">永久许可证使您有权永久运行和使用World Creator 的所有版本。您有权使用的版本是在您的有效支持和维护期内发布的版本。购买永久许可证后，您有权获得 1 年的更新（支持和维护期）。</p>
+                                <p class="mb-4 text-justify">当您的支持和维护期结束时，您将无法再更新到较新的版本，但您的许可证可以续期，以便进一步更新。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_perpetualorrental"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">永久许可证</div>
+                                <p class="mb-4 text-justify">永久许可证使您有权永久运行和使用World Creator 的所有版本。您有权使用的版本是在您的有效支持和维护期内发布的版本。购买永久许可证后，您有权获得 1 年的更新（支持和维护期）。</p>
+                                <p class="mb-4 text-justify">当您的支持和维护期结束时，您将无法再更新到较新的版本，但您的许可证可以续期，以便进一步更新。</p>
+                            </div>
+                        </div>
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">租赁许可证</div>
+                                <p class="mb-4 text-justify">租赁许可证允许您在 1 年内使用World Creator 。1 年后，您不能再运行和使用World Creator ，但您可以续签许可证，以便继续使用和更新。</p>
+                                <p class="mb-4 text-justify">在订阅期间，您可以访问World Creator 的所有新更新。</p>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_oneyearofupdates"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">1 年维护</div>
+                                <p class="mb-4 text-justify">您有权获得 1 年的更新（支持和维护期）。</p>
+                                <p class="mb-4 text-justify">在第一年的免费更新和支持之后，您可以通过客户门户网站额外购买 12 个月的维护服务。这样，您就可以访问World Creator 中的最新功能、修复和增强功能。无论发生什么情况，您的副本都将继续运行，而且您始终可以下载您有权使用的版本。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_pricingmaintenancerenewal"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">维护更新定价</div>
+                                <p class="mb-4 text-justify">After your first year of free updates and support, you can purchase an additional 12 months of maintenance via the customer portal. Pricing is around <b>50%</b> of the listed license price. This will give you access to the latest features, fixes and enhancements in World Creator. Whatever happens, your copy will continue to work and you'll always be able to download the version you're entitled to.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_samples"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">资产、预置和样本</div>
+                                <p class="mb-4 text-justify">购买后，您将获得 138 种免版税纹理和 Adobe Substance 材质，以及大量World Creator 预置和样本，随时可用于自己的创作和项目。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_floating"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">浮动许可证</div>
+                                <p class="mb-4 text-justify">World Creator 允许您随时更改已购座位的用户。它还允许您通过客户门户管理多个用户，是企业和教育机构的理想选择。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_qualitysupport"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">优质的在线支持</div>
+                                <p class="mb-4 text-justify">我们的高质量在线支持由我们自己的开发人员管理，服务时间为周一至周五（柏林时间上午 10 点至下午 6 点）。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_premiumsupport"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">高级在线支持</div>
+                                <p class="mb-4 text-justify">我们的高级在线支持由核心开发人员负责管理，服务时间为周一至周日（柏林时间上午 10 点至晚上 10 点）。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_bridge"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">桥梁出口和工具</div>
+                                <p class="mb-4 text-justify">桥接工具用于将地形从World Creator 快速移植到下列任何应用程序，只需单击一下即可完成。</p>
+                            </div>
+                        </div>
+                        <div class="row mt-4 text-center">
+                            <div class="col-lg-4">
+                                <img class="img-fluid rounded-circle mb-1"
+                                     src="../img/logos/applications/blender.webp"
+                                     width="32"
+                                     height="32"
+                                     alt="Blender">
+                                <p>Blender</p>
+                            </div>
+                            <div class="col-lg-4">
+                                <img class="img-fluid rounded-circle mb-1"
+                                     src="../img/logos/applications/cinema4d.webp"
+                                     width="32"
+                                     height="32"
+                                     alt="Cinema 4D">
+                                <p>Cinema 4D</p>
+                            </div>
+                            <div class="col-lg-4">
+                                <img class="img-fluid rounded-circle mb-1"
+                                     src="../img/logos/applications/houdini.webp"
+                                     width="32"
+                                     height="32"
+                                     alt="Houdini">
+                                <p>Houdini</p>
+                            </div>
+                        </div>
+                        <div class="row mt-4 text-center">
+                            <div class="col-lg-6">
+                                <img class="img-fluid rounded-circle mb-1"
+                                     src="../img/logos/engines/unity.webp"
+                                     width="32"
+                                     height="32"
+                                     alt="Unity Engine">
+                                <p>Unity Engine</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <img class="img-fluid rounded-circle mb-1"
+                                     src="../img/logos/engines/unreal.webp"
+                                     width="32"
+                                     height="32"
+                                     alt="Unreal Engine">
+                                <p>Unreal Engine</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_nocommercial"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">无商业用途</div>
+                                <p class="mb-4 text-justify">You are <b>不是</b> permitted to use World Creator and/or any data created with World Creator and/or any material / sample assets downloaded from our server(s) for any commercial purpose.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_commercial"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">商业用途</div>
+                                <p class="mb-4 text-justify">您有权对World Creator 和/或使用World Creator 创建的任何数据和/或从我们的服务器下载的任何材料/样本资产进行商业使用。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_nolegacy"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">无遗留下载</div>
+                                <p class="mb-4 text-center">You will <b>不是</b> have access to older versions of World Creator.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_legacy"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">传统下载</div>
+                                <p class="mb-4 text-center">您可以访问World Creator 的旧版本。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_limitedexport"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">地形面积和精度有限</div>
+                                <p class="mb-4 text-justify">地形尺寸最大限制为 4096 x 4096 像素，精度为 1 米。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_info_export"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col">
+                                <div class="text-6 text-color-light text-center font-weight-bold pb-4">不限地形大小和精度</div>
+                                <p class="mb-4 text-center">地形的大小和精度没有限制。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <form id="form_requirements"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2">
+                            <div class="col-6">
+                                <div class="text-6 text-color-light font-weight-bold pb-4">最低</div>
+                                <ul class="list list-icons">
+                                    <li class="text-color-light font-weight-lighter text-2"><i class="fas fa-check"></i> Windows 7 (64 bit)</li>
+                                    <li class="text-color-light font-weight-lighter text-2"><i class="fas fa-check"></i> 4th Gen. i5 or equivalent AMD CPU</li>
+                                    <li class="text-color-light font-weight-lighter text-2"><i class="fas fa-check"></i> NVidia 1080 with 8GB VRAM or equivalent AMD GPU</li>
+                                    <li class="text-color-light font-weight-lighter text-2"><i class="fas fa-check"></i> 8 GB System RAM</li>
+                                    <li class="text-color-light font-weight-lighter text-2"><i class="fas fa-check"></i> 2 GB disk space</li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-6 text-color-light font-weight-bold pb-4">建议</div>
+                                <ul class="list list-icons">
+                                    <li class="text-color-light font-weight-lighter text-2"><i class="fas fa-check"></i> Windows 8.1 and above (64 bit)</li>
+                                    <li class="text-color-light font-weight-lighter text-2"><i class="fas fa-check"></i> 6th Gen. i7 or equivalent AMD CPU</li>
+                                    <li class="text-color-light font-weight-lighter text-2"><i class="fas fa-check"></i> NVidia 3080 with 12GB VRAM or equivalent AMD GPU</li>
+                                    <li class="text-color-light font-weight-lighter text-2"><i class="fas fa-check"></i> 16 GB System RAM</li>
+                                    <li class="text-color-light font-weight-lighter text-2"><i class="fas fa-check"></i> 2 GB disk space</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-row mt-2">
+                            <div class="col-sm-12">
+                                <p class="mb-4 text-justify">我们强烈建议您不要在启用板载 GPU 的情况下运行World Creator 。World Creator 无法在使用 Parallels 进行 Windows 模拟的 Mac 上运行，也无法在使用 WINE 的 Linux 上运行。计划推出 Mac 版本。尚未计划推出 Linux 版本。</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <p class="text-2 text-color text-justify">Prices above are in US Dollars. Prices do not include VAT. If you are within the EU, you will need to provide an EU VAT number to avoid VAT being charged on your payments. Otherwise, VAT will vary depending on the country you are in. The latest version of World Creator is currently available for Windows only. Also, please make sure to read our <a href="eula.phtml">EULA</a>, and <a href="refund_policy.phtml">Refund Policy</a>在购买之前，World Creator 。</p>
+                    <p class="text-2 text-justify text-color font-weight-semibold">重要提示：我们接受虚拟信用卡，但 FastSpring（我们的商店提供商）可能需要长达三 (3) 天的时间才能批准付款--从中国发起的购买通常是这种情况。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h3 class="text-transform-none text-14 font-weight-bold line-height-2 pt-5 pb-2">MAINTENANCE RENEWAL<br>和更新</h3>
+                    <p class="pl-2 pr-2 line-height-4 text-5 text-justify">在第一年的免费更新和支持之后，您可以通过客户门户网站额外购买 12 个月的维护服务。这样，您就可以访问World Creator 中的最新功能、修复和增强功能。无论发生什么情况，您的副本都将继续运行，而且您始终可以下载您有权使用的版本。价格为上述价格的 50%，具体取决于您拥有的许可证。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h3 class="text-transform-none text-14 font-weight-bold line-height-2 pt-5 pb-2">教育和学术机构</h3>
+                    <p class="pl-2 pr-2 line-height-4 text-5 text-justify">我们很高兴为所有学生和教师以及学术和教育机构提供 30% 的折扣！如果您有兴趣为整个班级授权World Creator ，我们还可以提供更多折扣。要利用这一绝佳机会，只需填写我们的学术折扣申请表，我们将在几小时内向您发送折扣代码！</p>
+                    <div class="row">
+                        <div class="col-2 col-md-4"></div>
+                        <div class="col-8 col-md-4">
+                            <p class="pt-4"><a class="popup-with-form text-color-light" href="#form_apply_for_academic"><button class="btn btn-block btn-primary btn-modern btn-rounded text-4">获得学术折扣</button></a></p>
+                        </div>
+                        <div class="col-2 col-md-4"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <form id="form_apply_for_academic"
+                              class="white-popup-block mfp-hide bg-color-dark"
+                              action="../php/portal/users/applyForAcademicDiscount.php"
+                              method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <p class="font-weight-bold text-color-light text-9">获取</p>
+                                    <p class="text-color-grey text-7 pb-2">学术折扣</p>
+                                </div>
+                            </div>
+
+                            <div class="form-row mt-2">
+                                <div class="col-sm-12">
+                                    <p class="mb-4 text-justify">请填写并提交下表。请务必上传您的学生证/教师证的图片或一封明确说明您当前学业状况的书面信函。一旦通过审核，您将收到个人学业折扣代码（通常在 24 小时内）。</p>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label>名字 *</label>
+                                    <input type="text"
+                                           data-msg-required="Please enter your first name."
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           name="firstName"
+                                           value=""
+                                           required>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>姓氏 *</label>
+                                    <input type="text"
+                                           data-msg-required="Please enter your last name."
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           name="lastName"
+                                           value=""
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>角色 *</label>
+                                    <select name="role"
+                                            class="form-control h-auto py-2 text-color-light">
+                                        <option value="Student">我是学生</option>
+                                        <option value="Teacher">我是一名教师</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>电子邮件地址 *</label>
+                                    <input type="email"
+                                           data-msg-required="Please enter your email address."
+                                           data-msg-email="Please enter a valid email address."
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           name="email"
+                                           value=""
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="form-row pt-4">
+                                <div class="form-group col">
+                                    <label>求解下面的计算 *</label>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-lg-2">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="2"
+                                           class="form-control text-color-light"
+                                           name="sum01"
+                                            <?php
+                                            echo 'value="' .rand(1,9)  .'"';
+                                            ?>
+                                           readonly>
+                                </div>
+                                <div class="form-group col-lg-1 text-center">
+                                    <label class="text-5 text-color-grey">+</label>
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="2"
+                                           class="form-control text-color-light"
+                                           name="sum02"
+                                            <?php
+                                            echo 'value="' .rand(1,9)  .'"';
+                                            ?>
+                                           readonly>
+                                </div>
+                                <div class="form-group col-lg-1 text-center">
+                                    <label class="text-5 text-color-grey">x</label>
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="2"
+                                           class="form-control text-color-light"
+                                           name="mul03"
+                                           <?php
+                                           echo 'value="' .rand(1,5)  .'"';
+                                           ?>
+                                           readonly>
+                                </div>
+                                <div class="form-group col-lg-1  text-center">
+                                    <label class="text-5 text-color-grey">=</label>
+                                </div>
+                                <div class="form-group col-lg-3">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="3"
+                                           class="form-control text-color-light"
+                                           name="result"
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="form-row pt-4">
+                                <div class="form-group col">
+                                    <label for="img">学历证明图片（最多 2 MB） *</label>
+                                </div>
+                            </div>
+
+                            <div class="form-row pt-4">
+                                <div class="form-group col">
+                                    <input class="float-right"
+                                           type="file"
+                                           id="img"
+                                           name="imageofacademicproof"
+                                           accept="image/*">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col text-center">
+                                    <button type="submit"
+                                            class="btn btn-modern btn-rounded btn-primary mt-3 float-right">Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h3 class="text-transform-none text-14 font-weight-bold line-height-2 pt-5 pb-2">公司试用</h3>
+                    <p class="pl-2 pr-2 line-height-4 text-5 text-justify">只需点击下面的按钮并填写试用申请表。请注意，试用权限仅授予公司，因此使用 @gmail、@hotmail、@outlook、@yahoo 等通用电子邮件地址的申请将被忽略。为确保快速回复，请使用贵公司的官方电子邮件地址。</p>
+                    <div class="row">
+                        <div class="col-2 col-md-4"></div>
+                        <div class="col-8 col-md-4">
+                            <p class="pt-4"><a class="popup-with-form text-color-light" href="#form_apply_for_trial"><button class="btn btn-block btn-primary btn-modern btn-rounded text-4">获取试用权限</button></a></p>
+                        </div>
+                        <div class="col-2 col-md-4"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <form id="form_apply_for_trial"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          action="../php/portal/users/applyForTrial.php"
+                          method="post"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2 text-center">
+                            <div class="col-sm-12">
+                                <p class="font-weight-bold text-color-light text-9">获取</p>
+                                <p class="text-color-grey text-7 pb-2">小径通道</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row mt-2">
+                            <div class="col-sm-12">
+                                <p class="mb-4 text-justify">请填写并提交下表。一旦通过审核，您将收到试用版登录信息（通常在 24 小时内）。</p>
+                                <p class="mb-4 text-center text-light">通用提供商（如 hotmail、gmail、免费）和 HTTP 网站仍将被拒绝！</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>公司 *</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your companies legal name."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="company"
+                                       value=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>公司网站（仅限 HTTPS） *</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your companies website."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="website"
+                                       value=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label>公司规模 *</label>
+                                <select name="companySize"
+                                        class="form-control h-auto py-2 text-color-light"
+                                        required>
+                                    <option value="Small Company">(小型）年收入低于 100 万美元</option>
+                                    <option value="Large Company">(大型） 年收入超过 100 万美元</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>名字 *</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your first name."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="firstName"
+                                       value=""
+                                       required>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>姓氏 *</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your last name."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="lastName"
+                                       value=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label>电子邮件地址 *</label>
+                                <input type="email"
+                                       data-msg-required="Please enter your companies email address."
+                                       data-msg-email="Please enter a valid email address."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="email"
+                                       value=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row pt-4">
+                            <div class="form-group col">
+                                <label>求解下面的计算 *</label>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-2">
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="2"
+                                       class="form-control text-color-light"
+                                       name="sum01"
+                                    <?php
+                                    echo 'value="' .rand(1,9)  .'"';
+                                    ?>
+                                       readonly>
+                            </div>
+                            <div class="form-group col-lg-1 text-center">
+                                <label class="text-5 text-color-grey">+</label>
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="2"
+                                       class="form-control text-color-light"
+                                       name="sum02"
+                                    <?php
+                                    echo 'value="' .rand(1,9)  .'"';
+                                    ?>
+                                       readonly>
+                            </div>
+                            <div class="form-group col-lg-1 text-center">
+                                <label class="text-5 text-color-grey">x</label>
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="2"
+                                       class="form-control text-color-light"
+                                       name="mul03"
+                                    <?php
+                                    echo 'value="' .rand(1,5)  .'"';
+                                    ?>
+                                       readonly>
+                            </div>
+                            <div class="form-group col-lg-1  text-center">
+                                <label class="text-5 text-color-grey">=</label>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="3"
+                                       class="form-control text-color-light"
+                                       name="result"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col text-center">
+                                <button type="submit"
+                                        class="btn btn-modern btn-rounded btn-primary mt-3 float-right">Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h3 class="text-transform-none text-14 font-weight-bold line-height-2 pt-5 pb-2">采购门户访问</h3>
+                    <p class="pl-2 pr-2 line-height-4 text-5 text-justify">无论您是公司、经销商还是自己经营商店，我们都能为您提供服务。我们的计划是您开始采购World Creator 的理想场所，无论是自用还是为客户采购。欢迎加入我们的采购计划！有了采购计划，您就可以立即在我们的总店之外进行报价和下订单。只需填写下面的采购申请表，我们就会立即为您建立账户。立即开始询价和下订单！</p>
+                    <div class="row">
+                        <div class="col-2 col-md-4"></div>
+                        <div class="col-8 col-md-4">
+                            <p class="pt-4"><a class="popup-with-form text-color-light" href="#form_become_a_partner"><button class="btn btn-block btn-primary btn-modern btn-rounded text-4">立即申请</button></a></p>
+                        </div>
+                        <div class="col-2 col-md-4"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <form id="form_become_a_partner"
+                          class="white-popup-block mfp-hide bg-color-dark"
+                          action="../php/portal/users/applyAsPartner.php"
+                          method="post"
+                          enctype="multipart/form-data">
+                        <div class="form-row mt-2 text-center">
+                            <div class="col-sm-12">
+                                <p class="font-weight-bold text-color-light text-9">申请</p>
+                                <p class="text-color-grey text-7 pb-2">采购计划</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row mt-2">
+                            <div class="col-sm-12">
+                                <p class="mb-4 text-justify">请填写并提交下表。一旦获得我们销售团队的批准，您将通过电子邮件收到合作伙伴登录信息。</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>公司 *</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your companies full legal name."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="company"
+                                       value=""
+                                       required>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>公司网站 *</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your companies website."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="website"
+                                       value=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label>增值税标识（仅适用于正式加入欧盟的国家）</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="vatid"
+                                       value="">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>名字 *</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your first name."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="firstName"
+                                       value=""
+                                       required>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>姓氏 *</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your last name."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="lastName"
+                                       value=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label>电子邮件地址 *</label>
+                                <input type="email"
+                                       data-msg-required="Please enter your personal company related email address."
+                                       data-msg-email="Please enter a valid email address."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="email"
+                                       value=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>地址 1</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your companies street address and building number."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="addressline01"
+                                       value=""
+                                       required>
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>地址第 2 行</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="addressline02"
+                                       value="">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>压缩包</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your companies city postal code."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="zip"
+                                       value=""
+                                       required>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>城市</label>
+                                <input type="text"
+                                       data-msg-required="Please enter your companies city name."
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       name="city"
+                                       value=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>国家 *</label>
+                                    <select name="country"
+                                            class="form-control h-auto py-2 text-color-light">
+                                        <option value="Germany">德国</option>
+                                        <option value="Afghanistan">阿富汗</option>
+                                        <option value="Åland Islands">奥兰群岛</option>
+                                        <option value="Albania">阿尔巴尼亚</option>
+                                        <option value="Algeria">阿尔及利亚</option>
+                                        <option value="American Samoa">美属萨摩亚</option>
+                                        <option value="Andorra">安道尔</option>
+                                        <option value="Angola">安哥拉</option>
+                                        <option value="Anguilla">安圭拉岛</option>
+                                        <option value="Antarctica">南极洲</option>
+                                        <option value="Antigua and Barbuda">安提瓜和巴布达</option>
+                                        <option value="Argentina">阿根廷</option>
+                                        <option value="Armenia">亚美尼亚</option>
+                                        <option value="Aruba">阿鲁巴</option>
+                                        <option value="Australia">澳大利亚</option>
+                                        <option value="Austria">奥地利</option>
+                                        <option value="Azerbaijan">阿塞拜疆</option>
+                                        <option value="Bahamas">巴哈马</option>
+                                        <option value="Bahrain">巴林</option>
+                                        <option value="Bangladesh">孟加拉国</option>
+                                        <option value="Barbados">巴巴多斯</option>
+                                        <option value="Belarus">白俄罗斯</option>
+                                        <option value="Belgium">比利时</option>
+                                        <option value="Belize">伯里兹</option>
+                                        <option value="Benin">贝宁</option>
+                                        <option value="Bermuda">百慕大群岛</option>
+                                        <option value="Bhutan">不丹</option>
+                                        <option value="Bolivia">玻利维亚</option>
+                                        <option value="Bosnia and Herzegovina">波斯尼亚和黑塞哥维那</option>
+                                        <option value="Botswana">博茨瓦纳</option>
+                                        <option value="Bouvet Island">布韦岛</option>
+                                        <option value="Brazil">巴西</option>
+                                        <option value="British Indian Ocean Territory">英属印度洋领地</option>
+                                        <option value="Brunei Darussalam">文莱达鲁萨兰国</option>
+                                        <option value="Bulgaria">保加利亚</option>
+                                        <option value="Burkina Faso">布基纳法索</option>
+                                        <option value="Burundi">布隆迪</option>
+                                        <option value="Cambodia">柬埔寨</option>
+                                        <option value="Cameroon">喀麦隆</option>
+                                        <option value="Canada">加拿大</option>
+                                        <option value="Cape Verde">佛得角</option>
+                                        <option value="Cayman Islands">开曼群岛</option>
+                                        <option value="Central African Republic">中非共和国</option>
+                                        <option value="Chad">乍得</option>
+                                        <option value="Chile">智利</option>
+                                        <option value="China">中国</option>
+                                        <option value="Christmas Island">圣诞岛</option>
+                                        <option value="Cocos (Keeling) Islands">科科斯（基林）群岛</option>
+                                        <option value="Colombia">哥伦比亚</option>
+                                        <option value="Comoros">科摩罗</option>
+                                        <option value="Congo">刚果</option>
+                                        <option value="Congo, The Democratic Republic of The">刚果民主共和国</option>
+                                        <option value="Cook Islands">库克群岛</option>
+                                        <option value="Costa Rica">哥斯达黎加</option>
+                                        <option value="Cote D'ivoire">科特迪瓦</option>
+                                        <option value="Croatia">克罗地亚</option>
+                                        <option value="Cuba">古巴</option>
+                                        <option value="Cyprus">塞浦路斯</option>
+                                        <option value="Czech Republic">捷克共和国</option>
+                                        <option value="Denmark">丹麦</option>
+                                        <option value="Djibouti">吉布提</option>
+                                        <option value="Dominica">多米尼克</option>
+                                        <option value="Dominican Republic">多米尼加共和国</option>
+                                        <option value="Ecuador">厄瓜多尔</option>
+                                        <option value="Egypt">埃及</option>
+                                        <option value="El Salvador">萨尔瓦多</option>
+                                        <option value="Equatorial Guinea">赤道几内亚</option>
+                                        <option value="Eritrea">厄立特里亚</option>
+                                        <option value="Estonia">爱沙尼亚</option>
+                                        <option value="Ethiopia">埃塞俄比亚</option>
+                                        <option value="Falkland Islands (Malvinas)">福克兰群岛（马尔维纳斯群岛）</option>
+                                        <option value="Faroe Islands">法罗群岛</option>
+                                        <option value="Fiji">斐济</option>
+                                        <option value="Finland">芬兰</option>
+                                        <option value="France">法国</option>
+                                        <option value="French Guiana">法属圭亚那</option>
+                                        <option value="French Polynesia">法属波利尼西亚</option>
+                                        <option value="French Southern Territories">法国南部领土</option>
+                                        <option value="Gabon">加蓬</option>
+                                        <option value="Gambia">冈比亚</option>
+                                        <option value="Georgia">格鲁吉亚</option>
+                                        <option value="Germany">德国</option>
+                                        <option value="Ghana">加纳</option>
+                                        <option value="Gibraltar">直布罗陀</option>
+                                        <option value="Greece">希腊</option>
+                                        <option value="Greenland">格陵兰岛</option>
+                                        <option value="Grenada">格林纳达</option>
+                                        <option value="Guadeloupe">瓜德罗普岛</option>
+                                        <option value="Guam">关岛</option>
+                                        <option value="Guatemala">危地马拉</option>
+                                        <option value="Guernsey">格恩西岛</option>
+                                        <option value="Guinea">几内亚</option>
+                                        <option value="Guinea-bissau">几内亚比绍</option>
+                                        <option value="Guyana">圭亚那</option>
+                                        <option value="Haiti">海地</option>
+                                        <option value="Heard Island and Mcdonald Islands">赫德岛和麦克唐纳群岛</option>
+                                        <option value="Holy See (Vatican City State)">罗马教廷（梵蒂冈城国）</option>
+                                        <option value="Honduras">洪都拉斯</option>
+                                        <option value="Hong Kong">香港</option>
+                                        <option value="Hungary">匈牙利</option>
+                                        <option value="Iceland">冰岛</option>
+                                        <option value="India">印度</option>
+                                        <option value="Indonesia">印度尼西亚</option>
+                                        <option value="Iran, Islamic Republic of">伊朗伊斯兰共和国</option>
+                                        <option value="Iraq">伊拉克</option>
+                                        <option value="Ireland">爱尔兰</option>
+                                        <option value="Isle of Man">马恩岛</option>
+                                        <option value="Israel">以色列</option>
+                                        <option value="Italy">意大利</option>
+                                        <option value="Jamaica">牙买加</option>
+                                        <option value="Japan">日本</option>
+                                        <option value="Jersey">泽西岛</option>
+                                        <option value="Jordan">约旦</option>
+                                        <option value="Kazakhstan">哈萨克斯坦</option>
+                                        <option value="Kenya">肯尼亚</option>
+                                        <option value="Kiribati">基里巴斯</option>
+                                        <option value="Korea, Democratic People's Republic of">朝鲜民主主义人民共和国</option>
+                                        <option value="Korea, Republic of">大韩民国</option>
+                                        <option value="Kuwait">科威特</option>
+                                        <option value="Kyrgyzstan">吉尔吉斯斯坦</option>
+                                        <option value="Lao People's Democratic Republic">老挝人民民主共和国</option>
+                                        <option value="Latvia">拉脱维亚</option>
+                                        <option value="Lebanon">黎巴嫩</option>
+                                        <option value="Lesotho">莱索托</option>
+                                        <option value="Liberia">利比里亚</option>
+                                        <option value="Libyan Arab Jamahiriya">阿拉伯利比亚民众国</option>
+                                        <option value="Liechtenstein">列支敦士登</option>
+                                        <option value="Lithuania">立陶宛</option>
+                                        <option value="Luxembourg">卢森堡</option>
+                                        <option value="Macao">澳门</option>
+                                        <option value="Macedonia, The Former Yugoslav Republic of">前南斯拉夫的马其顿共和国</option>
+                                        <option value="Madagascar">马达加斯加</option>
+                                        <option value="Malawi">马拉维</option>
+                                        <option value="Malaysia">马来西亚</option>
+                                        <option value="Maldives">马尔代夫</option>
+                                        <option value="Mali">马里</option>
+                                        <option value="Malta">马耳他</option>
+                                        <option value="Marshall Islands">马绍尔群岛</option>
+                                        <option value="Martinique">马提尼克岛</option>
+                                        <option value="Mauritania">毛里塔尼亚</option>
+                                        <option value="Mauritius">毛里求斯</option>
+                                        <option value="Mayotte">马约特</option>
+                                        <option value="Mexico">墨西哥</option>
+                                        <option value="Micronesia, Federated States of">密克罗尼西亚联邦</option>
+                                        <option value="Moldova, Republic of">摩尔多瓦共和国</option>
+                                        <option value="Monaco">摩纳哥</option>
+                                        <option value="Mongolia">蒙古</option>
+                                        <option value="Montenegro">黑山共和国</option>
+                                        <option value="Montserrat">蒙特塞拉特</option>
+                                        <option value="Morocco">摩洛哥</option>
+                                        <option value="Mozambique">莫桑比克</option>
+                                        <option value="Myanmar">缅甸</option>
+                                        <option value="Namibia">纳米比亚</option>
+                                        <option value="Nauru">瑙鲁</option>
+                                        <option value="Nepal">尼泊尔</option>
+                                        <option value="Netherlands">荷兰</option>
+                                        <option value="Netherlands Antilles">荷属安的列斯群岛</option>
+                                        <option value="New Caledonia">新喀里多尼亚</option>
+                                        <option value="New Zealand">新西兰</option>
+                                        <option value="Nicaragua">尼加拉瓜</option>
+                                        <option value="Niger">尼日尔</option>
+                                        <option value="Nigeria">尼日利亚</option>
+                                        <option value="Niue">纽埃</option>
+                                        <option value="Norfolk Island">诺福克岛</option>
+                                        <option value="Northern Mariana Islands">北马里亚纳群岛</option>
+                                        <option value="Norway">挪威</option>
+                                        <option value="Oman">阿曼</option>
+                                        <option value="Pakistan">巴基斯坦</option>
+                                        <option value="Palau">帕劳</option>
+                                        <option value="Palestinian Territory, Occupied">巴勒斯坦被占领土</option>
+                                        <option value="Panama">巴拿马</option>
+                                        <option value="Papua New Guinea">巴布亚新几内亚</option>
+                                        <option value="Paraguay">巴拉圭</option>
+                                        <option value="Peru">秘鲁</option>
+                                        <option value="Philippines">菲律宾</option>
+                                        <option value="Pitcairn">皮特凯恩</option>
+                                        <option value="Poland">波兰</option>
+                                        <option value="Portugal">葡萄牙</option>
+                                        <option value="Puerto Rico">波多黎各</option>
+                                        <option value="Qatar">卡塔尔</option>
+                                        <option value="Reunion">团聚</option>
+                                        <option value="Romania">罗马尼亚</option>
+                                        <option value="Russian Federation">俄罗斯联邦</option>
+                                        <option value="Rwanda">卢旺达</option>
+                                        <option value="Saint Helena">圣赫勒拿岛</option>
+                                        <option value="Saint Kitts and Nevis">圣基茨和尼维斯</option>
+                                        <option value="Saint Lucia">圣卢西亚</option>
+                                        <option value="Saint Pierre and Miquelon">圣皮埃尔和密克隆岛</option>
+                                        <option value="Saint Vincent and The Grenadines">圣文森特和格林纳丁斯</option>
+                                        <option value="Samoa">萨摩亚</option>
+                                        <option value="San Marino">圣马力诺</option>
+                                        <option value="Sao Tome and Principe">圣多美和普林西比</option>
+                                        <option value="Saudi Arabia">沙特阿拉伯</option>
+                                        <option value="Senegal">塞内加尔</option>
+                                        <option value="Serbia">塞尔维亚</option>
+                                        <option value="Seychelles">塞舌尔</option>
+                                        <option value="Sierra Leone">塞拉利昂</option>
+                                        <option value="Singapore">新加坡</option>
+                                        <option value="Slovakia">斯洛伐克</option>
+                                        <option value="Slovenia">斯洛文尼亚</option>
+                                        <option value="Solomon Islands">所罗门群岛</option>
+                                        <option value="Somalia">索马里</option>
+                                        <option value="South Africa">南非</option>
+                                        <option value="South Georgia and The South Sandwich Islands">南乔治亚岛和南桑威奇</option>
+                                        <option value="Spain">西班牙</option>
+                                        <option value="Sri Lanka">斯里兰卡</option>
+                                        <option value="Sudan">苏丹</option>
+                                        <option value="Suriname">苏里南</option>
+                                        <option value="Svalbard and Jan Mayen">斯瓦尔巴群岛和扬马延岛</option>
+                                        <option value="Swaziland">斯威士兰</option>
+                                        <option value="Sweden">瑞典</option>
+                                        <option value="Switzerland">瑞士</option>
+                                        <option value="Syrian Arab Republic">阿拉伯叙利亚共和国</option>
+                                        <option value="Taiwan">台湾</option>
+                                        <option value="Tajikistan">塔吉克斯坦</option>
+                                        <option value="Tanzania, United Republic of">坦桑尼亚联合共和国</option>
+                                        <option value="Thailand">泰国</option>
+                                        <option value="Timor-leste">东帝汶</option>
+                                        <option value="Togo">多哥</option>
+                                        <option value="Tokelau">托克劳</option>
+                                        <option value="Tonga">汤加</option>
+                                        <option value="Trinidad and Tobago">特立尼达和多巴哥</option>
+                                        <option value="Tunisia">突尼斯</option>
+                                        <option value="Turkey">土耳其</option>
+                                        <option value="Turkmenistan">土库曼斯坦</option>
+                                        <option value="Turks and Caicos Islands">特克斯和凯科斯群岛</option>
+                                        <option value="Tuvalu">图瓦卢</option>
+                                        <option value="Uganda">乌干达</option>
+                                        <option value="Ukraine">乌克兰</option>
+                                        <option value="United Arab Emirates">阿联酋</option>
+                                        <option value="United Kingdom">英国</option>
+                                        <option value="United States">美国</option>
+                                        <option value="United States Minor Outlying Islands">美国本土外小岛屿</option>
+                                        <option value="Uruguay">乌拉圭</option>
+                                        <option value="Uzbekistan">乌兹别克斯坦</option>
+                                        <option value="Vanuatu">瓦努阿图</option>
+                                        <option value="Venezuela">委内瑞拉</option>
+                                        <option value="Viet Nam">越南</option>
+                                        <option value="Virgin Islands, British">英属维尔京群岛</option>
+                                        <option value="Virgin Islands, U.S.">美属维尔京群岛</option>
+                                        <option value="Wallis and Futuna">瓦利斯群岛和富图纳群岛</option>
+                                        <option value="Western Sahara">西撒哈拉</option>
+                                        <option value="Yemen">也门</option>
+                                        <option value="Zambia">赞比亚</option>
+                                        <option value="Zimbabwe">津巴布韦</option>
+                                    </select>
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>付款条件 *</label>
+                                <select name="paymentterms"
+                                        class="form-control h-auto py-2 text-color-light">
+                                    <option value="14 Days">14 天</option>
+                                    <option value="30 Days">30 天</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row pt-4">
+                            <div class="form-group col">
+                                <label>求解下面的计算 *</label>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-2">
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="2"
+                                       class="form-control text-color-light"
+                                       name="sum01"
+                                    <?php
+                                    echo 'value="' .rand(1,9)  .'"';
+                                    ?>
+                                       readonly>
+                            </div>
+                            <div class="form-group col-lg-1 text-center">
+                                <label class="text-5 text-color-grey">+</label>
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="2"
+                                       class="form-control text-color-light"
+                                       name="sum02"
+                                    <?php
+                                    echo 'value="' .rand(1,9)  .'"';
+                                    ?>
+                                       readonly>
+                            </div>
+                            <div class="form-group col-lg-1 text-center">
+                                <label class="text-5 text-color-grey">x</label>
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="2"
+                                       class="form-control text-color-light"
+                                       name="mul03"
+                                    <?php
+                                    echo 'value="' .rand(1,5)  .'"';
+                                    ?>
+                                       readonly>
+                            </div>
+                            <div class="form-group col-lg-1  text-center">
+                                <label class="text-5 text-color-grey">=</label>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="3"
+                                       class="form-control text-color-light"
+                                       name="result">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col text-center">
+                                <button type="submit"
+                                        class="btn btn-modern btn-rounded btn-primary mt-3 float-right">Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h3 class="text-transform-none text-14 font-weight-bold line-height-2 pt-5 pb-2">你们真是大好人</h3>
+                    <p class="pl-2 pr-2 pb-5 line-height-4 text-5 text-justify">自 2017 年 11 月以来，World Creator 已被数千家快乐的公司和客户采用，帮助塑造了一些最大型的游戏和电影。</p>
+                    <div class="row content-grid-row">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://2k.com/en-US/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/2k.webp"
+                                                    alt="2K"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.a52.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/a52.webp"
+                                                    alt="a52"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.amazon.com"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/amazon.webp"
+                                                    alt="Amazon"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://atlus.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/atlus.webp"
+                                                    alt="Atlus"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://avalanchestudios.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/avalanchestudio.webp"
+                                                    alt="Avalanche Studios"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://de.bandainamcoent.eu/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/bandainamco.webp"
+                                                    alt="Bandai Namco"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.bioware.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/bioware.webp"
+                                                    alt="Bioware"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.blizzard.com/de-de/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/blizzard.webp"
+                                                    alt="Blizzard"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://bluebyte.ubisoft.com/de/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/bluebyte.webp"
+                                                    alt="BlueByte"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.blur.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/blur.webp"
+                                                    alt="Blur"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.bluepointgames.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/bluepoint.webp"
+                                                    alt="Blue Point Games"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.bossastudios.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/bossastudios.webp"
+                                                    alt="Bossa Studio"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.capcom.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/capcom.webp"
+                                                    alt="Capcom"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.certainaffinity.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/certain_affinity.webp"
+                                                    alt="Certain Affinity"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.cinesite.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/cinesite.webp"
+                                                    alt="Cinesite"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.codemasters.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/codemasters.webp"
+                                                    alt="Codemasters"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.crytek.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/crytek.webp"
+                                                    alt="Crytek"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://cyborn.be/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/cyborn.webp"
+                                                    alt="Cyborn"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.cygames.co.jp/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/cygames.webp"
+                                                    alt="Cygames"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.daybreakgames.com/home"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/daybreakgames.webp"
+                                                    alt="Daybreak Games"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.deck13.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/deck13.webp"
+                                                    alt="Deck13"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.dice.se/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/dice.webp"
+                                                    alt="DICE"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.digicpictures.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/digipic.webp"
+                                                    alt="Digipic"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.digitalextremes.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/digitalextremes.webp"
+                                                    alt="Digital Extremes"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.dlr.de/dlr/desktopdefault.aspx/tabid-10002/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/dlr.webp"
+                                                    alt="DLR"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.eidosmontreal.com"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/eidos_montreal.webp"
+                                                    alt="Eidos Montreal"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.ea.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/ea.webp"
+                                                    alt="Electronic Arts"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://falconscreativegroup.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/falconscreativegroup.webp"
+                                                    alt="Falcons Creative Group"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://firaxis.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/firaxis.webp"
+                                                    alt="Firaxis"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://firesprite.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/firesprite.webp"
+                                                    alt="Firesprite"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.frimastudio.com/en/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/frima.webp"
+                                                    alt="FRIMA"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.funcom.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/funcom.webp"
+                                                    alt="Funcom"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.ghostvfx.com"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/ghost_vfx.webp"
+                                                    alt="GHOST VFX"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://hotheadgames.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/hotheadstudio.webp"
+                                                    alt="Hothead Studio"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://hybride.com/en"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/hybride.webp"
+                                                    alt="Hybride"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://improbable.io/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/improbable.webp"
+                                                    alt="Improbable"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://corp.joycity.com"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/joycity.webp"
+                                                    alt="Joy City"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.kylotonn.com/en/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/ktracing.webp"
+                                                    alt="KT Racing"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.limbic-entertainment.de/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/limbic.webp"
+                                                    alt="Limbic"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.liongamelion.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/liongamelion.webp"
+                                                    alt="Lion Game Lion"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://mawiunited.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/mawi.webp"
+                                                    alt="MAWI"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.meta.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/meta.webp"
+                                                    alt="META"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.microsoftstudios.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/microsoft.webp"
+                                                    alt="Microsoft"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://us.ncsoft.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/ncsoft.webp"
+                                                    alt="NC Soft"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://neocoregames.com/en"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/neocoregames.webp"
+                                                    alt="Neocoregames"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <img class="img-fluid"
+                                 src="../img/logos/companies/nexon.webp"
+                                 alt="Nexon"/>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.paradoxinteractive.com/en/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/paradox_interactive.webp"
+                                                    alt="Paradox Interactive"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.perfectworld.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/perfect_world.webp"
+                                                    alt="Perfect World"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.piranha-bytes.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/piranhabytes.webp"
+                                                    alt="Piranha Bytes"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.playground-games.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/playgroundgames.webp"
+                                                    alt="Playgroundgames"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://pocketgems.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/pocketgems.webp"
+                                                    alt="Pocket Gems"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.quanticdream.com/en"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/quanticdream.webp"
+                                                    alt="Quantic Dream"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.rsvfx.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/rocketscience.webp"
+                                                    alt="Rocketscience"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.sae.edu/deu/de"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/sae.webp"
+                                                    alt="SAE"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.sega.com"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/sega.webp"
+                                                    alt="SEGA"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.sony.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/sony.webp"
+                                                    alt="Sony"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.square-enix.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/squareenix.webp"
+                                                    alt="Square Eenix"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://styleframe.de/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/styleframe.webp"
+                                                    alt="Styleframe"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.sumo-digital.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/sumodigital.webp"
+                                                    alt="Sumo Digital"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.take2games.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/take2gaming.webp"
+                                                    alt="Take2 Gaming"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.technicolor.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/technicolor.webp"
+                                                    alt="Technicolor"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.ttgames.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/telltalegames.webp"
+                                                    alt="Telltale Games"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://thqnordic.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/thqnordic.webp"
+                                                    alt="THQ Nordic"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.treyarch.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/treyarch.webp"
+                                                    alt="Treyarch"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.ubisoft.com/en-us"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/ubisoft.webp"
+                                                    alt="Ubisoft"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://unity.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/unity.webp"
+                                                    alt="Unity"/></a>
+                        </div>
+                    </div>
+                    <div class="row content-grid-row mt-4">
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.valvesoftware.com/de/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/valve.webp"
+                                                    alt="Valve"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://virtuosgames.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/virtuos.webp"
+                                                    alt="Virtuos"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.wbgames.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/wbgames.webp"
+                                                    alt="WB Games"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.weltenbauer-se.com"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/weltenbauer.webp"
+                                                    alt="Weltenbauer"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.xlgames.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/xlgames.webp"
+                                                    alt="XL Games"/></a>
+                        </div>
+                        <div class="content-grid-item col-6 col-sm-4 col-lg-2 text-center">
+                            <a href="https://www.zenimax.com/"
+                               target="_blank"><img class="img-fluid"
+                                                    src="../img/logos/companies/zenimax.webp"
+                                                    alt="Zenimax"/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+.multidropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.multidropdown-toggle {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.multidropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  z-index: 1000;
+  max-height: 200px; /* Add a max-height if you have many options */
+  overflow-y: auto; /* Make the dropdown scrollable */
+}
+
+.multidropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.multidropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.multidropdown-item.selected {
+  background-color: #d1e7ff; /* Highlight selected options */
+}
+

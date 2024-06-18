@@ -1,0 +1,1133 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handleUserPortal();
+
+\Portal\PortalAccessVerification::verifyAccess();
+
+$database = new \Users\Database();
+
+$seats = array();
+
+if(isset($_SESSION['worldcreator_manager_email']) && isset($_SESSION['worldcreator_manager_password']))
+{
+    $account = $database->selectAccountByEmailAndPassword($_SESSION["worldcreator_manager_email"], $_SESSION["worldcreator_manager_password"]);
+
+    $seats = $database->selectUsersByAccountId($account->id);
+}
+else
+{
+    $seat = $database->selectUserByEmailAndPassword($_SESSION["worldcreator_user_email"], $_SESSION["worldcreator_user_password"]);
+
+    array_push($seats, $seat);
+}
+
+
+?>
+
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <?php
+    \Portal\Utility::writeMetaData('World Creator - Customer Portal', 'The customer portal seat management page.','', 'en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-pro-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script
+            id="fsc-api"
+            src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.5/fastspring-builder.min.js"
+            type="text/javascript"
+            data-storefront="bitethebytes.onfastspring.com/popup-company"
+            data-data-callback="dataCallbackFunction"> <!--Remove .test-->
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var element = document.getElementById("info-window");
+
+            if (element)
+                $("#info-window").modal('show');
+        }
+
+        function dataCallbackFunction(fsdata)
+        {
+            if (fsdata.tags)
+            {
+                document.getElementById("key").append(JSON.stringify(fsdata.tags));
+            }
+        }
+    </script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+    </script>
+
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+<body data-plugin-page-transition>
+<?php
+include 'php/gdpr.php';
+?>
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main"
+         class="main">
+
+        <section class="page-header page-header-modern page-header-background page-header-background-md mt-0 mb-0"
+                 style="background-image: url(../img/pages/World-Creator-02.webp); height: 50vh;">
+            <div class="container text-center z-index-1 h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <div class="container appear-animation"
+                         data-appear-animation="blurIn"
+                         data-appear-animation-delay="0"
+                         data-plugin-options="{'minWindowWidth': 0}">
+                        <div class="row text-center pt-4">
+                            <div class="col">
+                                <h1 class="text-color-light font-weight-extra-bold text-12 mb-3">
+                                    World Creator Sitze</h1>
+                                <h2 class="text-color-light lead tall text-7">
+                                    Mit Ihrem Konto verknüpft</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <?php
+        include 'php/menu-sub.php';
+        ?>
+
+        <?php
+        \Portal\MessageResult::handle();
+        ?>
+
+        <div class="container pt-4">
+            <div class="row">
+                <div class="col text-justify">
+                    <?php
+                    if($seats)
+                    {
+                        $unassignedSeatsFound = false;
+                        foreach($seats as $seat)
+                        {
+                            if($seat->email == '')
+                            {
+                                $unassignedSeatsFound = true;
+                                break;
+                            }
+                        }
+
+                        if($unassignedSeatsFound)
+                        {
+                            echo '  
+                                <div class="row process process-shapes process-shapes-hover-animate mt-3 pt-3">                          
+								    <div class="process-step col-lg-12 mb-5 mb-lg-4">
+									    <div class="process-step-circle">
+										    <strong class="process-step-circle-content">!</strong>
+									    </div>
+									    <div class="process-step-content">
+										    <h4 class="mb-1 text-5 font-weight-bold">Nicht zugewiesene Plätze gefunden</h4>
+										    <p class="mb-0 text-color-grey font-weight-medium">Ein oder mehrere Plätze sind einem Benutzer nicht zugewiesen. Identifizieren Sie den nicht zugewiesenen Platz und klicken Sie auf die Schaltfläche ZUWEISEN. Es wird ein Popup-Fenster angezeigt, in dem Sie aufgefordert werden, die E-Mail-Adresse des Benutzers einzugeben. Das Passwort wird automatisch generiert und kann nicht geändert werden (Sicherheitsrichtlinie). Verwenden Sie diesen Benutzernamen und das Kennwort für den Arbeitsplatz, um sich bei World Creator anzumelden.</p>
+									    </div>
+								    </div>
+								</div>';
+                        }
+                        else
+                        {
+                            echo '
+                                <div class="container pb-3">
+                                    <div class="row">
+                                        <div class="col text-justify text-color-grey">
+                                            Nachfolgend finden Sie alle mit Ihrem Konto verbundenen Plätze. Sie können diese nach Bedarf einsehen, neu zuweisen, zurücksetzen oder erneuern und aktualisieren. Für weitere Hilfe empfehlen wir Ihnen, dies zu lesen <a href="https://bitethebytes.freshdesk.com/support/solutions/articles/44002348944-customer-portal#Section%3A-Seat-/-Seats" target="_blank">Artikel</a> die die Sitzplatzverwaltung im Detail erklärt. Bis jetzt sieht alles gut aus, da keine nicht zugewiesenen Plätze aufgelistet sind.                                                 
+                                        </div>
+                                    </div>
+                                </div>';
+                        }
+                    }
+                    else
+                    {
+                        echo '  
+                            <div class="row process process-shapes process-shapes-hover-animate mt-3 pt-3">                          
+							    <div class="process-step col-lg-12 mb-5 mb-lg-4">
+								    <div class="process-step-circle">
+									    <strong class="process-step-circle-content">!</strong>
+								    </div>
+								    <div class="process-step-content">
+									    <h4 class="mb-1 text-5 font-weight-bold">Keine Plätze gefunden</h4>
+									    <p class="mb-0 text-color-grey font-weight-medium">Ihrem Konto sind keine Plätze zugeordnet. Bitte kontaktieren Sie support@bitethebytes.com.</p>
+								    </div>
+								</div>
+							</div>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="container pt-2 pb-5">
+            <?php
+            $counter = 0;
+
+            $totalSeats = 0;
+            $totalCounter = 0;
+
+            if($seats)
+            {
+                $totalSeats = count($seats);
+
+                foreach($seats as $seat)
+                {
+                    $counter += 1;
+                    $totalCounter += 1;
+
+                    if($counter == 1)
+                    {
+                        echo ' <div class="container">                   
+                            <div class="row text-center">';
+                    }
+
+                    if($totalSeats == 1)
+                    {
+                        echo '<div class="col-lg-4 pt-2"></div>';
+                    }
+                    else if($totalSeats == 2 && $totalCounter != $totalSeats)
+                    {
+                        echo '<div class="col-lg-2 pt-2"></div>';
+                    }
+
+                    echo '                    
+                        <div class="col-lg-4 pt-2">
+                            <div class="card bg-color-dark-scale-2 border-width-1 border-color-hover-primary transition-2ms">
+                                <div class="card-body">
+                                    <div class="text-center">';
+
+                    if($seat->isPerpetual() && !$seat->isGift() && !$seat->isTrial())
+                    {
+                        echo '<i class="icon-user icons text-color-success text-8"></i>';
+                    } else if($seat->isTrial())
+                    {
+                        echo '<i class="icon-user icons text-color-secondary text-8"></i>';
+                    } else if($seat->isGift())
+                    {
+                        echo '<i class="icon-user icons text-color-grey text-8"></i>';
+                    } else
+                    {
+                        echo '<i class="icon-user icons text-warning text-8"></i>';
+                    }
+                    echo '</div>';
+
+                    if($seat->isTrial())
+                    {
+                        echo '<div class="card-text text-2 text-color-secondary">Prozess<br>[begrenzte Laufzeit]</div>';
+                    } else if($seat->isGift())
+                    {
+                        echo '<div class="card-text text-2">Geschenk<br>[Zugang auf Lebenszeit]</div>';
+                    } else if($seat->isPerpetual())
+                    {
+                        echo '<div class="card-text text-2 text-color-success">Ewige<br>(läuft ewig)</div>';
+                    } else if($seat->isSubscriptionMonthly())
+                    {
+                        echo '<div class="card-text text-2 text-warning">Monatliches Abonnement ' . ($seat->isSubActive ? '' : '<br>[keine automatische Verlängerung]') . '</div>';
+                    } else if($seat->isSubscriptionYearly())
+                    {
+                        echo '<div class="card-text text-2 text-warning">Jahresabonnement ' . ($seat->isSubActive ? '' : '<br>[keine automatische Verlängerung]') . '</div>';
+                    }
+
+                    if($seat->isCasual())
+                    {
+                        echo '<div class="card-text text-1 pb-3">Gelegenheitslizenz</div>';
+                    }
+                    else if($seat->isProfessional())
+                    {
+                        echo '<div class="card-text text-1 pb-3">Profi-Lizenz</div>';
+                    }
+                    else
+                    {
+                        echo '<div class="card-text text-1 pb-3">Unternehmenslizenz</div>';
+                    }
+
+                    if($seat->sku == "WC3PC")
+                    {
+                        echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-upgrade-casual-to-pro" class="btn btn-xs btn-light btn-rounded btn-modern mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Upgrade to a Professional license">Upgrade Version to Professional</a>';
+                    }
+                    else if($seat->sku == "WC3PI")
+                    {
+                        echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-upgrade-pro-to-company" class="btn btn-xs btn-light btn-rounded btn-modern mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Upgrade to a Company license">Upgrade Version to Company</a>';
+                    }
+                    else
+                    {
+                        echo '-';
+                    }
+
+                    if(!empty($seat->lastSigninDate))
+                    {
+                        echo '<div class="card-text text-1 pt-3">Lizenz erfolgreich aktiviert</div>';
+                    } else
+                    {
+                        echo '<div class="card-text text-1 pt-3">Lizenz noch nicht aktiviert</div>';
+                    }
+
+                    echo '<h4 class="card-title mb-1 text-4">' . (empty($seat->email) ? "UNASSIGNED" : $seat->email) . '</h4>';
+
+                    if($seat->isTrial())
+                    {
+                        echo '<div class="card-text text-2">Empfangen von ' . $seat->store . '</div>';
+                        if($seat->isEndDateExpired())
+                        {
+                            echo '<div class="card-text text-2">Prozess beendet ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        } else
+                        {
+                            echo '<div class="card-text text-2">Probezeit bis ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        }
+                    } else if($seat->isGift())
+                    {
+                        echo '<div class="card-text text-2">Geschenkt von ' . $seat->store . '</div>';
+                        echo '<div class="card-text text-2">Wartung auf Lebenszeit</div>';
+                    } else if($seat->isPerpetual())
+                    {
+                        echo '<div class="card-text text-2">Gekauft durch ' . $seat->store . '</div>';
+                        if($seat->isEndDateExpired())
+                        {
+                            echo '<div class="card-text text-2">Wartung beendet ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        } else
+                        {
+                            echo '<div class="card-text text-2">Wartung bis ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        }
+                    } else if($seat->isSubscriptionMonthly())
+                    {
+                        echo '<div class="card-text text-2">Gekauft durch ' . $seat->store . '</div>';
+                        if($seat->isEndDateExpired())
+                        {
+                            echo '<div class="card-text text-2">Monatsabonnement beendet ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        } else
+                        {
+                            echo '<div class="card-text text-2">Monatliches Abonnement bis ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        }
+                    } else if($seat->isSubscriptionYearly())
+                    {
+                        echo '<div class="card-text text-2">Gekauft durch ' . $seat->store . '</div>';
+                        if($seat->isEndDateExpired())
+                        {
+                            echo '<div class="card-text text-2">Jahresabonnement beendet ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        } else
+                        {
+                            echo '<div class="card-text text-2">Jahresabonnement bis ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        }
+                    }
+                    else if($seat->isRental())
+                    {
+                        echo '<div class="card-text text-2">Gekauft durch ' . $seat->store . '</div>';
+                        if($seat->isEndDateExpired())
+                        {
+                            echo '<div class="card-text text-2">Mietzeitraum beendet ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        } else
+                        {
+                            echo '<div class="card-text text-2">Mietdauer bis ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        }
+                    }
+
+
+                    echo '<div class="row pt-3">';
+                    echo '<div class="col-lg-12">';
+
+                    echo '<a href="#form_seat_view_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="View seat"><i class="fas fa-search"></i></a>';
+                    //echo '<a href="#form_seat_download_offline_license_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1"  data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Download offline Lizenz"><i class="fas fa-newspaper"></i></a>';
+
+                    if(isset($_SESSION['worldcreator_manager_email']) && isset($_SESSION['worldcreator_manager_password']))
+                    {
+                        if($seat->isAssigned())
+                        {
+                            echo '<a href="#form_seat_unassign_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Zurückziehen seat">Zurückziehen</a>';
+                        } else
+                        {
+                            echo '<a href="#form_seat_assign_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="zuweisen seat to a new user">zuweisen</a>';
+                        }
+                    }
+
+                    echo '<a href="#form_seat_revoke_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Zurücksetzen all workstations">Zurücksetzen</a>';
+
+                    if(isset($_SESSION['worldcreator_manager_email']) && isset($_SESSION['worldcreator_manager_password']))
+                    {
+                        if($seat->isSubscriptionCancellable())
+                        {
+                            echo '<a href="#form_seat_cancel_subscription_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Abbrechen associated subscription">Abbrechen</a>';
+                        }
+
+                        if($seat->isSubscriptionRenewable())
+                        {
+                            echo '<a href="#form_seat_renew_subscription_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Resume canceled subscription">RESUME</a>';
+                        }
+
+                        if($seat->isMaintenanceRenewable())
+                        {
+                            switch($seat->sku)
+                            {
+                                case "WC3PI":
+                                    echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-maintenance-indie" class="btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Renew associated maintenance plan">Renew</a>';
+                                    break;
+
+                                case "WC3PC":
+                                    echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-maintenance-casual" class="btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Renew associated maintenance plan">Renew</a>';
+                                    break;
+
+                                case "WC3PS":
+                                    echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-maintenance-small" class="btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Renew associated maintenance plan">Renew</a>';
+                                    break;
+
+                                case "WC3PL":
+                                    echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-maintenance-enterprise" class="btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Renew associated maintenance plan">Renew</a>';
+                                    break;
+                            }
+                        }
+                    }
+
+                    echo '</div></div>';
+
+                    echo '<div class="pt-2 text-center"><a class="text-2 text-color-grey" href="https://bitethebytes.freshdesk.com/support/solutions/articles/44002348944-customer-portal#Section%3A-Seat-/-Seats" target="_blank">Brauchen Sie Hilfe?</a></div>';
+
+                    echo '</div></div></div>';
+
+                    if($totalSeats == 1)
+                    {
+                        echo '<div class="col-lg-4 pt-2"></div>';
+                    }
+                    else if($totalSeats == 2 && $totalCounter == $totalSeats)
+                    {
+                        echo '<div class="col-lg-2 pt-2"></div>';
+                    }
+
+                    if($counter == 3)
+                    {
+                        $counter = 0;
+                        echo ' </div></div>';
+                    }
+
+                    if($totalCounter == $totalSeats && (($totalCounter % 3) != 0))
+                    {
+                        echo ' </div></div>';
+                    }
+
+                    echo '
+                        <form id="form_seat_view_' . $seat->id . '"
+                              class="white-popup-block mfp-hide bg-color-dark"
+                              action=""
+                              method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>Ansicht Sitz</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Unten sehen Sie Ihre Sitzplatzinformationen. Bitte kontaktieren Sie Ihren World Creator Account Manager, wenn Sie Ihre Einstellungen ändern möchten.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"                                           
+                                           value="' . $seat->id . '"
+                                           readonly hidden>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>Lizenz</label>
+                                    <input type="text"
+                                           class="form-control text-color-light"                                           
+                                           value="' . ($seat->isCasual()?'Casual':($seat->isProfessional()?'Professional':'Company')) . '"
+                                           readonly>
+                                </div>
+                            </div>
+                                                        
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label>E-Mail</label>
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           value="' . $seat->email . '"
+                                           readonly>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Passwort</label>
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           value="' . \Portal\Utility::decrypt($seat->password) . '"
+                                           readonly>
+                                </div>
+                            </div>';
+
+                    if($seat->isSubscription())
+                    {
+                        echo '<div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>Modell</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . $seat->getModelType() . '"
+                                       readonly>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Status</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . ($seat->isSubActive ? 'Active' : 'Cancelled') . '"
+                                       readonly>
+                            </div>
+                          </div>
+                          
+                          <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>Datum der Erstellung des Abonnements</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->creationDate)) . '"
+                                       readonly>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Enddatum der Zeichnung</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '"
+                                       readonly>
+                            </div>
+                          </div>';
+                    }
+
+                    if($seat->isPerpetual())
+                    {
+                        echo '<div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>Modell</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . $seat->getModelType() . '"
+                                       readonly>
+                            </div>                            
+                            <div class="form-group col-lg-6">
+                                <label>Enddatum der Wartung</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '"
+                                       readonly>
+                            </div>                          
+                          </div>';
+                    }
+
+                    if($seat->isTrial())
+                    {
+                        echo '<div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>Modell</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="Trial"
+                                       readonly>
+                            </div>                            
+                            <div class="form-group col-lg-6">
+                                <label>Enddatum der Wartung</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '"
+                                       readonly>
+                            </div>                          
+                          </div>';
+                    }
+
+                    if($seat->isGift())
+                    {
+                        echo '<div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>Modell</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="Gift"
+                                       readonly>
+                            </div>                            
+                            <div class="form-group col-lg-6">
+                                <label>Enddatum der Wartung</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="Lifetime Maintenance"
+                                       readonly>
+                            </div>                          
+                          </div>';
+                    }
+
+                    if($seat->isWorkstation01Set())
+                    {
+                        echo '
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <label>Arbeitsstation 1</label>
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           value="' . $seat->workstationId1 . '"
+                                           readonly>
+                                </div>                           
+                            </div>';
+                    }
+
+                    if($seat->isWorkstation02Set())
+                    {
+                        echo '
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <label>Arbeitsstation 2</label>
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           value="' . $seat->workstationId2 . '"
+                                           readonly>
+                                </div>                          
+                            </div>';
+                    }
+
+                    echo '                            
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12 text-center">
+                                    <button type="submit" class="btn btn-rounded btn-modern btn-primary">OK</button>                                    
+                                </div>
+                            </div>
+                        </form>
+                            ';
+
+                    /*
+                    echo '
+                        <form id="form_seat_download_offline_license_' . $seat->id . '"
+                              class="white-popup-block mfp-hide bg-color-dark"
+                              action="../php/portal/users/seat_download_license.php"
+                              method="post"
+                              target="_blank"
+                              enctype="multipart/form-data">
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>Offline-Lizenz herunterladen</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>Sitz-ID</label>
+                                <input type="text"
+                                       class="form-control text-color-light"
+                                       name="id"
+                                       value="' . $seat->id . '"
+                                       readonly>
+                            </div>
+                        </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Möchten Sie wirklich die Offline-Lizenzdatei für den Benutzer <b>' . $seat->email . '</b>?</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">Nein
+                                        </button>
+                                    </a>
+                                    <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">Ja</button>
+                                </div>
+                            </div>
+                        </form>
+                        ';
+                    */
+
+                    echo '
+                        <form id="form_seat_assign_' . $seat->id . '"
+                              class="white-popup-block mfp-hide bg-color-dark"
+                              action="../php/portal/users/seat_assign.php"
+                              method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>Sitzplatz zuweisen</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Die Zuweisung eines Platzes bedeutet, dass Sie diesem Platz einen Benutzer zuweisen, der durch eine E-Mail und ein (automatisch generiertes) Passwort angegeben wird. Sie können dann die Anmeldedaten an den Benutzer weitergeben, um World Creator zu aktivieren und auszuführen.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"
+                                           readonly hidden>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label>E-Mail</label>
+                                    <input type="email"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           name="email"
+                                           placeholder="Email"
+                                           value=""
+                                           required>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Passwort</label>
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           name="password"
+                                           placeholder="Password"
+                                           value="' . \Portal\Utility::generateRandomString() . '"
+                                           readonly>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">Abbrechen
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">Einreichen</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+
+                    echo '
+                        <form id="form_seat_unassign_' . $seat->id . '"
+                              class="white-popup-block mfp-hide bg-color-dark"
+                              action="../php/portal/users/seat_unassign.php"
+                              method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>Sitzplatz zurückziehen</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Der Entzug einer Arbeitsplatzlizenz bedeutet, dass die aktuelle Zuweisung an einen Benutzer gelöscht wird und der Arbeitsplatz einem anderen Benutzer neu zugewiesen werden kann. Dabei werden die E-Mail und das Passwort sowie alle zugehörigen Arbeitsplätze gelöscht.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"
+                                           readonly hidden>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Wollen Sie diesen Sitz wirklich zurückziehen?</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">Nein
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">Ja</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+
+                    echo '
+                        <form id="form_seat_cancel_subscription_' . $seat->id . '"
+                              class="white-popup-block mfp-hide bg-color-dark"
+                              action="../php/portal/users/seat_cancel_subscription.php"
+                              method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>Abonnement kündigen</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Die Kündigung eines Abonnements für einen Platz bedeutet, dass Sie die automatische Zahlung für World Creator stoppen. Bitte beachten Sie, dass World Creator nicht mehr funktioniert, wenn das Abonnement abgelaufen ist. Sie müssen das Abonnement erneuern, damit World Creator wieder funktioniert.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"
+                                           readonly hidden>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <label>Referenz</label>
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="reference"
+                                           value="' . $seat->reference . '"
+                                           >
+                                </div>
+                            </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Wollen Sie das Abonnement für diesen Sitz wirklich kündigen?</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">Nein
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">Ja</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+
+                    echo '
+                        <form id="form_seat_renew_subscription_' . $seat->id . '"
+                              class="white-popup-block mfp-hide bg-color-dark"
+                              action="../php/portal/users/seat_renew_subscription.php"
+                              method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>Abonnement verlängern</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Die Erneuerung eines Abonnements für einen Platz bedeutet, dass Sie die automatische Zahlung für World Creator wieder aufnehmen und erneut auf die Anwendung World Creator zugreifen können.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"
+                                           readonly hidden>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <label>Referenz</label>
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="reference"
+                                           value="' . $seat->reference . '"
+                                           >
+                                </div>
+                            </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Wollen Sie das Abonnement für diesen Platz wirklich verlängern?</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">Nein
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">Ja</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+
+                    echo '
+                        <form id="form_seat_renew_maintenance_' . $seat->id . '"
+                              class="white-popup-block mfp-hide bg-color-dark"
+                              action="../php/portal/users/seat_renew_subscription.php"
+                              method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>Wartung erneuern</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Die Erneuerung eines Arbeitsplatzes bedeutet, dass Sie einen Wartungsplan für World Creator erwerben. Damit können Sie die neueste Version der Anwendung World Creator für einen bestimmten Zeitraum (normalerweise 12 Monate) herunterladen.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"
+                                           readonly hidden>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Möchten Sie wirklich einen Wartungsplan für diesen Sitz kaufen?</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">Nein
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">Ja</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+
+                    echo '
+                        <form id="form_seat_revoke_' . $seat->id . '"
+                              class="white-popup-block mfp-hide bg-color-dark"
+                              action="../php/portal/users/seat_revoke.php"
+                              method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>Workstations zurücksetzen</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Das Zurücksetzen der Arbeitsstationen bedeutet, dass World Creator auf zwei weiteren Computern aktiviert werden kann. Dadurch werden die vorherigen Aktivierungen aufgehoben.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"
+                                           readonly hidden>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">Wollen Sie wirklich alle Arbeitsstationen für diesen Platz zurücksetzen?</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">Nein
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">Ja</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+                }
+            }
+            ?>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+
+</body>
+</html>

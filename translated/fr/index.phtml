@@ -1,0 +1,1718 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handle();
+
+?>
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <!-- Clarity tracking code for https://www.world-creator.com/ -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ltec5sffsx");
+    </script>
+
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015744886 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1015744886'); </script>
+
+    <!-- Event snippet for Seitenaufruf conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-1015744886/B0eRCO66nKgZEPaSrOQD'}); </script>
+
+    <?php
+    \Portal\Utility::writeMetaData('', '','','en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var shown = sessionStorage.getItem('alreadyShow');
+
+            if (shown != "shown")
+            {
+                $("#info-window").modal('show');
+                sessionStorage.setItem('alreadyShow', 'shown');
+            }
+        }
+    </script>
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+
+<body class="loading-overlay-showing"
+      data-loading-overlay
+      data-plugin-options="{'hideDelay': 500, 'effect': 'percentageProgress1'}">
+<div class="loading-overlay loading-overlay-percentage bg-color-dark-scale-5">
+    <div class="page-loader-progress-wrapper">
+        <span class="page-loader-progress text-color-light">0</span>
+        <span class="page-loader-progress-symbol text-color-light">%</span>
+    </div>
+</div>
+
+<?php
+include 'php/gdpr.php';
+?>
+
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main" class="main">
+
+        <?php
+
+        if(!isset($_SERVER['HTTP_USER_AGENT']))
+        {
+            echo '<section class="section border-0 m-0" data-video-path="video/Trailer_01.mp4" data-plugin-video-background style="height: 100vh">';
+        } else
+        {
+            $browserName = \Portal\Utility::getBrowser($_SERVER['HTTP_USER_AGENT']);
+
+            if($browserName == 'Safari')
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 style="background-image: url(../img/pages/World-Creator-01.webp); 
+                                 background-size: cover; 
+                                 background-position: center; 
+                                 height: 100vh;">';
+            } else
+            {
+                echo '
+                        <section class="video section border-0 m-0"
+                                 data-video-path="video/Trailer_01.mp4"
+                                 data-plugin-video-background                                 
+                                 style="height: 100vh">';
+            }
+        }
+
+        ?>
+
+        <div class="container text-center z-index-1 h-100">
+            <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                <p class="text-12 line-height-1 font-weight-medium text-color-light appear-animation"
+                   data-appear-animation="fadeInDownShorter"
+                   data-plugin-options="{'minWindowWidth': 0}">CRÉATION DE TERRAINS ET DE PAYSAGES</p>
+                <p class="text-15 mb-5 line-height-1 font-weight-extra-bold text-color-light appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="300">DES ANNÉES D'AVANCE</p>
+                <p class="text-10 mb-4 line-height-2 font-weight-bold text-color-light opacity-9 appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="500">Tout est en temps réel. Tout ? Tout !</p>
+                <a href="buy.phtml"
+                   class="btn btn-rounded btn-primary btn-modern font-weight-bold text-3 py-3 btn-px-5 mt-2 appear-animation"
+                   data-appear-animation="fadeInUpShorter"
+                   data-appear-animation-delay="700"
+                   data-appear-animation-duration="1.2s"
+                   data-plugin-options="{'minWindowWidth': 0}">SOYEZ CRÉATIFS MAINTENANT</a>
+            </div>
+            <a href="#main"
+               class="slider-scroll-button slider-scroll-button-light position-absolute bottom-10 left-50pct transform3dx-n50"
+               data-hash
+               data-hash-offset="67"></a>
+        </div>
+
+        <?php
+        echo '</section>';
+        ?>
+
+        <div id="main" class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://2k.com/en-US/" target="_blank"><img class="img-fluid"
+                                                                     src="../img/logos/companies/2k.webp"
+                                                                     alt="2K"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.a52.com/" target="_blank"><img class="img-fluid"
+                                                                    src="../img/logos/companies/a52.webp"
+                                                                    alt="a52"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://atlus.com/" target="_blank"><img class="img-fluid"
+                                                                  src="../img/logos/companies/atlus.webp"
+                                                                  alt="Atlus"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://avalanchestudios.com/" target="_blank"><img class="img-fluid"
+                                                                             src="../img/logos/companies/avalanchestudio.webp"
+                                                                             alt="Avalanche Studios"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://de.bandainamcoent.eu/" target="_blank"><img class="img-fluid"
+                                                                             src="../img/logos/companies/bandainamco.webp"
+                                                                             alt="Bandai Namco"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.bioware.com/" target="_blank"><img class="img-fluid"
+                                                                        src="../img/logos/companies/bioware.webp"
+                                                                        alt="Bioware"/></a>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5 pt-5 pb-5">
+            <div class="row text-center pt-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h1 class="text-transform-none text-12 font-weight-bold line-height-2">L'OUTIL D'ÉLITE DE CRÉATION DE TERRAINS EN TEMPS RÉEL</h1>
+
+                </div>
+            </div>
+            <div class="row text-justify pt-2 pb-5">
+                <div class="col p-0 appear-animation pb-5" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <p class="text-5 line-height-4 font-weight-semi-bold pb-5">Avec sa puissance et sa précision inégalées, World Creator est le logiciel de génération de terrain par excellence pour les industries du jeu vidéo, de la simulation et des effets visuels. Faites l'expérience de la génération de terrain la plus détaillée et la plus réaliste disponible aujourd'hui !
+                        World Creator est l'outil ultime pour générer et concevoir des terrains, des paysages et des environnements 3D époustouflants en temps réel.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ********************************************************************************************** -->
+        <!-- ********************************* THE ULTIMATE TERRAIN TOOL ********************************** -->
+        <!-- ********************************************************************************************** -->
+        <div class="row pt-5 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.blizzard.com/de-de/" target="_blank"><img class="img-fluid"
+                                                               src="../img/logos/companies/blizzard.webp"
+                                                               alt="Blizzard"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://bluebyte.ubisoft.com/de/" target="_blank"><img class="img-fluid"
+                                                                src="../img/logos/companies/bluebyte.webp"
+                                                                alt="BlueByte"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.blur.com/" target="_blank"><img class="img-fluid"
+                                                     src="../img/logos/companies/blur.webp"
+                                                     alt="Blur"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.bluepointgames.com/" target="_blank"><img class="img-fluid"
+                                                               src="../img/logos/companies/bluepoint.webp"
+                                                               alt="Blue Point Games"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.bossastudios.com/" target="_blank"><img class="img-fluid"
+                                                             src="../img/logos/companies/bossastudios.webp"
+                                                             alt="Bossa Studio"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.capcom.com/" target="_blank"><img class="img-fluid"
+                                                       src="../img/logos/companies/capcom.webp"
+                                                       alt="Capcom"/></a>
+            </div>
+        </div>
+        <section class="section section-height-4 match-height border-top-0 my-0 section-center" style="background-image: url(../img/pages/World-Creator-03.webp); min-height: 1000px;">
+            <div class="row text-center h-100 mx-0">
+                <div class="col">
+                    <h1 class="text-color-light line-height-2 font-weight-extra-bold text-14 mb-3">
+                        L'OUTIL DE TERRAIN PAR EXCELLENCE</h1>
+                    <h2 class="text-color-light lead tall text-9">
+                        RIEN NE S'EN RAPPROCHE</h2>
+                    <p class="text-5 text-color-light line-height-4 font-weight-semi-bold mb-4">World Creator n\'est pas seulement différent, il est révolutionnaire ! Sans limites à votre créativité, c'est un véritable plaisir de l'utiliser et de l'explorer.</p>
+                </div>
+            </div>
+        </section>
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.certainaffinity.com/" target="_blank"><img class="img-fluid"
+                                                                src="../img/logos/companies/certain_affinity.webp"
+                                                                alt="Certain Affinity"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.cinesite.com/" target="_blank"><img class="img-fluid"
+                                                         src="../img/logos/companies/cinesite.webp"
+                                                         alt="Cinesite"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.codemasters.com/" target="_blank"><img class="img-fluid"
+                                                            src="../img/logos/companies/codemasters.webp"
+                                                            alt="Codemasters"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.crytek.com/" target="_blank"><img class="img-fluid"
+                                                       src="../img/logos/companies/crytek.webp"
+                                                       alt="Crytek"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://cyborn.be/" target="_blank"><img class="img-fluid"
+                                                  src="../img/logos/companies/cyborn.webp"
+                                                  alt="Cyborn"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.cygames.co.jp/" target="_blank"><img class="img-fluid"
+                                                             src="../img/logos/companies/cygames.webp"
+                                                             alt="Cygames"/></a>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">TERRAINS DE TOUTE TAILLE</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Avec World Creator, vous pouvez créer des terrains de toutes tailles, sans aucune limite ! Que vous souhaitiez créer un petit terrain de quelques mètres ou un terrain massif de plusieurs milliers de kilomètres, quadrillé ou non, les possibilités sont infinies.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925029210?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">72 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/04.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/16.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">DES TERRAINS AVEC UN NOMBRE ILLIMITÉ DE DÉTAILS</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Avec notre nouveau système de terrain innovant, vous pouvez créer des terrains avec une quantité illimitée de détails ! Vous pouvez obtenir une précision de l'ordre du mètre, du centimètre, et même plus.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/854616459?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">166 Seconds - Une nouvelle vidéo est en préparation suite à la création d'un nouveau site web</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">FLUX DE TRAVAIL BASÉ SUR LES BIOMES</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Avec World Creator, vous pouvez créer des mondes qui ne sont limités que par votre imagination ! Ces mondes sont constitués de plusieurs types de terrains et de paysages, connus sous le nom de biomes, qui se fondent parfaitement les uns dans les autres, chacun avec ses propres paramètres de couleur et de filtre. Grâce au nouveau système de terrain de World Creator, vous pouvez traiter efficacement de grandes quantités de données en temps réel, ce qui vous ouvre un tout nouveau monde de possibilités, y compris la génération basée sur les biomes, la peinture des biomes, le masquage des biomes, et bien plus encore.</p>
+                                <br>
+                                <div class="feature-box align-items-center">
+                                    <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                        <i class="fas fa-play text-1"></i>
+                                    </div>
+                                    <div class="feature-box-info">
+                                        <h4 class="line-height-3 text-3 mb-0">Vidéo de présentation en préparation</h4>
+                                        <p class="text-2 mb-0 line-height-5">En raison du nouveau site web</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 400px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/29.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/19.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">NON DESTRUCTIF</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Grâce au flux de travail unique de World Creator, vous pouvez créer des terrains en toute confiance en utilisant à la fois des techniques de conception et des techniques procédurales. Les possibilités sont infinies et le reste du terrain se conformera facilement à votre vision.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925446764?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">54 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ********************************************************************************************** -->
+        <!-- ********************************** PROCEDURAL MEETS DESIGN *********************************** -->
+        <!-- ********************************************************************************************** -->
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.daybreakgames.com/home"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/daybreakgames.webp"
+                                        alt="Daybreak Games"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.deck13.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/deck13.webp"
+                                        alt="Deck13"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.dice.se/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/dice.webp"
+                                        alt="DICE"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.digicpictures.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/digipic.webp"
+                                        alt="Digipic"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.digitalextremes.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/digitalextremes.webp"
+                                        alt="Digital Extremes"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.dlr.de/dlr/desktopdefault.aspx/tabid-10002/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/dlr.webp"
+                                        alt="DLR"/></a>
+            </div>
+        </div>
+        <section class="section section-height-4 match-height border-top-0 my-0 section-center" style="background-image: url(../img/pages/World-Creator-09.webp); min-height: 1000px;">
+            <div class="row text-center h-100 mx-0">
+                <div class="col">
+                    <h1 class="text-color-light line-height-2 font-weight-extra-bold text-14 mb-3">
+                        LA PROCÉDURE RÉPOND À LA CONCEPTION</h1>
+                    <h2 class="text-color-light lead tall text-9">
+                        UNE TOUCHE DE GÉNIE</h2>
+                    <p class="text-5 text-color-light line-height-4 font-weight-semi-bold mb-4">Avec World Creator, vous pouvez perfectionner en toute confiance et avec enthousiasme la combinaison d'un flux de travail procédural et d'un flux de travail de conception.<br>pour créer le terrain exact que vous souhaitez !</p>
+                </div>
+            </div>
+        </section>
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.eidosmontreal.com"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/eidos_montreal.webp"
+                                        alt="Eidos Montreal"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://falconscreativegroup.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/falconscreativegroup.webp"
+                                        alt="Falcons Creative Group"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://firaxis.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/firaxis.webp"
+                                        alt="Firaxis"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://firesprite.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/firesprite.webp"
+                                        alt="Firesprite"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.frimastudio.com/en/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/frima.webp"
+                                        alt="FRIMA"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.funcom.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/funcom.webp"
+                                        alt="Funcom"/></a>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">RIVIERES</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">La création de rivières réalistes dans World Creator est incroyablement facile et efficace. En un seul clic, notre système automatise le processus de création d'une rivière et vous donne le contrôle total pour la redessiner à votre guise. Le terrain s'adapte automatiquement, ce qui vous permet de créer des chutes d'eau étonnantes, des deltas fluviaux et tout ce qui se trouve entre les deux. Que vous ayez besoin de petits ruisseaux ou de grandes structures fluviales complexes, World Creator vous couvre.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925814957?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">143 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/30.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/08.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+                 <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">SCULPTURE AVANCÉE</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Avec World Creator, vous pouvez créer en toute confiance des terrains étonnants à partir de zéro ou modifier des paysages existants avec facilité grâce aux outils de sculpture intégrés. L'application est équipée d'une large gamme de brosses, et vous pouvez même importer vos propres brosses personnalisées pour rendre vos créations vraiment uniques. L'interface intuitive le rend aussi facile à utiliser que n'importe quelle application de peinture bien connue, ce qui vous permet de commencer immédiatement.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925058719?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">140 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">SCULPTURE EN GRILLE</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Grâce à notre algorithme exceptionnel de sculpture de terrain basé sur une grille, vous pouvez créer sans effort des formes de terrain à couper le souffle en un rien de temps ! Vous pouvez également effectuer des opérations spécifiques sur des éléments de terrain existants, telles que la copie, la rotation, l'inclinaison et la mise à l'échelle.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925358252?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">99 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/09.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/11.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">ESTAMPILLAGE DU TERRAIN</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Avec World Creator, vous pouvez facilement importer des cartes de hauteur, de profondeur, de déplacement et de couleur personnalisées en tant que cachet pour créer et étendre vos terrains existants ou même créer des textures de sol à partir de zéro ! Vous pouvez également importer des données DEM ou des terrains provenant d'autres applications et assembler un nouveau paysage à l'intérieur de World Creator en temps réel. Découvrez la puissance de la création de votre propre monde avec World Creator!</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/854599230?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">169 Seconds - Une nouvelle vidéo est en préparation suite à la création d'un nouveau site web</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">CACHET DE PROCÉDURE</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Nous sommes ravis d'annoncer l'ajout de tampons procéduraux à notre fonction d'estampillage de terrain ! Avec des tampons pour les volcans, les îles, les fissures et bien plus encore, vous pouvez désormais gagner un temps précieux en créant des caractéristiques de terrain spécifiques. C'est comme si vous aviez un générateur de terrain à l'intérieur de World Creator, vous permettant de créer facilement des tampons pour n'importe quel type de terrain ou caractéristique dont vous avez besoin.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925363250?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">150 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/12.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/15.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">PATH TOOLS</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Nos outils de tracé vectoriels et basés sur les champs de distance vous permettent de créer des rivières, des routes, des chaînes de montagnes, des canyons et bien d'autres choses encore, ce qui vous offre une liberté de création inégalée.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925519721?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">145 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">LA DIFFUSION EN CONTINU DE DONNÉES DANS LE MONDE RÉEL</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Inscrivez-vous sur <a href="https://www.maptiler.com" target="_blank">MapTiler</a> et connectez-vous à leur service de données réelles via World Creator pour importer sans effort les lieux de votre choix ! Avec World Creator, l'utilisation de données réelles pour vos productions est un jeu d'enfant. N'oubliez pas que vous devez vous inscrire sur MapTiler pour utiliser le service.</p>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <br>
+                                        <a class="text-decoration-none lightbox"
+                                           href="https://vimeo.com/925321330?share=copy"
+                                           data-plugin-options="{'type':'iframe'}">
+                                            <div class="feature-box align-items-center">
+                                                <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                                    <i class="fas fa-play text-1"></i>
+                                                </div>
+                                                <div class="feature-box-info">
+                                                    <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                                    <p class="text-2 mb-0 line-height-5">129 secondes</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 float-right">
+                                        <p class="mt-4">
+                                            <a href="https://www.maptiler.com" target="_blank">
+                                                <img src="../img/logos/companies/Maptiler-Logo-Grey.webp" alt="MapTiler Logo">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/13.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/22.webp">
+                        <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                    </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">POUVOIR DE FILTRAGE PROCÉDURAL</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Dans World Creator, des filtres procéduraux sont appliqués de manière experte pour transformer une forme de terrain en une variété de paysages époustouflants. Que vous cherchiez à créer des déserts, des montagnes enneigées, des canyons arides, des îles volcaniques, des hauts plateaux humides, des paysages cratérisés semblables à ceux de la Lune ou des mondes semblables à ceux de Mars, nos filtres ont tout ce qu'il vous faut. Avec la possibilité d'appliquer des érosions et des sédiments, vous pouvez facilement styliser votre terrain pour obtenir l'aspect parfait en un rien de temps.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925440545?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">61 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">POUVOIR MATÉRIEL PROCÉDURAL</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-5">World Creator dispose d'un système de matériaux incroyablement convaincant ! Vous pouvez définir des couleurs, des dégradés, des cartes satellites, des textures et des matériaux Adobe Substance pour colorer chaque élément du terrain. Que vous souhaitiez de simples couleurs pour teinter rapidement votre terrain, des textures et des matériaux Adobe Substance pour lui donner un aspect fantastique, ou des dégradés et des cartes satellites pour porter le processus de coloration au niveau le plus élevé possible, World Creator vous couvre. Grâce à son rendu en temps réel, vous pouvez créer des paysages exceptionnels qui vous laisseront bouche bée !</p>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <br>
+                                        <div class="feature-box align-items-center">
+                                            <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                                <i class="fas fa-play text-1"></i>
+                                            </div>
+                                            <div class="feature-box-info">
+                                                <h4 class="line-height-3 text-3 mb-0">Vidéo de présentation en préparation</h4>
+                                                <p class="text-2 mb-0 line-height-5">En raison du nouveau site web</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 float-right">
+                                        <p class="mt-4">
+                                            <a href="https://www.adobe.com" target="_blank">
+                                                <img src="../img/logos/companies/Adobe-Logo-Grey.webp" alt="Adobe Logo">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 0.0}" data-image-src="../img/pages/32.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ********************************************************************************************** -->
+        <!-- ********************************* DRIVE POWERFUL SIMULATIONS ********************************* -->
+        <!-- ********************************************************************************************** -->
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.ghostvfx.com"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/ghost_vfx.webp"
+                                        alt="GHOST VFX"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://hotheadgames.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/hotheadstudio.webp"
+                                        alt="Hothead Studio"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://hybride.com/en"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/hybride.webp"
+                                        alt="Hybride"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://improbable.io/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/improbable.webp"
+                                        alt="Improbable"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://corp.joycity.com"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/joycity.webp"
+                                        alt="Joy City"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.kylotonn.com/en/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/ktracing.webp"
+                                        alt="KT Racing"/></a>
+            </div>
+        </div>
+        <section class="section section-height-4 match-height border-top-0 my-0 section-center" style="background-image: url(../img/pages/World-Creator-08.webp); min-height: 1000px;">
+            <div class="row text-center h-100 mx-0">
+                <div class="col">
+                    <h1 class="text-color-light line-height-2 font-weight-extra-bold text-14 mb-3">
+                        CONDUIRE DES SIMULATIONS PUISSANTES</h1>
+                    <h2 class="text-color-light lead tall text-9">
+                        PHYSIQUE DU TERRAIN RÉEL</h2>
+                    <p class="text-5 text-color-light line-height-4 font-weight-semi-bold mb-4">Grâce à nos couches de simulation, vous pouvez exécuter en toute confiance plusieurs simulations physiques simultanément ! Découvrez dès aujourd'hui la puissance de notre technologie.</p>
+                </div>
+            </div>
+        </section>
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.limbic-entertainment.de/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/limbic.webp"
+                                        alt="Limbic"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.liongamelion.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/liongamelion.webp"
+                                        alt="Lion Game Lion"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://mawiunited.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/mawi.webp"
+                                        alt="MAWI"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.microsoftstudios.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/microsoft.webp"
+                                        alt="Microsoft"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://us.ncsoft.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/ncsoft.webp"
+                                        alt="NC Soft"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://neocoregames.com/en"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/neocoregames.webp"
+                                        alt="Neocoregames"/></a>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/23.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">SABLES</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Il suffit de créer un calque de simulation et de choisir le type de simulation, comme le sable, pour commencer. Avec la possibilité d'utiliser des brosses ou des techniques procédurales, vous pouvez facilement déposer une quantité réglable de sable sur le terrain et l'observer se répartir. Notre approche conviviale rend la complexité accessible à tous.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925341914?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">99 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">NEIGE</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Avec World Creator, vous pouvez en toute confiance simuler de la neige sur votre terrain ! Le processus est aussi simple que la simulation de sable (voir ci-dessus), mais le résultat est différent en fonction de vos paramètres de simulation. Vous pouvez même définir des régions spécifiques où vous souhaitez que la neige apparaisse - c'est aussi simple que cela !</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925429996?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">61 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/24.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/33.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Rendu dans World Creator</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">FLUIDE</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">La simulation des fluides est un outil incroyablement polyvalent qui peut être utilisé pour remplir d'eau les rivières, les lacs et les mers, ainsi que pour créer de la lave et d'autres types d'interactions fluides. En définissant des emplacements spécifiques pour le frai des fluides (comme indiqué sur l'image), World Creator s'occupe du reste. Les possibilités sont vraiment illimitées !</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925354920?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">Voir la vidéo</h4>
+                                            <p class="text-2 mb-0 line-height-5">100 secondes</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- ********************************************************************************************** -->
+        <!-- ********************************** UNIVERSAL COMPATIBILITY *********************************** -->
+        <!-- ********************************************************************************************** -->
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <img class="img-fluid"
+                     src="../img/logos/companies/nexon.webp"
+                     alt="Nexon"/>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.paradoxinteractive.com/en/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/paradox_interactive.webp"
+                                        alt="Paradox Interactive"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.perfectworld.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/perfect_world.webp"
+                                        alt="Perfect World"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.piranha-bytes.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/piranhabytes.webp"
+                                        alt="Piranha Bytes"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.playground-games.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/playgroundgames.webp"
+                                        alt="Playgroundgames"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://pocketgems.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/pocketgems.webp"
+                                        alt="Pocket Gems"/></a>
+            </div>
+        </div>
+        <section class="section section-height-4 match-height border-top-0 my-0 section-center" style="background-image: url(../img/pages/World-Creator-07.webp); min-height: 1000px;">
+            <div class="row text-center h-100 mx-0">
+                <div class="col">
+                    <h1 class="text-color-light line-height-2 font-weight-extra-bold text-14 mb-3">
+                        COMPATIBILITÉ UNIVERSELLE</h1>
+                    <h2 class="text-color-light lead tall text-9">
+                        SE CONNECTER À PRESQUE TOUT</h2>
+                    <p class="text-5 text-color-light line-height-4 font-weight-semi-bold mb-4">Toutes les applications 3D professionnelles consomment les données World Creator en toute confiance !</p>
+                </div>
+            </div>
+        </section>
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.quanticdream.com/en"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/quanticdream.webp"
+                                        alt="Quantic Dream"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.rsvfx.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/rocketscience.webp"
+                                        alt="Rocketscience"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.sae.edu/deu/de"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/sae.webp"
+                                        alt="SAE"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.square-enix.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/squareenix.webp"
+                                        alt="Square Eenix"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://styleframe.de/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/styleframe.webp"
+                                        alt="Styleframe"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.sumo-digital.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/sumodigital.webp"
+                                        alt="Sumo Digital"/></a>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <p class="pl-2 pr-2 line-height-4 text-5 text-justify pt-5">World Creator supporte en toute confiance l'exportation de toutes les cartes et données créées (par ex. height-map, color-map, splat-map, masques, ao-map, etc.) dans une large gamme de formats, y compris Collada, OBJ, FBX, GLTF2, STL, TIFF, PNG, RAW (16 ou 32 bits), et EXR (32 bits), parmi d'autres. Ainsi, vos ressources peuvent être chargées dans n'importe quelle application DCC 3D sérieuse ou moteur de jeu, ce qui permet d'obtenir la couverture industrielle la plus large possible. Préparez-vous à faire passer vos créations au niveau supérieur avec World Creator!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5">
+            <div class="row justify-content-center align-items-center h-100 mx-0">
+                <div class="col">
+                    <div id="applications">
+                        <div class="row mt-4 text-center">
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/arnold.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="阿诺德">
+                                <p class="font-weight-semi-bold text-color-white">Arnold</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/blender.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="搅拌机">
+                                <p class="font-weight-semi-bold text-color-white">Blender</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/cinema4d.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="Cinema 4D">
+                                <p class="font-weight-semi-bold text-color-white">Cinema 4D</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/clarisse.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="克拉丽斯">
+                                <p class="font-weight-semi-bold text-color-white">Clarisse</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/engines/cry.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="哭泣引擎">
+                                <p class="font-weight-semi-bold text-color-white">Cry Engine</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/dazstudio.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="DAZ 工作室">
+                                <p class="font-weight-semi-bold text-color-white">DAZ Studio</p>
+                            </div>
+                            <!--
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/engines/flax.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="亚麻发动机">
+                                <p class="font-weight-semi-bold text-color-white">Flax Engine</p>
+                            </div>
+                            -->
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/engines/godot.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="戈多引擎">
+                                <p class="font-weight-semi-bold text-color-white">Godot</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/houdini.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="胡迪尼">
+                                <p class="font-weight-semi-bold text-color-white">Houdini</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/lightwave.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="光波">
+                                <p class="font-weight-semi-bold text-color-white">Lightwave</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/engines/lumberyard.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="伐木场发动机">
+                                <p class="font-weight-semi-bold text-color-white">Parc à bois</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/3dsmax.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="3DS Max">
+                                <p class="font-weight-semi-bold text-color-white">3DS Max</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/maya.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="玛雅人">
+                                <p class="font-weight-semi-bold text-color-white">Maya</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/mudbox.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="泥盒">
+                                <p class="font-weight-semi-bold text-color-white">Mudbox</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/octane.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="辛烷值">
+                                <p class="font-weight-semi-bold text-color-white">Octane Rendu</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/photoshop.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="Photoshop">
+                                <p class="font-weight-semi-bold text-color-white">Photoshop</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/quixelmixer.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="Quixel 混合器">
+                                <p class="font-weight-semi-bold text-color-white">Quixel Mixer</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/applications/substance3ddesigner.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="Substance 3D 设计器">
+                                <p class="font-weight-semi-bold text-color-white">Substance 3D Designer</p>
+                            </div>
+
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/engines/unity.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="Unity 引擎">
+                                <p class="font-weight-semi-bold text-color-white">Unity Engine</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/engines/unigine.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="Unigine 发动机">
+                                <p class="font-weight-semi-bold text-color-white">Unigine Engine</p>
+                            </div>
+                            <div class="col-3">
+                                <img class="img-fluid rounded-circle mb-4"
+                                     src="../img/logos/engines/unreal.webp"
+                                     width="64"
+                                     height="64"
+                                     alt="虚幻引擎">
+                                <p class="font-weight-semi-bold text-color-white"><p translate='no'>Unreal Engine</p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <p class="pl-2 pr-2 line-height-4 text-5 text-justify">Nos outils / plugins de pont World Creator sont disponibles pour Blender, Cinema4D, SideFX Houdini, Unity, et Unreal. D'un simple clic, vous pouvez transférer un terrain de World Creator vers n'importe laquelle de ces applications. Faites l'expérience d'une intégration transparente et d'un flux de travail sans effort.</p>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ********************************************************************************************** -->
+        <!-- ******************************** WORLD CREATOR IS FUN TO USE ********************************* -->
+        <!-- ********************************************************************************************** -->
+        <div class="row pt-3 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.take2games.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/take2gaming.webp"
+                                        alt="Take2 Gaming"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.ttgames.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/telltalegames.webp"
+                                        alt="Telltale Games"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://thqnordic.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/thqnordic.webp"
+                                        alt="THQ Nordic"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.treyarch.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/treyarch.webp"
+                                        alt="Treyarch"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.ubisoft.com/en-us"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/ubisoft.webp"
+                                        alt="Ubisoft"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://unity.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/unity.webp"
+                                        alt="Unity"/></a>
+            </div>
+        </div>
+        <section class="section section-height-4 match-height border-top-0 my-0 section-center" style="background-image: url(../img/pages/World-Creator-04.webp); min-height: 1000px;">
+            <div class="row text-center h-100 mx-0">
+                <div class="col">
+                    <h1 class="text-color-light line-height-2 font-weight-extra-bold text-14 mb-3">
+                        WORLD CREATOR EST AMUSANT À UTILISER</h1>
+                    <h2 class="text-color-light lead tall text-9">
+                        ET BIEN PLUS ENCORE</h2>
+                    <p class="text-5 text-color-light line-height-4 font-weight-semi-bold mb-4">Cet outil puissant et ultra-rapide est non seulement amusant à utiliser, mais il permet également une créativité sans limite.<br>De plus, son design fantastique ne manquera pas d'impressionner !</p>
+                </div>
+            </div>
+        </section>
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.valvesoftware.com/de/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/valve.webp"
+                                        alt="Valve"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://virtuosgames.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/virtuos.webp"
+                                        alt="Virtuos"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.wbgames.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/wbgames.webp"
+                                        alt="WB Games"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.weltenbauer-se.com"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/weltenbauer.webp"
+                                        alt="Weltenbauer"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.xlgames.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/xlgames.webp"
+                                        alt="XL Games"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.zenimax.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/zenimax.webp"
+                                        alt="Zenimax"/></a>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row appear-animation pt-5" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">RENDU PAR TRACÉ DE RAYONS</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">Toutes les images de cette page ont été rendues telles quelles dans World Creator! Cela signifie que ce que vous voyez ici est exactement le même que ce que vous voyez lorsque vous travaillez avec World Creator. Nous avons mis en place notre propre traceur de rayons en temps réel qui permet d'obtenir des rendus étonnants. Notre technologie est à la pointe du progrès et nous sommes fiers de la présenter ici.</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">UNE VASTE BIBLIOTHÈQUE DE MATÉRIEL</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">Avec World Creator, vous avez accès à une vaste bibliothèque de plus de 138 matériaux de haute qualité, facilement utilisables dans Unity, Unreal, Adobe Substance ou toute autre application. Achetez World Creator dès aujourd'hui et améliorez vos créations en toute simplicité ! Ces matériaux, créés à l'origine par RD-Textures, sont désormais à votre disposition sans droits d'auteur.</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">VASTE BIBLIOTHÈQUE DE PRÉRÉGLAGES</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">Avec World Creator, vous pouvez créer des préréglages pour les biomes, les filtres, les matériaux, les exportations, les brosses et bien plus encore ! Notre vaste bibliothèque de préréglages est conçue pour rationaliser votre flux de travail et peut être facilement appliquée par de simples opérations de glisser-déposer. Personnalisez-les à votre guise et regardez vos créations prendre vie !</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">VASTE BIBLIOTHÈQUE D'ÉCHANTILLONS</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">Nous avons créé une vaste collection d'échantillons de terrain que vous pouvez utiliser comme point de départ pour vos propres productions. Ces échantillons sont également parfaits pour l'apprentissage et vous fourniront une solide introduction au travail avec World Creator. En outre, vous avez la possibilité de créer vos propres échantillons et de les partager avec la communauté.</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">UNE DOCUMENTATION COMPLÈTE</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">World CreatorLa documentation du site est le complément parfait de notre système d'assistance. En utilisant le widget d'assistance situé en bas à droite de l'écran, vous pouvez facilement trouver l'aide dont vous avez besoin et être dirigé vers l'article le plus pertinent. De plus, World Creator offre une référence d'aide intégrée qui fournit une explication complète de n'importe quelle section que vous recherchez. Avec ces ressources à votre disposition, vous pouvez être confiant dans votre capacité à naviguer et à utiliser World Creator au maximum de son potentiel.</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">ÉNORME COMMUNAUTÉ</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">La communauté World Creator Discord a grandi de façon impressionnante pour atteindre plus de 13 000 utilisateurs dans le monde entier ! Nous sommes également fiers d'avoir plus de 11 000 followers sur Instagram. Ce niveau de soutien témoigne de la nature utile et amicale de notre communauté. Pour une expérience optimale, nous vous recommandons de nous rejoindre sur Discord où vous pourrez directement entrer en contact avec nous, les développeurs !</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row appear-animation pb-5" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">COURBE D'APPRENTISSAGE NULLE</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">World Creator est incroyablement facile à utiliser ! Construit autour de la simplicité, il est conçu pour être intuitif et rapide comme l'éclair pour tous ceux qui veulent créer des terrains. Avec World Creator, vous pouvez créer des paysages époustouflants en quelques minutes, tout en gardant un contrôle incroyable. Que vous soyez pressé ou que vous souhaitiez approfondir vos connaissances, World Creator a tout ce qu'il vous faut.</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">INTERFACE UTILISATEUR PROPRE</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">Oubliez les nœuds ! Oubliez leur câblage complexe qui ressemble à des spaghettis ! Oubliez les vues multiples et windows qui ne font que vous irriter pendant que vous travaillez ! World Creator L'interface utilisateur d'EMC est propre, ciblée et intuitive. Vous vous sentirez immédiatement à l'aise - nous vous le promettons !</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">UN SOUTIEN EXCEPTIONNEL</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">Notre support n'est pas seulement une page Facebook - nous avons un excellent système de ticketing qui nous permet de fournir un excellent support 24/7. Le système d'assistance est également lié à notre documentation, ce qui vous permet d'obtenir des solutions rapides en un rien de temps. En outre, nous exploitons un serveur Discord qui compte plus de 13 000 professionnels de l'assistance. Nous, les créateurs et les développeurs, sommes là aussi, jour après jour.</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0">
+                    <h1 class="text-transform-none text-12 font-weight-bold line-height-2 pt-5">CONSULTEZ LES IMAGES CI-DESSOUS</h1>
+                    <p class="text-5 line-height-4 font-weight-semi-bold">C'est ce que vous voyez lorsque vous travaillez avec World Creator</p>
+                    <div class="row justify-content-center align-items-center">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="lightbox" data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}, 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
+            <div class="masonry-loader masonry-loader-showing">
+                <div class="masonry"
+                     data-plugin-masonry
+                     data-plugin-options="{'itemSelector': '.masonry-item'}">
+                    <?php
+                    $files = \Portal\Utility::getAllFilesInDirectory('../img/renders');
+
+                    foreach($files as $file)
+                    {
+                        if($file == "thumbs") continue;
+
+                        echo '<div class="masonry-item">
+                                    <div class="thumb-info-floating-caption thumb-info-hide-wrapper-bg" data-title="' .$file .'">
+                                        <a class="d-inline-block img-thumbnail img-thumbnail-no-borders mb-1 mr-1" href="../img/renders/' . $file . '">
+                                          <img class="img-fluid" src="../img/renders/thumbs/' . $file . '" alt="World Creator Render"/>
+                                        </a>
+                                    </div>
+                                  </div>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5 mt-0 my-0">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+</body>
+</html>

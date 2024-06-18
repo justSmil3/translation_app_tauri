@@ -1,0 +1,259 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handleUserPortal();
+
+\Portal\PortalAccessVerification::verifyAccess();
+
+?>
+
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <?php
+    \Portal\Utility::writeMetaData('World Creator - Customer Portal', 'The Customer Portal feature request page.','', 'en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-pro-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var element = document.getElementById("info-window");
+
+            if (element)
+                $("#info-window".modal('show');
+        }
+    </script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+    </script>
+
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+<body data-plugin-page-transition>
+<?php
+include 'php/gdpr.php';
+?>
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main"
+         class="main">
+        <section class="page-header page-header-modern page-header-background page-header-background-md mt-0 mb-0"
+                 style="background-image: url(../img/pages/World-Creator-09.webp); height: 50vh;">
+            <div class="container text-center z-index-1 h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <div class="container appear-animation"
+                         data-appear-animation="blurIn"
+                         data-appear-animation-delay="0"
+                         data-plugin-options="{'minWindowWidth': 0}">
+                        <div class="row text-center pt-4">
+                            <div class="col">
+                                <h1 class="text-color-light font-weight-extra-bold text-12 mb-3">
+                                   World Creator Feature Anfrage</h1>
+                                <h2 class="text-color-light lead tall text-7">
+                                   Merkmale, Verbesserungen, Ideen</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <?php
+        include 'php/menu-sub.php';
+        ?>
+
+        <?php
+        \Portal\MessageResult::handle();
+        ?>
+
+        <div class="container pt-4 pb-4">
+            <div class="row">
+                <div class="col text-justify text-color-grey">
+                   Wenn Sie eine bestimmte Funktion in World Creator vermissen oder einen Vorschlag zur Verbesserung von World Creator haben, lassen Sie es uns bitte wissen.Füllen Sie einfach das untenstehende Formular aus und senden Sie es an uns.Wir werden uns Ihre Funktionsanfrage genau ansehen - versprochen! Bitte beachten Sie, dass wir Ihnen keine Bestätigungs-E-Mails schicken, sobald Sie das Formular abgeschickt haben.
+                    <br><br><b>Vielen Dank im Voraus für Ihre Unterstützung</b>.
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form enctype="multipart/form-data"
+                          role="form"
+                          class="needs-validation"
+                          action="../php/portal/users/submit_feature.php"
+                          method="post">
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>Vollständige Beschreibung * (max.4096)</label>
+                                <textarea class="form-control text-3 py-1 h-auto text-color-light"
+                                          rows="10"
+                                          cols="50"
+                                          maxlength="4096"
+                                          autocomplete="off"
+                                          name="description"
+                                          placeholder="Please provide a full description about your feature request"
+                                          required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label for="img">Anhang (z.B.Mock-up, max.4MB)</label>
+                                <input class="float-right"
+                                       type="file"
+                                       id="myFile"
+                                       name="attachedFile">
+                            </div>
+                        </div>
+
+                        <?php
+                        echo '                        
+                        <div class="form-row pt-3">
+                            <div class="col-sm-12">
+                                <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">Einreichen</button>
+                            </div>
+                        </div>';
+                        ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+
+</body>
+</html>

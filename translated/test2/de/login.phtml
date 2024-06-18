@@ -1,0 +1,320 @@
+<?php
+
+session_start();
+
+$_SESSION = array();
+
+session_regenerate_id();
+
+include_once '../php/portal/portal.php';
+
+?>
+
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015744886 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1015744886'); </script>
+
+    <?php
+    \Portal\Utility::writeMetaData('', '','','en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+</head>
+
+<body class="loading-overlay-showing"
+      data-loading-overlay
+      data-plugin-options="{'hideDelay': 500, 'effect': 'percentageProgress1'}">
+<div class="loading-overlay loading-overlay-percentage bg-color-dark">
+    <div class="page-loader-progress-wrapper">
+        <span class="page-loader-progress text-color-light">0</span>
+        <span class="page-loader-progress-symbol text-color-light">%</span>
+    </div>
+</div>
+
+<?php
+include 'php/gdpr.php';
+?>
+
+<div class="body bg-color-dark-scale-5">
+
+    <?php
+
+    include 'php/header.php';
+
+    if(!isset($_SERVER['HTTP_USER_AGENT']))
+    {
+        echo '<section class="section border-0 m-0" data-video-path="video/Trailer_01.mp4" data-plugin-video-background style="height: 100vh">';
+    } else
+    {
+        $browserName = \Portal\Utility::getBrowser($_SERVER['HTTP_USER_AGENT']);
+
+        if($browserName == 'Safari')
+        {
+            echo '
+                        <section class="section border-0 m-0"
+                                 style="background-image: url(../img/pages/World-Creator-01.webp); 
+                                 background-size: cover; 
+                                 background-position: center; 
+                                 height: 100vh;">';
+        } else
+        {
+            echo '
+                        <section class="section border-0 m-0"
+                                 data-video-path="video/Trailer_01.mp4"
+                                 data-plugin-video-background
+                                 style="height: 100vh">';
+        }
+    }
+
+    ?>
+
+    <div class="container text-center z-index-1 h-100">
+        <div class="d-flex flex-column align-items-center justify-content-center h-100 appear-animation"
+             data-appear-animation="fadeInUpShorter"
+             data-appear-animation-delay="400">
+            <div class="card bg-color-dark-scale-3 box-shadow-5">
+                <div class="card-body">
+                    <p class="font-weight-bold text-color-light text-9">KUNDE</p>
+                    <p class="text-color-grey text-7 pb-4">PORTAL</p>
+                    <form action="../php/portal/login.php"
+                          method="post"
+                          class="needs-validation">
+                        <div class="form-row">
+                            <div class="form-group col"
+                                 data-for="email">
+                                <?php
+                                if(isset($_COOKIE["worldcreator_procurement_email"]))
+                                {
+                                    echo '<input type="email" placeholder="email" value="' . \Portal\Utility::decrypt($_COOKIE["worldcreator_email"]) . '" name="email" autocomplete="off" data-form-field="Email" class="form-control form-control-lg text-4 text-color-white" required>';
+                                } else
+                                {
+                                    echo '<input type="email" placeholder="email" value="" name="email" autocomplete="off" data-form-field="Email" class="form-control form-control-lg text-4 text-color-white" required>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col"
+                                 data-for="password">
+                                <?php
+                                if(isset($_COOKIE["worldcreator_procurement_password"]))
+                                {
+                                    echo '<input type="password" placeholder="password" value="' . \Portal\Utility::decrypt($_COOKIE["worldcreator_password"]) . '" name="password" autocomplete="off" data-form-field="Password" class="form-control form-control-lg text-4 text-color-white" required>';
+                                } else
+                                {
+                                    echo '<input type="password" placeholder="password" value="" name="password" autocomplete="off" data-form-field="Password" class="form-control form-control-lg text-4 text-color-white" required>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between mb-2">
+                            <div class="form-group col-sm-auto">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox"
+                                           class="custom-control-input"
+                                           id="remembermeId"
+                                           name="rememberme">
+                                    <label class="form-label custom-control-label cur-pointer text-color-grey text-color-hover-light text-2"
+                                           for="remembermeId">Erinnern Sie sich an mich</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <input type="text"
+                                       class="form-control text-color-light"
+                                       name="lang"
+                                       value="en"
+                                       hidden>
+                            </div>
+                        </div>
+
+                        <?php
+                        if(isset($_GET["ret"]))
+                        {
+                            echo '<div class="alert alert-success alert-sm"><strong>Gut gemacht!</strong>'.$_GET["ret"].'</div>';
+                        }
+                        if(isset($_GET["err"]))
+                        {
+                            echo '<div class="alert alert-danger alert-sm"><strong>Oh, Mist!</strong>'.$_GET["err"].'</div>';
+                        }
+                        ?>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <button type="submit"
+                                        name="submit"
+                                        class="btn btn-primary btn-rounded btn-block btn-modern text-uppercase font-weight-bold text-3"
+                                        data-loading-text="Loading...">Anmeldung
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col">
+                                <a href="#form_user_forgot_password"
+                                   class="popup-with-form text-decoration-none text-color-grey text-color-hover-light text-1">- Passwort vergessen -</a>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <div class="text-2 text-color-grey pt-4">
+                                   Suchen Sie das Partner-Portal? Es wurde verschoben und umbenannt<br>zum <b>Beschaffungsportal</b>.Sie können es finden <a href="https://procurement.world-creator.de" target="_blank">hier</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+    echo '</section>';
+    ?>
+
+    <form id="form_user_forgot_password"
+          class="white-popup-block mfp-hide bg-color-dark"
+          action="../php/portal/users/password_forgot.php"
+          method="post"
+          enctype="multipart/form-data">
+        <div class="form-row mt-2 text-center">
+            <div class="col">
+                <h4>Passwort vergessen</h4>
+            </div>
+        </div>
+
+        <div class="form-row mt-2">
+            <div class="col-sm-12">
+                <p class="mb-4 text-justify">Bitte füllen Sie das untenstehende Formular aus und senden Sie es ab.Nach Genehmigung durch unser Vertriebsteam erhalten Sie Ihr Passwort per E-Mail.</p>
+                <p class="mb-4 text-justify">Dies kann bis zu 24 Stunden dauern.Wir empfehlen Ihnen, Ihr Passwort für das nächste Mal in einem sicheren Passwort-Manager zu speichern.</p>
+            </div>
+        </div>
+
+        <div class="form-row pt-2">
+            <label>E-Mail *</label>
+            <input type="email"
+                   placeholder="email"
+                   value=""
+                   name="email"
+                   autocomplete="off"
+                   data-form-field="Email"
+                   class="form-control form-control-lg text-4 text-color-white"
+                   required>
+        </div>
+
+        <div class="form-row pt-5">
+            <div class="col">
+                <a href="login.phtml">
+                    <button type="button"
+                            class="btn btn-rounded btn-modern btn-primary float-left">Abbrechen
+                    </button>
+                </a>
+                <button type="submit"
+                        name="submit_user_password_request"
+                        class="btn btn-rounded btn-modern btn-primary float-right">Einreichen
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+</body>
+</html>

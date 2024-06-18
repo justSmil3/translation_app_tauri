@@ -1,0 +1,294 @@
+<?php
+
+/*
+$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
+if(str_contains($_SERVER['HTTP_HOST'], 'world-creator.com') && strtoupper($lang) == "ZH")
+{
+    header("Location: https://www.world-creator.cn");
+}
+*/
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handle();
+
+?>
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015744886 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1015744886'); </script>
+
+    <?php
+    \Portal\Utility::writeMetaData('', '','','en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script
+        id="fsc-api"
+        src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.5/fastspring-builder.min.js"
+        type="text/javascript"
+        data-storefront="bitethebytes.onfastspring.com/popup-company">
+    </script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var shown = sessionStorage.getItem('alreadyShow');
+
+            if (shown != "shown")
+            {
+                $("#info-window").modal('show');
+                sessionStorage.setItem('alreadyShow', 'shown');
+            }
+        }
+    </script>
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+
+<body class="loading-overlay-showing"
+      data-loading-overlay
+      data-plugin-options="{'hideDelay': 500, 'effect': 'percentageProgress1'}">
+<div class="loading-overlay loading-overlay-percentage bg-color-dark-scale-5">
+    <div class="page-loader-progress-wrapper">
+        <span class="page-loader-progress text-color-light">0</span>
+        <span class="page-loader-progress-symbol text-color-light">%</span>
+    </div>
+</div>
+
+<?php
+include 'php/gdpr.php';
+?>
+
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main" class="main pb-5">
+
+        <?php
+
+        if(!isset($_SERVER['HTTP_USER_AGENT']))
+        {
+            echo '<section class="section border-0 m-0" data-video-path="video/Trailer_01.mp4" data-plugin-video-background style="height: 100vh">';
+        } else
+        {
+            $browserName = \Portal\Utility::getBrowser($_SERVER['HTTP_USER_AGENT']);
+
+            if($browserName == 'Safari')
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 style="background-image: url(../img/pages/World-Creator-01.webp); 
+                                 background-size: cover; 
+                                 background-position: center; 
+                                 height: 100vh;">';
+            } else
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 data-video-path="video/Trailer_01.mp4"
+                                 data-plugin-video-background
+                                 style="height: 100vh">';
+            }
+        }
+
+        ?>
+        <div class="container text-center z-index-1 h-100">
+            <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                <p class="text-12 line-height-1 font-weight-bold text-color-light appear-animation"
+                   data-appear-animation="fadeInDownShorter"
+                   data-plugin-options="{'minWindowWidth': 0}">BiteTheBytes GmbH</p>
+                <p class="text-15 mb-5 line-height-1 font-weight-extra-bold text-color-light appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="300">REFUND POLICY</p>
+                <p class="text-6 mb-4 line-height-2 font-weight-bold text-color-light opacity-9 appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="500">Last Updated: 3rd September 2023</p>
+            </div>
+            <a href="#main"
+               class="slider-scroll-button slider-scroll-button-light position-absolute bottom-10 left-50pct transform3dx-n50"
+               data-hash
+               data-hash-offset="67"></a>
+        </div>
+
+        <?php
+        echo '</section>';
+        ?>
+
+        <div id="main" class="container bg-color-dark-scale-5">
+            <div class="row pt-5 pb-5">
+                <div class="col  pl-3 pr-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4 pt-5">1. What types of products can I return for a refund?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">The products you purchase through our website or directly from us (e.g. by email / phone) are generally eligible for a refund. BiteTheBytes cannot provide refunds for purchases made outside of this website or not directly from us.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4 pt-5">2. When are products eligible for a refund?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Products and assets are eligible for a refund if you have NOT downloaded, installed and activated any product downloaded through your account on our website (e.g. installed World Creator 1, 2, 2022.x, 2023.x or above AND activated during the log-in process when running the application) AND if you have NOT downloaded any asset through your account on our website (e.g. downloaded a material).</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">You will not be eligible for a refund for any product or asset from which you have been banned or for which you have otherwise violated the terms of service. In addition, you may not be eligible for refunds if BiteTheBytes determines that you are abusing the refund policy.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <p class="font-weight-normal text-4 mb-2">To clarify, you are NOT eligible for a refund, if any of the below events match: </p>
+                    <ul class="font-weight-normal text-4 mb-2">
+                        <li>You have downloaded a product through your account from our website</li>
+                        <li>You have downloaded, installed and activated a product through your account from our website</li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4 pt-5">3. How can I request a refund?</div>
+                    <p class="font-weight-normal text-4 mb-2">You can request a refund by writing to
+                        <a href="mailto:support@bitethebytes.com">support@bitethebytes.com</a>.</p>
+                    <div class="row">
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                        <div class="col-xl-6">&nbsp;</div>
+                    </div>
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-2 pb-4 pt-5">4. How will I get my refund?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">By default, purchases will be refunded to the payment method used to make the purchase, but this may not always be possible depending on the payment method. You and BiteTheBytes may also agree that the refund be issued by alternative method. Please note the amount of time for the refund to process is dependent on your payment method.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+</body>
+</html>

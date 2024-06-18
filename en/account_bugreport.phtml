@@ -1,0 +1,396 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handleUserPortal();
+
+\Portal\PortalAccessVerification::verifyAccess();
+
+?>
+
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <?php
+    \Portal\Utility::writeMetaData('World Creator - Customer Portal', 'The customer portal issues report page.','', 'en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-pro-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var element = document.getElementById("info-window");
+
+            if (element)
+                $("#info-window").modal('show');
+        }
+    </script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+    </script>
+
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+<body data-plugin-page-transition>
+<?php
+include 'php/gdpr.php';
+?>
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main"
+         class="main">
+        <section class="page-header page-header-modern page-header-background page-header-background-md mt-0 mb-0"
+                 style="background-image: url(../img/pages/World-Creator-10.webp); height: 50vh;">
+            <div class="container text-center z-index-1 h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <div class="container appear-animation"
+                         data-appear-animation="blurIn"
+                         data-appear-animation-delay="0"
+                         data-plugin-options="{'minWindowWidth': 0}">
+                        <div class="row text-center pt-4">
+                            <div class="col">
+                                <h1 class="text-color-light font-weight-extra-bold text-12 mb-3">
+                                    Write a Bug Report</h1>
+                                <h2 class="text-color-light lead tall text-7">
+                                    Only a fixed bug is a good bug</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <?php
+        include 'php/menu-sub.php';
+        ?>
+
+        <?php
+        \Portal\MessageResult::handle();
+        ?>
+
+        <div class="container pt-4 pb-4">
+            <div class="row">
+                <div class="col text-justify text-color-grey">
+                    Below you will find a large form that we kindly ask you to fill in if you have found a problem (a bug) in World Creator. This helps us to improve World Creator and make it more stable for our customers. The more information we get from you, the better. You can even upload a video somewhere and put the link in the form below so we can reproduce the problem on our end.
+                    <br><br>
+                    Please understand that we will not send you a confirmation email after you submit a bug report. Also, please do not contact us directly to urge us to fix your problem. We work hard to get things done. Also, most problems can be solved by updating your graphics card driver - as World Creator is very GPU dependent.
+                    <br><br><b>Thank you in advance for supporting us</b>.
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form enctype="multipart/form-data"
+                          role="form"
+                          class="needs-validation"
+                          action="../php/portal/users/submit_bug.php"
+                          method="post">
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>Short Summary * (max. 256)</label>
+                                <textarea class="form-control text-3 py-1 h-auto text-color-light"
+                                          rows="2"
+                                          cols="50"
+                                          maxlength="256"
+                                          autocomplete="off"
+                                          name="summary"
+                                          placeholder="Please provide a short summary"
+                                          required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-4">
+                                <label>World Creator Version</label>
+                                <select name="version"
+                                        class="form-control text-color-light">
+                                    <option value="2024.1">2024.1</option>
+                                    <option value="2023.4">2023.4</option>
+                                    <option value="2023.3">2023.3</option>
+                                    <option value="2023.2">2023.2</option>
+                                    <option value="2023.1">2023.1</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Reproducible</label>
+                                <select name="reproducible"
+                                        class="form-control text-color-light">
+                                    <option value="Always">Always</option>
+                                    <option value="Sometimes">Sometimes</option>
+                                    <option value="Random">Random</option>
+                                    <option value="Not Tested">Not Tested</option>
+                                    <option value="Not Reproducible">Not Reproducible</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Severity</label>
+                                <select name="severity"
+                                        class="form-control text-color-light">
+                                    <option value="Trivial">Trivial</option>
+                                    <option value="Error in text">Error in Text</option>
+                                    <option value="Ugly">Ugly</option>
+                                    <option value="Small">Small</option>
+                                    <option value="Critical">Critical</option>
+                                    <option value="Crash">Crash</option>
+                                    <option value="Blocker">Blocker</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-4">
+                                <label>Operating System</label>
+                                <select name="os"
+                                        class="form-control text-color-light">
+                                    <option value="Windows 11">Windows 11</option>
+                                    <option value="Windows 10">Windows 10</option>
+                                    <option value="Windows 8.x">Windows 8.x</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Local / Remote</label>
+                                <select name="localremote"
+                                        class="form-control text-color-light">
+                                    <option value="Local PC">Local PC</option>
+                                    <option value="Remote PC">Remote PC</option>
+                                    <option value="I do not know">I do not know</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Dektop / Laptop</label>
+                                <select name="desktoplaptop"
+                                        class="form-control text-color-light">
+                                    <option value="Desktop">Desktop</option>
+                                    <option value="Laptop">Laptop</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>Graphics Card * (max. 64)</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="64"
+                                       class="form-control text-color-light"
+                                       name="gpu"
+                                       placeholder="e.g. NVidia GeForce RTX 4090"
+                                       value=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>Graphics Card Driver Version * (max. 32)</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="32"
+                                       class="form-control text-color-light"
+                                       name="gpudriver"
+                                       placeholder="e.g. 551.76"
+                                       value=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>Full Description * (max. 4096)</label>
+                                <textarea class="form-control text-3 py-1 h-auto text-color-light"
+                                          rows="10"
+                                          cols="50"
+                                          maxlength="4096"
+                                          autocomplete="off"
+                                          name="description"
+                                          placeholder="Please provide a full description"
+                                          required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>Steps to Re-Produce (max. 512)</label>
+                                <textarea class="form-control text-3 py-1 h-auto text-color-light"
+                                          rows="4"
+                                          cols="50"
+                                          maxlength="512"
+                                          autocomplete="off"
+                                          name="steps"
+                                          placeholder="Please provide all steps to reproduce the issue"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>Further Information (max. 512)</label>
+                                <textarea class="form-control text-3 py-1 h-auto text-color-light"
+                                          rows="4"
+                                          cols="50"
+                                          maxlength="512"
+                                          autocomplete="off"
+                                          name="information"
+                                          placeholder="Please provide everything else you think it might be useful"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label for="img">Attachment (e.g. crash logs, log file, screenshot, max. 4MB)</label>
+                                <input class="float-right"
+                                       type="file"
+                                       id="myFile"
+                                       name="attachedFile">
+                            </div>
+                        </div>
+
+                        <?php
+                        echo '                        
+                        <div class="form-row pt-3">
+                            <div class="col-sm-12">
+                                <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">Submit</button>
+                            </div>
+                        </div>';
+                        ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+
+</body>
+</html>

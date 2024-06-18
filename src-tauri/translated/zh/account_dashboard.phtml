@@ -1,0 +1,258 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handleUserPortal();
+
+\Portal\PortalAccessVerification::verifyAccess();
+
+?>
+
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <?php
+    \Portal\Utility::writeMetaData('World Creator - Customer Portal', 'The Customer Portal Dashboard.','', 'en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-pro-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+    </script>
+
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+<body data-plugin-page-transition>
+<?php
+include 'php/gdpr.php';
+?>
+<div class="body body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main"
+         class="main">
+        <section class="page-header page-header-modern page-header-background page-header-background-md mt-0 mb-0"
+                 style="background-image: url(../img/pages/World-Creator-01.webp); height: 50vh;">
+            <div class="container text-center z-index-1 h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <div class="container appear-animation"
+                         data-appear-animation="blurIn"
+                         data-appear-animation-delay="0"
+                         data-plugin-options="{'minWindowWidth': 0}">
+                        <div class="row text-center pt-4">
+                            <div class="col">
+                                <h1 class="text-color-light font-weight-extra-bold text-12 mb-3">
+                                    Welcome to the Customer Portal</h1>
+                                <h2 class="text-color-light lead tall text-7">
+                                    Everything you need to get things running</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <?php
+        include 'php/menu-sub.php';
+        ?>
+
+        <div class="container">
+            <div class="row mt-5 pt-5">
+                <div class="process process-vertical">
+
+                    <?php
+
+                    if(isset($_SESSION['worldcreator_manager_email']) && isset($_SESSION['worldcreator_manager_password']))
+                    {
+                        echo '                        
+                            <div class="process-step">
+                                <div class="process-step-circle">
+                                    <strong class="process-step-circle-content text-light">1</strong>
+                                </div>
+                                <div class="process-step-content">
+                                    <h4 class="mb-1 text-5 font-weight-bold">Introduction</h4>
+                                    <p class="mb-0 text-4 text-justify">Welcome to the World Creator Customer Portal. It has everything you need to get started after your purchase. Look at the navigation bar at the top - it shows all the options available to you in this portal.
+                                        For example, under <b>SEATS</b> you can manage all your licences and under <b>WORLD CREATOR</b>, you can find all available World Creator application downloads. We recommend that you to read this <a href="https://bitethebytes.freshdesk.com/support/solutions/articles/44002348944-customer-portal" target="_blank">article</a> for an in-depth introduction to our customer portal.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-step-circle">
+                                    <strong class="process-step-circle-content text-light">2</strong>
+                                </div>
+                                <div class="process-step-content">
+                                    <h4 class="mb-1 text-5 font-weight-bold">This is Important to Know</h4>
+                                    <p class="mb-0 text-4 text-justify">It is important to understand that the email and password we sent you after your purchase are only used to log in to this portal. These are your World Creator account login details to manage all your World Creator seats and downloads. However, these login details cannot be used to activate and run World Creator. Please follow step 3 to assign a seat (licence) to a user so that you can run and activate World Creator.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-step-circle">
+                                    <strong class="process-step-circle-content text-light">3</strong>
+                                </div>
+                                <div class="process-step-content">
+                                    <h4 class="mb-1 text-5 font-weight-bold">Quick Start Guide</h4>
+                                    <p class="mb-0 text-4 text-justify">First, download the latest stable release of World Creator. You can find it in the menu above by clicking on the <a href="account_download_worldcreator.phtml?category=Latest" target="_self">WORLD CREATOR</a> button. After successful download, run the installer to fully install World Creator on your PC.
+                                        Then, double-click the World Creator shortcut on your desktop to run the application. After a second or two, World Creator will ask you to enter your seats login credentials.
+                                        Now you must assign a user to a seat. Tod do this, click on <a href="account_seats.phtml" target="_self">SEATS</a> in the menu above to navigate to a new page where all your purchased seats are listed. Next, click on the ASSIGN button of an unassigned seat.
+                                        A form will pop up where you must enter a valid email. The password is created by our system and cannot be changed. Use the seats email and password to activate World Creator (you may click the magnifier icon to view the email and password).</p>
+                                </div>
+                            </div>';
+                    }
+                    else
+                    {
+                        echo '
+                            <div class="process-step">
+                                <div class="process-step-circle">
+                                    <strong class="process-step-circle-content text-light">1</strong>
+                                </div>
+                                <div class="process-step-content">
+                                    <h4 class="mb-1 text-5 font-weight-bold">Introduction</h4>
+                                    <p class="mb-0 text-4 text-justify">Welcome to the World Creator Customer Portal. It has everything you need to get started after your purchase. Look at the navigation bar at the top - it shows all the options available to you in this portal.
+                                        For example, under <b>SEATS</b> you can manage your assigned seat and under <b>WORLD CREATOR</b>, you can find all available World Creator application downloads. We recommend that you to read this <a href="https://bitethebytes.freshdesk.com/support/solutions/articles/44002348944-customer-portal" target="_blank">article</a> for an in-depth introduction to our customer portal.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-step-circle">
+                                    <strong class="process-step-circle-content text-light">2</strong>
+                                </div>
+                                <div class="process-step-content">
+                                    <h4 class="mb-1 text-5 font-weight-bold">Quick Start Guide</h4>
+                                    <p class="mb-0 text-4 text-justify">First, download the latest stable release of World Creator. You can find it in the menu above by clicking on the <a href="account_download_worldcreator.phtml?category=Latest" target="_self">WORLD CREATOR</a> button. After successful download, run the installer to fully install World Creator on your PC.
+                                        Then, double-click the World Creator shortcut on your desktop to run the application. After a second or two, World Creator will ask you to enter your seats login credentials.
+                                        Now you must enter your seats username and password. You can find them by clicking on <a href="account_seats.phtml" target="_self">SEATS</a> in the menu above to navigate to a new page where your seat is listed. Next, click on the MAGNIFIER icon to view the username and password.
+                                        The password is generated by our system and cannot be changed.</p>
+                                </div>
+                            </div>';
+                    }
+                    ?>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,413 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handle();
+
+?>
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015744886 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1015744886'); </script>
+
+    <?php
+    \Portal\Utility::writeMetaData('', '','','en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script
+        id="fsc-api"
+        src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.5/fastspring-builder.min.js"
+        type="text/javascript"
+        data-storefront="bitethebytes.onfastspring.com/popup-company">
+    </script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var shown = sessionStorage.getItem('alreadyShow');
+
+            if (shown != "shown")
+            {
+                $("#info-window").modal('show');
+                sessionStorage.setItem('alreadyShow', 'shown');
+            }
+        }
+    </script>
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+
+<body class="loading-overlay-showing"
+      data-loading-overlay
+      data-plugin-options="{'hideDelay': 500, 'effect': 'percentageProgress1'}">
+<div class="loading-overlay loading-overlay-percentage bg-color-dark-scale-5">
+    <div class="page-loader-progress-wrapper">
+        <span class="page-loader-progress text-color-light">0</span>
+        <span class="page-loader-progress-symbol text-color-light">%</span>
+    </div>
+</div>
+
+<?php
+include 'php/gdpr.php';
+?>
+
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main" class="main pb-5">
+
+        <?php
+
+        if(!isset($_SERVER['HTTP_USER_AGENT']))
+        {
+            echo '<section class="section border-0 m-0" data-video-path="video/Trailer_01.mp4" data-plugin-video-background style="height: 100vh">';
+        } else
+        {
+            $browserName = \Portal\Utility::getBrowser($_SERVER['HTTP_USER_AGENT']);
+
+            if($browserName == 'Safari')
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 style="background-image: url(../img/pages/World-Creator-01.webp); 
+                                 background-size: cover; 
+                                 background-position: center; 
+                                 height: 100vh;">';
+            } else
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 data-video-path="video/Trailer_03.mp4"
+                                 data-plugin-video-background
+                                 style="height: 100vh">';
+            }
+        }
+
+        ?>
+        <div class="container text-center z-index-1 h-100">
+            <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                <p class="text-12 line-height-1 font-weight-bold text-color-light appear-animation"
+                   data-appear-animation="fadeInDownShorter"
+                   data-plugin-options="{'minWindowWidth': 0}">LATEST NEWS AROUND</p>
+                <p class="text-15 mb-5 line-height-1 font-weight-extra-bold text-color-light appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="300">WORLD CREATOR</p>
+            </div>
+            <a href="#main"
+               class="slider-scroll-button slider-scroll-button-light position-absolute bottom-10 left-50pct transform3dx-n50"
+               data-hash
+               data-hash-offset="40"></a>
+        </div>
+
+        <?php
+        echo '</section>';
+        ?>
+
+        <div id="main" class="container-fluid bg-color-dark-scale-5">
+            <div class="row pt-5">
+                <div class="col">
+                    <div class="blog-posts">
+                        <section class="timeline">
+                            <div class="timeline-body">
+                                <?php
+
+                                $switch = 0;
+                                $years = \Portal\Utility::getAllDirectories('../news');
+                                rsort($years);
+                                $count = 0;
+                                $maxCount = 15;
+                                $total = 0;
+                                $dates = [];
+                                $allDates = (new \RecursiveTreeIterator(new \RecursiveDirectoryIterator('../news', \RecursiveDirectoryIterator::SKIP_DOTS)));
+                                foreach($allDates as $date)
+                                {
+                                    if(str_ends_with($date, 'type.txt')) $total += 1;
+                                }
+
+                                if(isset($_GET["maxCount"]))
+                                {
+                                    $maxCount = $_GET["maxCount"];
+                                }
+
+                                foreach($years as $year)
+                                {
+                                    if($count == $maxCount) break;
+
+                                    $months = \Portal\Utility::getAllDirectories('../news/' . $year);
+                                    rsort($months);
+
+
+                                    foreach($months as $month)
+                                    {
+                                        if($count == $maxCount) break;
+
+                                        // MONTH YEAR
+                                        echo '<div class="timeline-date bg-color-dark-scale-2 no-borders">';
+                                        echo '<h3 class="text-primary text-color-light text-5 font-weight-semibold">' . strftime('%B', mktime(0, 0, 0, $month)) . ' ' . $year . '</h3>';
+                                        echo '</div>';
+
+                                        $days = \Portal\Utility::getAllDirectories('../news/' . $year . '/' . $month);
+                                        rsort($days);
+
+                                        foreach($days as $day)
+                                        {
+                                            if($count == $maxCount) break;
+
+                                            $posts = \Portal\Utility::getAllDirectories('../news/' . $year . '/' . $month . '/' . $day);
+
+                                            rsort($posts);
+
+                                            foreach($posts as $post)
+                                            {
+                                                if($count == $maxCount) break;
+
+                                                // Read contents of txt file
+                                                $path = '../news/' . $year . '/' . $month . '/' . $day . '/' . $post . '/';
+
+                                                $filePath = $path . 'text_' .\Portal\Globals::getLanguage()  .'.txt';
+
+                                                $text ='';
+
+                                                if(file_exists($filePath))
+                                                    $text = explode("\n", file_get_contents($filePath));
+                                                else
+                                                    $text = explode("\n", file_get_contents($path . 'text.txt'));
+
+                                                // ARTICLE
+                                                if(!$switch)
+                                                {
+                                                    echo '<article class="timeline-box left post post-medium bg-color-dark-scale-2 no-borders">';
+                                                } else
+                                                {
+                                                    echo '<article class="timeline-box right post post-medium bg-color-dark-scale-2 no-borders">';
+                                                }
+
+                                                echo '<div class="timeline-box-arrow"></div>';
+                                                echo '<div class="p-2">';
+                                                echo '<div class="row mb-2">';
+                                                echo '<div class="col">';
+                                                echo '<div class="post-image">';
+
+                                                $type = explode("\n", file_get_contents($path . 'type.txt'));
+                                                if(rtrim($type[0]) == "image")
+                                                {
+                                                    echo '<img src="' . $path . $type[1] . '"
+                                                               class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
+                                                               alt="World Creator"/>';
+                                                } else if(rtrim($type[0]) == "imagegallery")
+                                                {
+                                                    echo '<div class="lightbox" data-plugin-options="{\'delegate\': \'a\', \'type\': \'image\', \'gallery\': {\'enabled\': true}, \'mainClass\': \'mfp-with-zoom\', \'zoom\': {\'enabled\': true, \'duration\': 300}}">';
+                                                    echo '<div class="row mx-0">';
+                                                    $i = 0;
+                                                    foreach($type as $image)
+                                                    {
+                                                        if($i != 0)
+                                                        {
+                                                            echo '<div class="col-6 p-0">';
+                                                            echo '<a href="' . $path . $image . '">';
+                                                            echo '<span class="thumb-info thumb-info-no-borders thumb-info-centered-icons">';
+                                                            echo '<span class="thumb-info-wrapper">';
+                                                            echo '<img src="' . $path . $image . '" class="img-fluid" alt="' .$image .'"/>';
+                                                            echo '<span class="thumb-info-action">';
+                                                            echo '<span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-plus text-dark"></i></span>';
+                                                            echo '</span>';
+                                                            echo '</span>';
+                                                            echo '</span>';
+                                                            echo '</a>';
+                                                            echo '</div>';
+                                                        }
+                                                        $i += 1;
+                                                    }
+                                                    echo '</div>';
+                                                    echo '</div>';
+                                                } else if(rtrim($type[0]) == "embeddedvideo")
+                                                {
+                                                    echo '<div class="embed-responsive embed-responsive-16by9">';
+                                                    echo '<iframe class="embed-responsive-item"
+                                                                  src="' . $type[1] . '"
+                                                                  width="640"
+                                                                  height="360"
+                                                                  allowfullscreen></iframe>';
+                                                    echo '</div>';
+                                                }
+
+                                                echo '</div></div></div>';
+
+                                                echo '<div class="row"><div class="col"><div class="post-content">';
+                                                $i = 0;
+                                                foreach($text as $line)
+                                                {
+                                                    if($i == 0)
+                                                    {
+                                                        echo '<h2 class="font-weight-semibold text-5 line-height-4 mt-2">' . $line . '</h2>';
+                                                    }else
+                                                    {
+                                                        echo '<p class="text-lg-5 text-4 text-justify line-height-5 font-weight-semi-bold mt-3">' . $line . '</p>';
+                                                    }
+                                                    $i += 1;
+                                                }
+                                                echo '</div></div></div>';
+
+                                                echo '<div class="row"><div class="col"><div class="post-meta">';
+                                                echo '<span class="mt-3 text-lg-4 text-3">' . strtoupper(strftime('%B', mktime(0, 0, 0, $month))) . ' ' . $day . ', ' . $year . '</span><br>';
+                                                echo '</div></div></div>';
+                                                echo '</div>';
+                                                echo '</article>';
+
+                                                $switch = !$switch;
+                                                $count += 1;
+                                            }
+                                        }
+                                    }
+                                }
+
+
+                                if($count < $total)
+                                {
+                                    echo '<div class="timeline-date">';
+                                    echo '<h3 class="text-primary font-weight-bold">';
+                                    echo '<a href="news.phtml?maxCount=' . ($maxCount + 1) . '">Load More...</a></h3>';
+                                    echo '</div>';
+                                }
+
+                                ?>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+</body>
+</html>

@@ -1,0 +1,1081 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handleUserPortal();
+
+\Portal\PortalAccessVerification::verifyAccess();
+
+$database = new \Users\Database();
+
+$seats = array();
+
+if(isset($_SESSION['worldcreator_manager_email']) && isset($_SESSION['worldcreator_manager_password']))
+{
+    $account = $database->selectAccountByEmailAndPassword($_SESSION["worldcreator_manager_email"], $_SESSION["worldcreator_manager_password"]);
+
+    $seats = $database->selectUsersByAccountId($account->id);
+}
+
+else
+{
+    $seat = $database->selectUserByEmailAndPassword($_SESSION["worldcreator_user_email"], $_SESSION["worldcreator_user_password"]);
+
+    array_push($seats, $seat);
+}
+
+
+?>
+
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <?php
+    \Portal\Utility::writeMetaData('World Creator - Customer Portal', 'The customer portal seat management page.','', 'en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-pro-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script
+            id="fsc-api"
+            src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.5/fastspring-builder.min.js"
+            type="text/javascript"
+            data-storefront="bitethebytes.onfastspring.com/popup-company"
+            data-data-callback="dataCallbackFunction"> <!--Remove .test-->
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var element = document.getElementById("info-window");
+
+            if (element)
+                $("#info-window").modal('show');
+        }
+
+        function dataCallbackFunction(fsdata)
+        {
+            if (fsdata.tags)
+            {
+                document.getElementById("key").append(JSON.stringify(fsdata.tags));
+            }
+        }
+    </script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+    </script>
+
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+<body data-plugin-page-transition>
+<?php
+include 'php/gdpr.php';
+?>
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main"
+         class="main">
+
+        <section class="page-header page-header-modern page-header-background page-header-background-md mt-0 mb-0"
+                 style="background-image: url(../img/pages/World-Creator-02.webp); height: 50vh;">
+            <div class="container text-center z-index-1 h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <div class="container appear-animation"
+                         data-appear-animation="blurIn"
+                         data-appear-animation-delay="0"
+                         data-plugin-options="{'minWindowWidth': 0}">
+                        <div class="row text-center pt-4">
+                            <div class="col">
+                                <h1 class="text-color-light font-weight-extra-bold text-12 mb-3">
+                                    World Creator 座椅</h1>
+                                <h2 class="text-color-light lead tall text-7">
+                                    与您的账户相关联</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <?php
+        include 'php/menu-sub.php';
+        ?>
+
+        <?php
+        \Portal\MessageResult::handle();
+        ?>
+
+        <div class="container pt-4">
+            <div class="row">
+                <div class="col text-justify">
+                    <?php
+                    if($seats)
+                    {
+                        $unassignedSeatsFound = false;
+                        foreach($seats as $seat)
+                        {
+                            if($seat->email == '')
+                            {
+                                $unassignedSeatsFound = true;
+                                break;
+                            }
+                        }
+
+                        if($unassignedSeatsFound)
+                        {
+                            echo '  
+                                <div class="row process process-shapes process-shapes-hover-animate mt-3 pt-3">                          
+								    <div class="process-step col-lg-12 mb-5 mb-lg-4">
+									    <div class="process-step-circle">
+										    <strong class="process-step-circle-content">!</strong>
+									    </div>
+									    <div class="process-step-content">
+										    <h4 class="mb-1 text-5 font-weight-bold">发现未分配座位</h4>
+										    <p class="mb-0 text-color-grey font-weight-medium">One or more seats are not assigned to a user. Identify the unassigned seat and click the ASSIGN button. A pop-up will appear asking you to enter the user\'s email address. The password is automatically generated and cannot be changed (security policy). Use this seat username and password to log into World Creator.</p>
+									    </div>
+								    </div>
+								</div>';
+                        }
+                        else
+                        {
+                            echo '
+                                <div class="container pb-3">
+                                    <div class="row">
+                                        <div class="col text-justify text-color-grey">
+                                            以下是与您的账户相关的所有席位。您可以根据需要查看、重新分配、重置或更新和升级这些席位。如需更多帮助，我们建议您阅读以下内容 <a href="https://bitethebytes.freshdesk.com/support/solutions/articles/44002348944-customer-portal#Section%3A-Seat-/-Seats" target="_blank">条</a> which explains seat management in detail. So far everything looks good as there are no unallocated seats listed.                                                 
+                                        </div>
+                                    </div>
+                                </div>';
+                        }
+                    }
+                    else
+                    {
+                        echo '  
+                            <div class="row process process-shapes process-shapes-hover-animate mt-3 pt-3">                          
+							    <div class="process-step col-lg-12 mb-5 mb-lg-4">
+								    <div class="process-step-circle">
+									    <strong class="process-step-circle-content">!</strong>
+								    </div>
+								    <div class="process-step-content">
+									    <h4 class="mb-1 text-5 font-weight-bold">未找到座位</h4>
+									    <p class="mb-0 text-color-grey font-weight-medium">您的账户没有相关座位。请联系 support@bitethebytes.com。</p>
+								    </div>
+								</div>
+							</div>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="container pt-2 pb-5">
+            <?php
+            $counter = 0;
+
+            $totalSeats = 0;
+            $totalCounter = 0;
+
+            if($seats)
+            {
+                $totalSeats = count($seats);
+
+                foreach($seats as $seat)
+                {
+                    $counter += 1;
+                    $totalCounter += 1;
+
+                    if($counter == 1)
+                    {
+                        echo ' <div class="container">                   
+                            <div class="row text-center">';
+                    }
+
+                    if($totalSeats == 1)
+                    {
+                        echo '<div class="col-lg-4 pt-2"></div>';
+                    }
+                    else if($totalSeats == 2 && $totalCounter != $totalSeats)
+                    {
+                        echo '<div class="col-lg-2 pt-2"></div>';
+                    }
+
+                    echo '                    
+                        <div class="col-lg-4 pt-2">
+                            <div class="card bg-color-dark-scale-2 border-width-1 border-color-hover-primary transition-2ms">
+                                <div class="card-body">
+                                    <div class="text-center">';
+
+                    if($seat->isPerpetual() && !$seat->isGift() && !$seat->isTrial())
+                    {
+                        echo '<i class="icon-user icons text-color-success text-8"></i>';
+                    } else if($seat->isTrial())
+                    {
+                        echo '<i class="icon-user icons text-color-secondary text-8"></i>';
+                    } else if($seat->isGift())
+                    {
+                        echo '<i class="icon-user icons text-color-grey text-8"></i>';
+                    } else
+                    {
+                        echo '<i class="icon-user icons text-warning text-8"></i>';
+                    }
+                    echo '</div>';
+
+                    if($seat->isTrial())
+                    {
+                        echo '<div class="card-text text-2 text-color-secondary">试用<br>[运行时间有限]</div>';
+                    } else if($seat->isGift())
+                    {
+                        echo '<div class="card-text text-2">礼品<br>[终身访问]</div>';
+                    } else if($seat->isPerpetual())
+                    {
+                        echo '<div class="card-text text-2 text-color-success">永久<br>[永远运行]</div>';
+                    } else if($seat->isSubscriptionMonthly())
+                    {
+                        echo '<div class="card-text text-2 text-warning">Monthly Subscription ' . ($seat->isSubActive ? '' : '<br>[no auto renew]') . '</div>';
+                    } else if($seat->isSubscriptionYearly())
+                    {
+                        echo '<div class="card-text text-2 text-warning">Yearly Subscription ' . ($seat->isSubActive ? '' : '<br>[no auto renew]') . '</div>';
+                    }
+
+                    if($seat->isCasual())
+                    {
+                        echo '<div class="card-text text-1 pb-3">临时许可证</div>';
+                    }
+                    else if($seat->isProfessional())
+                    {
+                        echo '<div class="card-text text-1 pb-3">专业执照</div>';
+                    }
+                    else
+                    {
+                        echo '<div class="card-text text-1 pb-3">公司许可证</div>';
+                    }
+
+                    if($seat->sku == "WC3PC")
+                    {
+                        echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-upgrade-casual-to-pro" class="btn btn-xs btn-light btn-rounded btn-modern mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Upgrade to a Professional license">Upgrade Version to Professional</a>';
+                    }
+                    else if($seat->sku == "WC3PI")
+                    {
+                        echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-upgrade-pro-to-company" class="btn btn-xs btn-light btn-rounded btn-modern mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Upgrade to a Company license">Upgrade Version to Company</a>';
+                    }
+                    else
+                    {
+                        echo '-';
+                    }
+
+                    if(!empty($seat->lastSigninDate))
+                    {
+                        echo '<div class="card-text text-1 pt-3">许可证成功激活</div>';
+                    } else
+                    {
+                        echo '<div class="card-text text-1 pt-3">许可证尚未激活</div>';
+                    }
+
+                    echo '<h4 class="card-title mb-1 text-4">' . (empty($seat->email) ? "UNASSIGNED" : $seat->email) . '</h4>';
+
+                    if($seat->isTrial())
+                    {
+                        echo '<div class="card-text text-2">Received by ' . $seat->store . '</div>';
+                        if($seat->isEndDateExpired())
+                        {
+                            echo '<div class="card-text text-2">试用 ended ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        } else
+                        {
+                            echo '<div class="card-text text-2">试用 until ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        }
+                    } else if($seat->isGift())
+                    {
+                        echo '<div class="card-text text-2">Gifted by ' . $seat->store . '</div>';
+                        echo '<div class="card-text text-2">终身维护</div>';
+                    } else if($seat->isPerpetual())
+                    {
+                        echo '<div class="card-text text-2">Purchased through ' . $seat->store . '</div>';
+                        if($seat->isEndDateExpired())
+                        {
+                            echo '<div class="card-text text-2">Maintenance ended ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        } else
+                        {
+                            echo '<div class="card-text text-2">Maintenance until ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        }
+                    } else if($seat->isSubscriptionMonthly())
+                    {
+                        echo '<div class="card-text text-2">Purchased through ' . $seat->store . '</div>';
+                        if($seat->isEndDateExpired())
+                        {
+                            echo '<div class="card-text text-2">按月订阅 ended ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        } else
+                        {
+                            echo '<div class="card-text text-2">按月订阅 until ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        }
+                    } else if($seat->isSubscriptionYearly())
+                    {
+                        echo '<div class="card-text text-2">Purchased through ' . $seat->store . '</div>';
+                        if($seat->isEndDateExpired())
+                        {
+                            echo '<div class="card-text text-2">按年订阅 ended ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        } else
+                        {
+                            echo '<div class="card-text text-2">按年订阅 until ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        }
+                    }
+                    else if($seat->isRental())
+                    {
+                        echo '<div class="card-text text-2">Purchased through ' . $seat->store . '</div>';
+                        if($seat->isEndDateExpired())
+                        {
+                            echo '<div class="card-text text-2">Rental period ended ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        } else
+                        {
+                            echo '<div class="card-text text-2">Rental period until ' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) . '</div>';
+                        }
+                    }
+
+
+                    echo '<div class="row pt-3">';
+                    echo '<div class="col-lg-12">';
+
+                    echo '<a href="#form_seat_view_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="View seat"&gt;<i class="fas fa-search"></i></a>';
+                    //echo '<a href="#form_seat_download_offline_license_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="下载离线许可证"&gt;下载离线许可证。<i class="fas fa-newspaper"></i></a>';
+
+                    if(isset($_SESSION['worldcreator_manager_email']) && isset($_SESSION['worldcreator_manager_password']))
+                    {
+                        if($seat->isAssigned())
+                        {
+                            echo '<a href="#form_seat_unassign_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="退出席位"&gt;退出</a>';
+                        } else
+                        {
+                            echo '<a href="#form_seat_assign_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="将座位分配给新用户"&gt;分配座位</a>';
+                        }
+                    }
+
+                    echo '<a href="#form_seat_revoke_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="重置所有工作站"&gt;重置</a>';
+
+                    if(isset($_SESSION['worldcreator_manager_email']) && isset($_SESSION['worldcreator_manager_password']))
+                    {
+                        if($seat->isSubscriptionCancellable())
+                        {
+                            echo '<a href="#form_seat_cancel_subscription_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="取消关联订阅"&gt;取消订阅</a>';
+                        }
+
+                        if($seat->isSubscriptionRenewable())
+                        {
+                            echo '<a href="#form_seat_renew_subscription_' . $seat->id . '" class="popup-with-form btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="恢复已取消的订阅"&gt;恢复订阅</a>';
+                        }
+
+                        if($seat->isMaintenanceRenewable())
+                        {
+                            switch($seat->sku)
+                            {
+                                case "WC3PI":
+                                    echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-maintenance-indie" class="btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Renew associated maintenance plan">Renew</a>';
+                                    break;
+
+                                case "WC3PC":
+                                    echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-maintenance-casual" class="btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Renew associated maintenance plan">Renew</a>';
+                                    break;
+
+                                case "WC3PS":
+                                    echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-maintenance-small" class="btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Renew associated maintenance plan">Renew</a>';
+                                    break;
+
+                                case "WC3PL":
+                                    echo '<a onclick="fastspring.builder.tag({\'user_id\':\'' . $seat->id . '\'});" data-fsc-action="Add,Checkout" data-fsc-item-path-value="world-creator-maintenance-enterprise" class="btn btn-xs btn-primary-scale-2 btn-modern btn-rounded mr-1" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" title="Renew associated maintenance plan">Renew</a>';
+                                    break;
+                            }
+                        }
+                    }
+
+                    echo '</div></div>';
+
+                    echo '<div class="pt-2 text-center"><a class="text-2 text-color-grey" href="https://bitethebytes.freshdesk.com/support/solutions/articles/44002348944-customer-portal#Section%3A-Seat-/-Seats" target="_blank">需要帮助吗？</a></div>';
+
+                    echo '</div></div></div>';
+
+                    if($totalSeats == 1)
+                    {
+                        echo '<div class="col-lg-4 pt-2"></div>';
+                    }
+                    else if($totalSeats == 2 && $totalCounter == $totalSeats)
+                    {
+                        echo '<div class="col-lg-2 pt-2"></div>';
+                    }
+
+                    if($counter == 3)
+                    {
+                        $counter = 0;
+                        echo ' </div></div>';
+                    }
+
+                    if($totalCounter == $totalSeats && (($totalCounter % 3) != 0))
+                    {
+                        echo ' </div></div>';
+                    }
+
+                    echo '
+                        <form id="form_seat_view_' . $seat->id . '" class="white-popup-block mfp-hide bg-color-dark" action="" method="post" enctype="multipart/form-data"&gt;
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>查看座位</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">下面是您的座位信息。如果您想更改设置，请联系World Creator 客户经理。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"                                           
+                                           value="' . $seat->id . '"" 只读隐藏&gt;
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>许可证</label>
+                                    <input type="text"
+                                           class="form-control text-color-light"                                           
+                                           value="' . ($seat->isCasual()?'Casual':($seat->isProfessional()?'Professional':'Company')) . '"
+                                           readonly>
+                                </div>
+                            </div>
+                                                        
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label>电子邮件</label>
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           value="' . $seat->电子邮件 .'" 只读&gt;
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>密码</label>
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           value="' . \Portal\Utility::decrypt($seat->password) .'" 只读
+                                </div>
+                            </div>';
+
+                    if($seat->isSubscription())
+                    {
+                        echo '<div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>模型</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . $seat->getModelType() .'"只读
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>现状</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . ($seat->isSubActive ? 'Active' : 'Cancelled') . '"
+                                       readonly>
+                            </div>
+                          </div>
+                          
+                          <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>认购创建日期</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->创建日期）） .'" 只读
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>认购结束日期</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) .'" 只读
+                            </div>
+                          </div>';
+                    }
+
+                    if($seat->isPerpetual())
+                    {
+                        echo '<div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>模型</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . $seat->getModelType() .'"只读
+                            </div>                            
+                            <div class="form-group col-lg-6">
+                                <label>维护结束日期</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) .'" 只读
+                            </div>                          
+                          </div>';
+                    }
+
+                    if($seat->isTrial())
+                    {
+                        echo '<div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>模型</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="Trial"
+                                       readonly>
+                            </div>                            
+                            <div class="form-group col-lg-6">
+                                <label>维护结束日期</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="' . date("M j, Y", \Portal\Utility::dotNetTicksToDateTime($seat->endDate)) .'" 只读
+                            </div>                          
+                          </div>';
+                    }
+
+                    if($seat->isGift())
+                    {
+                        echo '<div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label>模型</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="Gift"
+                                       readonly>
+                            </div>                            
+                            <div class="form-group col-lg-6">
+                                <label>维护结束日期</label>
+                                <input type="text"
+                                       autocomplete="off"
+                                       maxlength="100"
+                                       class="form-control text-color-light"
+                                       value="Lifetime Maintenance"
+                                       readonly>
+                            </div>                          
+                          </div>';
+                    }
+
+                    if($seat->isWorkstation01Set())
+                    {
+                        echo '
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <label>工作站 1</label>
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           value="' . $seat->workstationId1 .'" 只读
+                                </div>                           
+                            </div>';
+                    }
+
+                    if($seat->isWorkstation02Set())
+                    {
+                        echo '
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <label>工作站 2</label>
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           value="' . $seat->workstationId2 .'" 只读
+                                </div>                          
+                            </div>';
+                    }
+
+                    echo '                            
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12 text-center">
+                                    <button type="submit" class="btn btn-rounded btn-modern btn-primary">好的</button>                                    
+                                </div>
+                            </div>
+                        </form>
+                            ';
+
+                    /*
+                    echo '
+                        <form id="form_seat_download_offline_license_' . $seat->id . '" class="white-popup-block mfp-hide bg-color-dark" action="../php/portal/users/seat_download_license.php" method="post" target="_blank" enctype="multipart/form-data"&gt;
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>下载离线许可证</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <label>座位编号</label>
+                                <input type="text"
+                                       class="form-control text-color-light"
+                                       name="id"
+                                       value="' . $seat->id . '" 只读&gt;
+                            </div>
+                        </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">您真的要为用户下载离线许可证文件吗？ <b>' . $seat->email . '</b>?</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">没有
+                                        </button>
+                                    </a>
+                                    <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">是</button>
+                                </div>
+                            </div>
+                        </form>
+                        ';
+                    */
+
+                    echo '
+                        <form id="form_seat_assign_' . $seat->id . '" class="white-popup-block mfp-hide bg-color-dark" action="../php/portal/users/seat_assign.php" method="post" enctype="multipart/form-data"&gt;
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>分配座位</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">分配席位意味着为该席位分配一个用户，该用户由电子邮件和密码（自动生成）指定。然后，您就可以向用户提供登录信息，以激活和运行World Creator 。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"" 只读隐藏&gt;
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label>电子邮件</label>
+                                    <input type="email"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           name="email"
+                                           placeholder="Email"
+                                           value=""
+                                           required>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>密码</label>
+                                    <input type="text"
+                                           autocomplete="off"
+                                           maxlength="100"
+                                           class="form-control text-color-light"
+                                           name="password"
+                                           placeholder="Password"
+                                           value="' . \Portal\Utility::generateRandomString() . '"
+                                           readonly>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">取消
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+
+                    echo '
+                        <form id="form_seat_unassign_' . $seat->id . '" class="white-popup-block mfp-hide bg-color-dark" action="../php/portal/users/seat_unassign.php" method="post" enctype="multipart/form-data"&gt;
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>撤回席位</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">撤销席位许可意味着删除当前分配给用户的席位，该席位可重新分配给其他用户。这将删除电子邮件和密码以及所有相关工作站。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"" 只读隐藏&gt;
+                                </div>
+                            </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">你真的想撤回这个席位吗？</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">没有
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">是</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+
+                    echo '
+                        <form id="form_seat_cancel_subscription_' . $seat->id . '" class="white-popup-block mfp-hide bg-color-dark" action="./php/portal/users/seat_cancel_subscription.php "method="post" enctype="multipart/form-data"&gt;
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>取消订阅</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">取消席位订阅意味着您将停止为World Creator 自动付款。请注意，一旦订阅过期，World Creator 将不再运行。您需要续订才能使World Creator 重新运行。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"" 只读隐藏&gt;
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <label>参考资料</label>
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="reference"
+                                           value="' . $seat->参考资料 .'" &gt;
+                                </div>
+                            </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">你真的想为这个座位取消订阅吗？</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">没有
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">是</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+
+                    echo '
+                        <form id="form_seat_renew_subscription_' . $seat->id . '" class="white-popup-block mfp-hide bg-color-dark" action="../php/portal/users/seat_renew_subscription.php" method="post" enctype="multipart/form-data"&gt;
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>续订</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">续订席位意味着您将恢复自动支付World Creator ，并可再次访问World Creator 应用程序。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"" 只读隐藏&gt;
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <label>参考资料</label>
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="reference"
+                                           value="' . $seat->参考资料 .'" &gt;
+                                </div>
+                            </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">您真的想续订这个座位吗？</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">没有
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">是</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+
+                    echo '
+                        <form id="form_seat_renew_maintenance_' . $seat->id . '" class="white-popup-block mfp-hide bg-color-dark" action="../php/portal/users/seat_renew_subscription.php" method="post" enctype="multipart/form-data"&gt;
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>更新维护</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">续订席位意味着您购买了World Creator 的维护计划。这样，您就可以在规定时间内（通常为 12 个月）下载World Creator 应用程序的最新版本。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"" 只读隐藏&gt;
+                                </div>
+                            </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">您真的想为这款座椅购买维护计划吗？</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">没有
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">是</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+
+                    echo '
+                        <form id="form_seat_revoke_' . $seat->id . '" class="white-popup-block mfp-hide bg-color-dark" action="../php/portal/users/seat_revoke.php" method="post" enctype="multipart/form-data"&gt;
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-sm-12">
+                                    <h4>重置工作站</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row mt-2 text-justify">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">重置工作站意味着可以在另外两台电脑上激活World Creator 。这将取消之前的激活。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">                                    
+                                    <input type="text"
+                                           class="form-control text-color-light"
+                                           name="id"
+                                           value="' . $seat->id . '"" 只读隐藏&gt;
+                                </div>
+                            </div>
+                    
+                            <div class="form-row mt-2 text-center">
+                                <div class="col-lg-12">
+                                    <p class="mb-4">您真的想为这个座位重新设置所有工作站吗？</p>
+                                </div>
+                            </div>
+                    
+                            <div class="form-row pt-3">
+                                <div class="col-sm-12">
+                                    <a href="' . basename($_SERVER["PHP_SELF"]) . '">
+                                        <button type="button"
+                                                class="btn btn-primary btn-rounded btn-modern float-left">没有
+                                        </button>
+                                        </a>
+                                        <button type="submit" name="submit" value="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-rounded btn-modern btn-primary float-right">是</button>
+                                    </div>
+                                </div>
+                            </form>
+                            ';
+                }
+            }
+            ?>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+
+</body>
+</html>

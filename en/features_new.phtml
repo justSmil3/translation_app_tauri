@@ -1,0 +1,1688 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handle();
+
+?>
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015744886 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1015744886'); </script>
+
+    <!-- Clarity tracking code for https://www.world-creator.com/ -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ltec5sffsx");
+    </script>
+
+    <?php
+    \Portal\Utility::writeMetaData('', '','','en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var shown = sessionStorage.getItem('alreadyShow');
+
+            if (shown != "shown")
+            {
+                $("#info-window").modal('show');
+                sessionStorage.setItem('alreadyShow', 'shown');
+            }
+        }
+    </script>
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+
+<body class="loading-overlay-showing"
+      data-loading-overlay
+      data-plugin-options="{'hideDelay': 500, 'effect': 'percentageProgress1'}">
+<div class="loading-overlay loading-overlay-percentage bg-color-dark-scale-5">
+    <div class="page-loader-progress-wrapper">
+        <span class="page-loader-progress text-color-light">0</span>
+        <span class="page-loader-progress-symbol text-color-light">%</span>
+    </div>
+</div>
+
+<?php
+include 'php/gdpr.php';
+?>
+
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main" class="main">
+
+        <?php
+
+        if(!isset($_SERVER['HTTP_USER_AGENT']))
+        {
+            echo '<section class="section border-0 m-0" data-video-path="video/Trailer_02.mp4" data-plugin-video-background style="height: 100vh">';
+        } else
+        {
+            $browserName = \Portal\Utility::getBrowser($_SERVER['HTTP_USER_AGENT']);
+
+            if($browserName == 'Safari')
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 style="background-image: url(../img/pages/World-Creator-01.webp); 
+                                 background-size: cover; 
+                                 background-position: center; 
+                                 height: 100vh;">';
+            } else
+            {
+                echo '
+                        <section class="video section border-0 m-0"
+                                 data-video-path="video/Trailer_02.mp4"
+                                 data-plugin-video-background                                 
+                                 style="height: 100vh">';
+            }
+        }
+
+        ?>
+
+        <div class="container text-center z-index-1 h-100">
+            <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                <p class="text-12 line-height-1 font-weight-medium text-color-light appear-animation"
+                   data-appear-animation="fadeInDownShorter"
+                   data-plugin-options="{'minWindowWidth': 0}">WORLD CREATOR IS</p>
+                <p class="text-15 mb-5 line-height-1 font-weight-extra-bold text-color-light appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="300">INEVITABLE</p>
+                <p class="text-10 mb-4 line-height-2 font-weight-bold text-color-light opacity-9 appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="500">We add feature after feature</p>
+                <a href="#main"
+                   class="btn btn-rounded btn-primary btn-modern font-weight-bold text-3 py-3 btn-px-5 mt-2 appear-animation"
+                   data-appear-animation="fadeInUpShorter"
+                   data-appear-animation-delay="700"
+                   data-appear-animation-duration="1.2s"
+                   data-plugin-options="{'minWindowWidth': 0}">CONVINCE YOURSELF</a>
+            </div>
+            <a href="#main"
+               class="slider-scroll-button slider-scroll-button-light position-absolute bottom-10 left-50pct transform3dx-n50"
+               data-hash
+               data-hash-offset="67"></a>
+        </div>
+
+        <?php
+        echo '</section>';
+        ?>
+
+        <div class="container-fluid bg-color-dark-scale-5" id="main">
+            <div class="row text-center pt-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h1 class="text-transform-none text-14 font-weight-bold line-height-2 pt-5">NEXT UPCOMING FEATURES</h1>
+                    <p class="pl-2 pr-2 line-height-4 text-5">The next updates to World Creator will include the features listed below.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row text-center pt-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h1 class="text-transform-none text-14 font-weight-bold line-height-2 pt-5">NEW FEATURES RECENTLY ADDED</h1>
+                    <p class="pl-2 pr-2 line-height-4 text-5">Check out some of the new features we have added to the latest version of World Creator.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row pt-5 pb-1">
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/WorldCreator-Rivers02.webp" class="img-fluid" alt="RIVERS">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">RIVERS</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">World Creator allows you to create any type of river - procedurally or by design. You can either let World Creator generate the river for you, based on the terrain you see in the viewport, and then modify it by hand, or you can create your own river by placing springs and flow points.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/WorldCreator-HDRI01.webp" class="img-fluid" alt="HDRI MAPS">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">HDRI MAPS</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">Due to user demand, we have added support for HDRI maps in World Creator, allowing you to create custom skyboxes along with additional lighting information, giving you the ability to create even more advanced renderings from within World Creator.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/WorldCreator-Polygon01.webp" class="img-fluid" alt="POLYGON SHAPE">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">POLYGON SHAPE</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">The polygon shape design tool allows you to create any type of polygon shape and use it to design your terrain. For example, you might want to create a lake in the mountains, a mountain range or a giant hole in the terrain. You have many design and customisation options with this tool to enhance your terrains.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row text-center pt-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h1 class="text-transform-none text-14 font-weight-bold line-height-2 pt-5">FULL FEATURE LIST</h1>
+                    <p class="pl-2 pr-2 line-height-4 text-5">World Creator has a huge list of features. We have summarised the most important features for you.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row pt-5 pb-1">
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-AnySize-01.webp" class="img-fluid" alt="TERRAINS OF ANY SIZE">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">TERRAINS OF ANY SIZE</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">Other terrain generators only support square sizes (e.g. 512 by 512, 1024 by 1024). They are also limited to a maximum size and resolution of around 4096 or 8192 pixels. World Creator has no such limitations. You can create square or non-square terrains with a maximum size and resolution of 128,000 by 128,000 pixels in total, and still work in real time.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/WorldCreator-AnyDetail-01.webp" class="img-fluid" alt="TERRAINS OF ANY DETAIL">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">TERRAINS OF ANY DETAIL</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">In World Creator, the detail of a terrain is set by a precision parameter. The default setting is 1 metre, but you can increase the precision down to centimetres, regardless of the size of your terrain. This gives you the ability to create ultra-detailed terrains in unprecedented quality, while still working in real time.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-RealWorldStreaming01.webp" class="img-fluid" alt="REAL-WORLD STREAMING">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">REAL-WORLD STREAMING</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">Register with MapTiler and connect to their real world data service through World Creator to import the locations of your choice. With World Creator, using real world data for your productions is no longer a challenge (you must register with MapTiler to use the service).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-Biomes-01.webp" class="img-fluid" alt="BIOMES">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">BIOMES</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">Biomes were first introduced in World Creator 2022 and have changed the way terrains and landscapes are created. World Creator lets you create biomes that automatically adapt to each other, allowing you to create real and huge landscapes in no time. They give you maximum flexibility and are 100% reusable and mixable between projects.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/WorldCreator-FilterPainting01.webp" class="img-fluid" alt="FILTER PAINTING">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">FILTER PAINTING</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">Sometimes you just want to draw certain features on a terrain without using any procedural techniques. In World Creator, you can do this simply by using brushes, just as you would in Photoshop, with a non-destructive workflow. Create terraces, lakes, sand dunes and more, all at your fingertips.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-TerrainMaterials01.webp" class="img-fluid" alt="TERRAIN MATERIALS">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">TERRAIN MATERIALS</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">World Creator allows you to colour your terrain using different types of materials such as simple colours, textures, Adobe Substances, gradients and satellite maps. They can be combined, organised into groups and also categorised into biomes, giving you all the creative freedom you ever needed and wanted.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-MaterialPainting02.webp" class="img-fluid" alt="MATERIAL PAINTING">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">MATERIAL PAINTING</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">Sometimes you just want to draw materials on a terrain without using any procedural techniques. In World Creator, you can do this simply by using brushes, just as you would in Adobe Substance Designer, with a non-destructive workflow. Draw colours, textures, Adobe Substance materials and gradients wherever you want.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-ColoredStamping01.webp" class="img-fluid" alt="COLORED STAMPING">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">COLORED STAMPING</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">World Creator allows you to import custom elevation and colour maps as stamps to create and extend your existing terrains. You can import DEM data or terrains from other applications and assemble a new landscape within World Creator in real time.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-FluidSimulation01.webp" class="img-fluid" alt="FLUID SIMULATION">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">FLUID SIMULATION</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">World Creator allows you to run physically based fluid simulations to apply water masses to the terrain. These simulations create internal masks that can be used by filters and materials for further processing.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-SandSimulation01.webp" class="img-fluid" alt="SAND SIMULATION">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">SAND SIMULATION</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">In addition to fluid simulations, World Creator also allows you to perform physically based sand simulations to apply sand mass to the terrain. These simulations create internal masks that can be used by filters and materials for further processing.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-Sediments01.webp" class="img-fluid" alt="REALISTIC SEDIMENTS">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">REALISTIC SEDIMENTS</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">World Creator's sediment system has also become a true masterpiece over the past few years. Not only is it GPU-powered and therefore real-time, but it's also ultra-realistic and highly customisable for every possible scenario.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator_Erosions01.webp" class="img-fluid" alt="REALISTIC EROSIONS">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">REALISTIC EROSIONS</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">World Creator's erosion system has become a true masterpiece over the past few years. Not only is it GPU-powered and therefore real-time, but it's also ultra-realistic and highly customisable for every possible scenario.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-ProceduralStamping01.webp" class="img-fluid" alt="PROCEDURAL STAMPING">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">PROCEDURAL STAMPING</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">As an addition to the Terrain Stamping feature, we have added procedural stamps such as volcanoes, islands, fissures and more, saving you a lot of time creating these specific terrain features. Think of it as a terrain generator within World Creator.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-Paths01.webp" class="img-fluid" alt="PATH TOOL">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">PATH TOOL</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">World Creator lets you create simple rivers, roads, mountain ranges, canyons and more with our unique vector-based and distance-field-based path tools, giving you even more creative freedom.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-BrushBasedSculpting01.webp" class="img-fluid" alt="BRUSH BASED SCULPTING">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">BRUSH BASED SCULPTING</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">World Creator allows you to easily create a terrain from scratch, as well as customising existing terrains with built-in sculpting tools. One of these is Brushed Based Sculpting, which behaves exactly like a painting tool like Photoshop, but for terrains. You select a brush or import a custom brush, adjust the brush settings and start to raise, lower, align and flatten the terrain at any point.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/WorldCreator-GridBasedSculpting01.webp" class="img-fluid" alt="GRID BASED SCULPTING">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">GRID BASED SCULPTING</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">One of the more diverse sculpting tools is Grid Based Sculpting, which is perfect for very quick creations and adjustments. You select cells in a grid using a brush, and then you can modify those cells and their neighbours. It gives you less control over small parts of the terrain, but offers many more new possibilities, such as copying, rotating, tilting, scaling, raising, lowering, aligning and more.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-CloudsAndMist01.webp" class="img-fluid" alt="CLOUDS AND MIST">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">CLOUDS AND MIST</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">World Creator extends its rendering capabilities with 3D volumetric clouds, along with atmospheric scatter, fog and mist, to improve your renderings immensely, all in real time.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4 pb-2">
+                    <article>
+                        <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                            <div class="thumb-info-wrapper">
+                                <img src="../img/pages/thumbs/WorldCreator-Water01.webp" class="img-fluid" alt="WATER">
+                                <div class="thumb-info-title bg-transparent p-4">
+                                    <div class="thumb-info-type bg-color-primary px-2 mb-1">Available</div>
+                                    <div class="thumb-info-inner mt-1">
+                                        <h2 class="text-color-light line-height-2 text-6 font-weight-bold mb-0">WATER</h2>
+                                    </div>
+                                    <div class="thumb-info-show-more-content">
+                                        <p class="mb-0 text-3 line-height-9 mb-1 mt-2 text-light text-justify opacity-7">Another scene element we added quite early after release was water rendering. At the moment it is mainly used for rendering oceans and seas, but could also be used for simple rivers and lakes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pl-lg-0 pr-lg-0">
+            <div class="col-lg-6 appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">TERRAIN FILTERS</h2>
+                            <p class="text-5 line-height-4 font-weight-semi-bold text-justify">In World Creator, filters transform the basic terrain shape into a specific terrain, such as arid, cratered, terraced and more. Filters are also used to apply erosion, sediments and simulations. World Creator has many such filters that you can combine, mask, paint, group and more. The possibilities are endless, offering endless combinations and total creative freedom.</p>
+                            <br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Talus</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Talus Before"/>
+                                        <img src="../img/pages/filters/WorldCreator-Filter-TALUS-After.webp"
+                                             alt="Talus After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Ridge</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Ridge Before"/>
+                                        <img src="../img/pages/filters/WorldCreator-Filter-RIDGED-After.webp"
+                                             alt="Ridge After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Border</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Border Before"/>
+                                        <img src="../img/pages/filters/WorldCreator-Filter-BORDERBLEND-After.webp"
+                                             alt="Border After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Peaks</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Peaks Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-PEAKS-After.webp"
+                                             alt="Peaks After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Crater</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-CRATER-Before.webp"
+                                             alt="Crater Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-CRATER-After.webp"
+                                             alt="Crater After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Distort</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Distort Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-DISTORT-After.webp"
+                                             alt="Distort After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Heightmap</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-HEIGHTMAP-Before.webp"
+                                             alt="Heightmap Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-HEIGHTMAP-After.webp"
+                                             alt="Heightmap After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Canyon</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-CANYON-Before.webp"
+                                             alt="Canyon Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-CANYON-After.webp"
+                                             alt="Canyon After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Rocky Cliffs</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Rocky Cliffs Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-ROCKYCLIFFS-After.webp"
+                                             alt="Rocky Cliffs After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Sand</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-SAND-Before.webp"
+                                             alt="Sand Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-SAND-After.webp"
+                                             alt="Sand After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Swirl</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Swirl Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-SWIRL-After.webp"
+                                             alt="Swirl After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Inflate</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Inflate Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-INFLATE-After.webp"
+                                             alt="Inflate After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Terrace</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-TERRACE-Before.webp"
+                                             alt="Terrace Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-TERRACE-After.webp"
+                                             alt="Terrace After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Wind</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Wind Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-WIND-After.webp"
+                                             alt="Wind After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Rugged</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Rugged Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-RUGGED-After.webp"
+                                             alt="Rugged After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5 ">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Smooth Ridges</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Smooth Ridges Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-SMOOTHRIDGES-After.webp"
+                                             alt="Smooth Ridges After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Rocky Wide</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Rocky Wide Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-ROCKYWIDE-After.webp"
+                                             alt="Rocky Wide After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Rocky Hard</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Rocky Hard Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-ROCKYHARD-After.webp"
+                                             alt="Rocky Hard After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Rocky Sharp</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-ROCKYSHARP-Before.webp"
+                                             alt="Rocky Sharp Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-ROCKYSHARP-After.webp"
+                                             alt="Rocky Sharp After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Rocky Plateaus</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Rocky Plateaus Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-ROCKPLATEAUS-After.webp"
+                                             alt="Rocky Plateaus After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Mud</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Mud Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-MUD-After.webp"
+                                             alt="Mud After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Fill Soft</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Fill Soft Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-FILLSOFT-After.webp"
+                                             alt="Fill Soft After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Fill Hard</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Fill Hard Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-FILLHARD-After.webp"
+                                             alt="Fill Hard After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Denoise</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Denoise Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-DENOISE-After.webp"
+                                             alt="Denoise After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Deflate</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Deflate Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-DEFLATE-After.webp"
+                                             alt="Deflate After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Balloon</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Balloon Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-BALLOON-After.webp"
+                                             alt="Balloon After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Thin Flows</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Thin Flows Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-THINFLOWS-After.webp"
+                                             alt="Thin Flows After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Ridged Flows</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Ridged Flows Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-RIDGEDFLOWS-After.webp"
+                                             alt="Ridged Flows After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Soft Flows</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Soft Flows Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-SOFTFLOWS-After.webp"
+                                             alt="Soft Flows After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Thin Flows Rocky</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Thin Flows Rocky Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-THINFLOWSROCKY-After.webp"
+                                             alt="Thin Flows Rocky After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Wide Flows</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Wide Flows Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-WIDEFLOWS-After.webp"
+                                             alt="Wide Flows After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Wide Soft Flows</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Wide Soft Flows Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-WIDEFLOWSSOFT-After.webp"
+                                             alt="Wide Soft Flows After"/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Wide Flows Streams</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-Before.webp"
+                                             alt="Wide Flows Streams Before"/>
+                                        <img class="lazyload"
+                                             src="../img/pages/filters/WorldCreator-Filter-WIDEFLOWSSTREAMS-After.webp"
+                                             alt="Wide Flows Streams After"/>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row pl-lg-0 pr-lg-0">
+            <div class="col-lg-6 appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">PROCEDURAL MASKING</h2>
+                            <p class="text-5 line-height-4 font-weight-semi-bold text-justify">In World Creator, procedural masks are created using a combination of distributions and effects. A distribution allows you to procedurally select specific terrain features such as height, slope, river, void and more. An effect allows you to modify the distribution to create even more variations, such as blur, invert, contrast and more. The resulting masks can then be used by filters, materials and more to design and customise the terrain as required.</p>
+                            <p class="text-5 line-height-4 font-weight-semi-bold text-justify">The masks below can be used to apply filters and materials along the highlighted (red) values. It is important to note that the World Creators distribution masks are independent of terrain size and will always map to the exact level of detail you have selected (e.g. maximum detail).</p>
+                            <br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Cavity</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             alt="Cavity">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-CAVITY-After.webp"
+                                             alt="Cavity">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Real-Time Flows</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             alt="Real-Time Flows">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-FLOW-After.webp"
+                                             alt="Real-Time Flows">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Brush Splatting</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             alt="Brush Splatting">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-SPLATTING-After.webp"
+                                             alt="Brush Splatting">
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Curvature</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Curvature">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-CURVATURE-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Curvature">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Slope</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Slope">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-SLOPE-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Slope">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Height</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Height">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-HEIGHT-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Height">
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Mask Painting</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Mask Painting">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-MASKPAINT-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Mask Painting">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Perlin Noise</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Perlin Noise">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-PERLINOISE-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Perlin Noise">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Roughness</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Roughness">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-ROUGHNESS-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Roughness">
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Satellite Image</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-SATELLITEIMAGE-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Satellite Image">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-SATELLITEIMAGE-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Satellite Image">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Sun Direction</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Sun Direction">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-SUNDIRECTION-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Sun Direction">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Worley Noise</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Worley Noise">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-WORLEYNOISE-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Worley Noise">
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Dots</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Dots">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-DOTS-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Dots">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Angle</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Angle">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-ANGLE-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Angle">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Angle Blur</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-ANGLEBLUR-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Angle Blur">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-ANGLEBLUR-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Angle Blur">
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Fast Flow</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-FASTFLOW-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Fast Flow">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-FASTFLOW-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Fast Flow">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Simple Flow</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-SIMPLEFLOW-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Simple Flow">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-SIMPLEFLOW-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Simple Flow">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Blur</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-BLUR-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Blur">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-BLUR-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Blur">
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Contrast</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-CONTRAST-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Contrast">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-CONTRAST-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Contrast">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Distort</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-DISTORTION-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Distort">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-DISTORTION-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Distort">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Edge</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-EDGE-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Edge">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-EDGE-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Edge">
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Voronoi</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-VORONOI-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Voronoi">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-VORONOI-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Voronoi">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Smooth Step</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-SMOOTHSTEP-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Smooth Step">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-SMOOTHSTEP-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Smooth Step">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Denoise</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-DENOISE-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Denoise">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-DENOISE-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Denoise">
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                            <div class="row pt-5">
+                                <div class="col-1"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Clamp</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-CLAMP-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Clamp">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-CLAMP-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Clamp">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Invert</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-INVERT-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Invert">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-INVERT-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Invert">
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-12 text-center mx-auto d-block">
+                                    <h4 class="mb-4 mt-3">Mask Import</h4>
+                                    <div data-plugin-before-after
+                                         data-plugin-options="{'default_offset_pct': 0.2, 'orientation': 'horizontal', 'before_label': 'Before', 'after_label': 'After', 'no_overlay': true}">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-Before.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Invert">
+                                        <img src="../img/pages/rules/WorldCreator-Rules-MASKIMPORT-After.webp"
+                                             class="img-fluid lazyload"
+                                             alt="Mask Import">
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row pl-lg-0 pr-lg-0">
+            <div class="col-lg-6 appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">COLOR ADJUSTMENTS</h2>
+                            <p class="text-5 line-height-4 font-weight-semi-bold">Adjust the final render using sliders for brightness, saturation, contrast and more. In a later version, we will add LUTs and more colour adjustments.</p>
+                            <br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-6 appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">MULTI-CAMERA SYSTEM</h2>
+                            <p class="text-5 line-height-4 font-weight-semi-bold">With World Creator 2023, we have added the ability to import cameras from FBX files to reassemble scenes created in other applications. It is also possible to export them to FBX for re-use in other applications.</p>
+                            <br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row pl-lg-0 pr-lg-0">
+            <div class="col-lg-6 appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">INCREMENTAL SAVING</h2>
+                            <p class="text-5 line-height-4 font-weight-semi-bold text-justify">Projects can optionally be saved incrementally, which means that time-stamped saves of a project you are working on are created, allowing you to follow the history of the project. This means you can be sure that you will never lose a particular terrain setting that you may have liked after making a few more changes.</p>
+                            <br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-6 appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">MULTILINGUAL SUPPORT</h2>
+                            <p class="text-5 line-height-4 font-weight-semi-bold text-justify">World Creator supports over 10 languages by default - English, Traditional Chinese, Simplified Chinese, Korean, Japanese, French, Spanish and many more. We are constantly improving the translation and adding new languages as the application develops.</p>
+                            <br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row pl-lg-0 pr-lg-0">
+            <div class="col-lg-6 appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">INTUITIVE USER INTERFACE</h2>
+                            <p class="text-5 line-height-4 font-weight-semi-bold text-justify">World Creator's user interface is intuitive, easy to use, fully customisable, with an amazing and modern look. We use an Adobe Photoshop-like system where things are organised in layers instead of nodes, making things extremely easy to use.</p>
+                            <br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-6 appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">PRESETS FOR EVERYTHING</h2>
+                            <p class="text-5 line-height-4 font-weight-semi-bold text-justify">Presets can be created for biomes, filters, materials, brushes and even full export settings, making everything reusable and shareable for future projects. We have included many amazing presets that will save you a lot of time experimenting with World Creator.</p>
+                            <br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row pl-lg-0 pr-lg-0">
+            <div class="col-lg-6 appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">BRIDGE EXPORT</h2>
+                            <p class="text-5 line-height-4 font-weight-semi-bold">World Creator's Bridge Export allows you to export a terrain from World Creator to other applications with a single click. Currently we support Unity, Unreal, Blender, Cinema4D and Houdini. More to come.</p>
+                            <br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-6 appear-animation"
+                 data-appear-animation="fadeInUpShorter"
+                 data-appear-animation-delay="200">
+                <section class="section border-top-0 bg-color-dark-scale-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">GENERAL EXPORT</h2>
+                            <p class="text-5 line-height-4 font-weight-semi-bold">World Creator supports export to OBJ, FBX, GLTF, TIFF, PNG, RAW (16 or 32-bit) and EXR (32-bit) among many other formats for the broadest industry coverage. You can load your World Creator assets into any serious 3D DCC application or game engine.</p>
+                            <br>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <h3 class="text-transform-none text-14 font-weight-bold line-height-2 pt-5 pb-2">ROYALTY FREE MATERIALS INCLUDED</h3>
+                    <p class="pl-2 pr-2 pb-5 line-height-4 text-5 text-center">World Creator comes with more than 138 royalty-free materials (textures and Adobe Substances) that you can use in your own projects immediately after purchase.<br><br>Below we have listed some (but not all 138) materials:</p>
+
+                    <?php
+                    $files = \Portal\Utility::getAllFilesInDirectory('../img/materials');
+
+                    $counter = 0;
+                    foreach($files as $file)
+                    {
+                        if($counter % 6 == 0)
+                        {
+                            echo '<div class="row pt-5">';
+                        }
+
+                        echo '<div class="col-6 col-sm-4 col-lg-2 text-center"><img src="../img/materials/' . $file . '"alt="World Creator Material Library"/></div>';
+
+                        if($counter % 6 == 5)
+                        {
+                            echo '</div>';
+                        }
+
+                        $counter += 1;
+
+                        if($counter == 54)
+                            break;
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <p class="pl-2 pr-2 line-height-4 text-5">There are so many more smaller features that make up the whole application, but it is impossible to list and explain them all.<br>Please check out the documentation and tutorial videos, as well as all the videos listed on this website, to get an idea of what World Creator can do for you.</p>
+                    <p class="pl-2 pr-2 line-height-4 text-5">We also suggest you to join us on <a href="https://discord.gg/worldcreator" target="_blank">Discord</a>, with more than 13,000 friendly and helpful users.<br><br>There you can follow the latest news, daily renders, live talks and live shows, as well as get in direct contact with us, the developers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+</body>
+</html>

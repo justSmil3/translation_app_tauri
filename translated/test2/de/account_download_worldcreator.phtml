@@ -1,0 +1,596 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handleUserPortal();
+
+\Portal\PortalAccessVerification::verifyAccess();
+
+if(!isset($_GET['category']))
+    header("Location: " .  \Portal\Globals::$PATH_HOME . "account_dashboard.phtml");
+
+?>
+
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+ <?php
+    \Portal\Utility::writeMetaData('World Creator - Customer Portal', 'The World Creator customer portal download page.','', 'en');
+    ?>
+
+ <!-- Favicon -->
+ <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+ <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+ <!-- Mobile Metas -->
+ <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+ <!-- Web Fonts  -->
+ <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+ <!-- Vendor CSS -->
+ <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+ <link rel="stylesheet"
+          href="../vendor/fontawesome-pro-6.3.0-web/css/all.min.css">
+ <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+ <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+ <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+ <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+ <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+ <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+ <!-- Theme CSS -->
+ <link rel="stylesheet"
+          href="../css/theme.css">
+ <link rel="stylesheet"
+          href="../css/theme-elements.css">
+ <link rel="stylesheet"
+          href="../css/theme-blog.css">
+ <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+ <!-- Current Page CSS -->
+ <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+ <!-- Skin CSS -->
+ <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+ <!-- Theme Custom CSS -->
+ <link rel="stylesheet"
+          href="../css/custom.css">
+
+ <!-- Head Libs -->
+ <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+ <script>
+  window.fwSettings {
+  'widget_id 44000002580
+  };
+  !function 
+ {
+  if function typeof window.FreshworksWidget)
+  {
+   var n function 
+  
+   n.q.push(arguments)
+   ;
+   n.q [ window.FreshworksWidget n
+  }
+  })
+ </script>
+
+ <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+<body data-plugin-page-transition>
+<?php
+include 'php/gdpr.php';
+?>
+<div class="body bg-color-dark-scale-5">
+ <?php
+    include 'php/header.php';
+    ?>
+
+ <div role="main"
+         class="main">
+ <section class="page-header page-header-modern page-header-background page-header-background-md mt-0 mb-0"
+                 style="background-image: url(../img/pages/World-Creator-03.webp); height: 50vh;">
+ <div class="container text-center z-index-1 h-100">
+ <div class="d-flex flex-column align-items-center justify-content-center h-100">
+ <div class="container appear-animation"
+                         data-appear-animation="blurIn"
+                         data-appear-animation-delay="0"
+                         data-plugin-options="{'minWindowWidth': 0}">
+    <div class="row text-center pt-4">
+    <div class="col">
+    <h1 class="text-color-light font-weight-extra-bold text-12 mb-3">
+     World Creator Downloads</h1>
+    <?php
+                                echo '<h2 class="text-color-light lead tall text-7">';
+    echo _GET['category Versions';
+    echo </h2>';
+                                ?>
+    </div>
+    </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+  <?php
+        include 'php/menu-sub.php';
+        ?>
+
+  <div class="container">
+ <div class="row text-center">
+ <div class="col">
+ <?php
+                    if(isset($_GET["ret"]))
+                    {
+                        echo '<div class="alert alert-success alert-sm"><strong>Gut gemacht!</strong> $_GET["ret  </div>';
+   
+   if(isset($_GET["err")
+   
+    echo <div class="alert alert-danger alert-sm"><strong>Oh Mist!</strong> $_GET["err  </div>';
+                    }
+                    ?>
+ </div>
+ </div>
+ </div>
+
+  <?php
+
+        $category = $_GET['category'];
+
+        if($category == "Latest")
+        {
+            echo '<div class="container pt-4 pb-3"><div class="row"><div class="col text-justify text-color-grey">
+   Nachstehend finden Sie die neuesten Versionen von World Creator Wir empfehlen Ihnen die mit LATEST STABLE RELEASE gekennzeichnete Version zu verwenden Wenn Sie einen Fehler finden lassen Sie es uns bitte wissen indem Sie einen Fehlerbericht einreichen Sie können uns auch Vorschläge Verbesserungen und Funktionswünsche zur Unterstützung von World Creator schicken.
+   </div></div></div>';
+  }
+  else
+  {
+  echo <div class="container pt-4 pb-3"><div class="row"><div class="col text-justify text-color-grey">
+   Im Folgenden finden Sie alle älteren Versionen von World Creator Es handelt sich um Vorgängerversionen der aktuellen stabilen Version Bitte melden Sie keine Fehler oder Funktionswünsche die auf diesen Versionen basieren da sie veraltet sind und nicht mehr gepflegt werden.
+   </div></div></div>';
+  }
+
+  $path '';
+  switch($category)
+  {
+  case Latest':
+   path \Portal\Globals::$PATH_DOWNLOAD_APPLICATION_LATEST;
+   break;
+
+  case Legacy':
+   path \Portal\Globals::$PATH_DOWNLOAD_APPLICATION_LEGACY;
+   break;
+  }
+
+  $folders \Portal\Utility::getAllDirectories($path)
+  $downloadData explode("\n file_get_contents($path 'downloads.txt);
+  $totalFolders count($downloadData)
+  $counter 0;
+  $totalFolderCounter 0;
+  foreach($downloadData as line)
+  {
+  $line explode("| str_replace(array("\r\n n r  line);
+  $name $line[0];
+  $date $line[1];
+  $folder $line[2];
+  $fileWin $folder '.msi';
+  $fileWinWithoutExtension $folder;
+  $fileMacWithoutExtension $folder;
+  $fileWinPath $path $folder ' $fileWin;
+  $fileMac $folder '.pkg';
+  $fileMacPath $path $folder ' $fileMac;
+  $filePreview $folder '.webp';
+  $filePreviewPath $path $folder ' $filePreview;
+  $infoPath $path $folder /info.txt';
+  $requirementsPath $path $folder '/requirements.txt';
+  $changelogPath $path $folder '/changelog.txt';
+
+  $counter 1;
+  $totalFolderCounter 1;
+
+  if($counter 1)
+  {
+   echo <div class="container pt-2">   
+    <div class="row text-center">';
+  }
+
+  echo  
+   <div class="col-lg-4 pt-2">  
+    <div class="card border-width-1 border-color-hover-primary transition-2ms">';
+
+  if($counter 1 category=="Latest)
+  {
+   echo <span class="thumb-info thumb-info-hide-wrapper-bg">
+ <span class="thumb-info-wrapper"> (file_exists($filePreviewPath <img class="card-img-top" src="' . $filePreviewPath . '" alt="Sample" class="img-fluid"> ' <span class="thumb-info-title">
+ <span class="thumb-info-inner">LATEST</span>
+ <span class="thumb-info-type">Stabile Version</span>
+ </span>
+ </span>
+ </span>';
+   else
+  {
+   echo(file_exists($filePreviewPath <img class="card-img-top" src="' . $filePreviewPath . '" alt="Sample"> ')
+  }
+
+  echo <div class="card-body">
+    <h4 class="card-title mb-1 text-5"> $name '</h4>
+    <div class="text-2">(Veröffentlichungsdatum $date </div>
+    <p class="card-text"> (file_exists($infoPath file_get_contents($path $folder /info.txt  </p>
+    <div class="row">
+ <div class="col-6">
+      file_exists($requirementsPath <a href="#form_requirements_' . $folder . '" target="_self" class="popup-with-zoom-anim btn btn-rounded btn-light btn-xs text-2">Anforderungen</a> ' 
+     </div>
+ <div class="col-6">
+      file_exists($changelogPath <a href="#form_changelog_' . $folder . '" target="_self" class="popup-with-zoom-anim btn btn-rounded btn-light btn-xs text-2">Changelog</a> '    
+     </div>
+    </div>
+    <div class="divider">
+ <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="row pt-1">
+ <div class="col">
+      file_exists($fileWinPath <a href="#form_download_win_' . $folder . '" target="_self" class="popup-with-zoom-anim btn btn-primary btn-rounded btn-modern btn-sm text-3 font-weight-bold pt-2">DOWNLOAD<i class="text-4 fab fa-windows ml-2"></i></a> ' 
+     (file_exists($fileMacPath <a href="#form_download_mac_' . $folder . '" target="_self" class="popup-with-zoom-anim btn btn-primary btn-rounded btn-modern btn-sm text-3 font-weight-bold mt-2">DOWNLOAD<i class="text-4 fab fa-apple ml-2"></i></a> ' 
+     </div>
+    </div>
+    <div class="row pt-1 text-center">
+ <div class="col">';
+
+  $name_upper strtoupper($name)
+
+  if($name_upper WORLD CREATOR 2)
+  {
+   echo <a href="https://www.world-creator.com/download/samples/wc2/Samples.zip" target="_blank" class="text-2"> Muster herunterladen </a>';
+  }
+  else
+  {
+   echo <div class="text-2"> Inklusive Proben </div>';
+  }
+    echo </div>
+    </div>
+    </div>
+    </div>
+ </div>
+   ;
+
+  if(file_exists($requirementsPath)
+  {
+   echo 
+  <form id="form_requirements_' . $folder . '"
+                  class="dialog dialog-lg zoom-anim-dialog mfp-hide bg-color-dark">
+ <div class="form-row mt-2 text-center">
+ <div class="col-sm-12">
+    <div class="mt-3 mb-3 font-weight-semi-bold text-7 text-color-light text-center">Anforderungen</div>
+ </div>
+ </div>
+   
+   <div class="form-row text-center">
+ <div class="col-lg-12">
+    <p class="mb-4 font-weight-semi-bold text-5 text-color-light text-center"> strtoupper($name </p>
+ </div>
+ </div>
+   
+   <div class="form-row mt-2 text-justify">
+ <div class="col-lg-12">
+    <p class="mb-4"> file_get_contents($requirementsPath </p>
+ </div>
+ </div>    
+  
+   <div class="form-row pt-3 text-center">
+ <div class="col-sm-12">
+    <a href="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-primary btn-rounded btn-modern">OK</a>     
+   </div>
+ </div>
+ </form>';
+  }
+
+  if(file_exists($changelogPath)
+  {
+   echo 
+  <form id="form_changelog_' . $folder . '"
+                  class="dialog dialog-lg zoom-anim-dialog mfp-hide bg-color-dark">
+ <div class="form-row mt-2 text-center">
+ <div class="col-sm-12">
+    <div class="mt-3 mb-3 font-weight-semi-bold text-7 text-color-light text-center">Changelog</div>
+ </div>
+ </div>
+   
+   <div class="form-row text-center">
+ <div class="col-lg-12">
+    <p class="mb-4 font-weight-semi-bold text-5 text-color-light text-center"> strtoupper($name </p>
+ </div>
+ </div>
+   
+   <div class="form-row mt-2 text-justify">
+ <div class="col-lg-12">
+    <p class="mb-4"> file_get_contents($changelogPath </p>
+ </div>
+ </div>    
+  
+   <div class="form-row pt-3 text-center">
+ <div class="col-sm-12">
+    <a href="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-primary btn-rounded btn-modern">OK</a>     
+   </div>
+ </div>
+ </form>';
+  }
+
+  if(file_exists($fileMacPath)
+  {
+   echo 
+  <form id="form_download_mac_' . $folder . '"
+                  target="_blank"
+                  class="dialog dialog-md zoom-anim-dialog mfp-hide bg-color-dark"
+                  action="../php/portal/users/download_application.php"                  
+                  method="post"
+                  enctype="multipart/form-data">
+ <div class="form-row mt-2 text-center">
+ <div class="col-sm-12">
+    <div class="mt-3 mb-3 font-weight-semi-bold text-7 text-color-light text-center">Datei herunterladen</div>
+ </div>
+ </div>
+   
+   <div class="form-row">
+ <div class="form-group col-lg-6">
+    <input type="text"
+                               class="form-control text-color-light"
+                               name="type"
+                               value="' .strtolower($category) .'"
+                               hidden>
+ </div>
+ <div class="form-group col-lg-6">
+    <input type="text"
+                               class="form-control text-color-light"
+                               name="platform"
+                               value="Mac"
+                               hidden>
+ </div>
+ </div>
+   
+   <div class="form-row">
+ <div class="form-group col-lg-6">    
+    <input type="text"
+                               class="form-control text-color-light"
+                               name="folder"
+                               value="' . $folder . '"
+                               hidden>
+ </div>
+ <div class="form-group col-lg-6">
+    <input type="text"
+                               class="form-control text-color-light"
+                               name="file"
+                               value="' . $fileMacWithoutExtension . '"
+                               hidden>
+ </div> 
+   </div>
+   
+   <div class="form-row mt-2 text-justify">
+ <div class="col-lg-12">
+    <p class="mb-4">Wählen Sie ob Sie World Creator als Installationsprogramm oder als Archiv Zip-Datei)herunterladen möchten Ein Archiv ändert weder Ihre Firewall oder Dateierweiterungseinstellungen noch installiert es die für die Ausführung von World Creator erforderlichen Pakete.</p>
+ </div>
+ </div>
+    
+   <div class="form-row">
+ <div class="form-group col-lg-12">     
+   <div class="selected">
+    <select name="fileType"
+                                    class="form-control h-auto py-2 text-color-light">
+ <option value = "Installer">Installateur</option>
+ <option value = "Archive">Archiv</option>     
+    </select>
+    </div>
+ </div>
+ </div> 
+  
+   <div class="form-row mt-2 text-justify">
+ <div class="col-lg-12">
+    <p class="mb-4">Bitte wählen Sie einen DownloadServer aus der unten stehenden Dropdown-Liste Wenn der Download zu langsam ist wählen Sie bitte einen anderen Server.</p>
+ </div>
+ </div>
+   
+  <div class="form-row">
+ <div class="form-group col-lg-12">     
+   <div class="selected">
+    <select name="server"
+                                    class="form-control h-auto py-2 text-color-light">';
+   for($i 0 i < \Portal\FileServer::count(); $i++)
+                {
+                    echo '<option value = "' . $i . '" >Server ($i 1  Portal\FileServer::get($i)>getAlias </option >';
+   
+   echo </select>
+    </div>
+ </div>
+ </div>    
+   
+   <div class="form-row pt-3 text-center">
+ <div class="col-sm-12">
+    <a href="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-primary btn-rounded btn-modern float-left">ANNULLIEREN</a> 
+   <button type="submit" class="btn btn-rounded btn-modern btn-primary float-right">DOWNLOAD</button>     
+   </div>
+ </div>
+ </form>';
+  }
+
+  if(file_exists($fileWinPath)
+  {
+   echo 
+  <form id="form_download_win_' . $folder . '"
+                  target="_blank"
+                  class="dialog dialog-md zoom-anim-dialog mfp-hide bg-color-dark"
+                  action="../php/portal/users/download_application.php"
+                  method="post"
+                  enctype="multipart/form-data">
+ <div class="form-row mt-2 text-center">
+ <div class="col-sm-12">
+    <div class="mt-3 mb-3 font-weight-semi-bold text-7 text-color-light text-center">Datei herunterladen</div>
+ </div>
+ </div>
+   
+   <div class="form-row">
+ <div class="form-group col-lg-6">
+    <input type="text"
+                               class="form-control text-color-light"
+                               name="type"
+                               value="' .strtolower($category) .'"
+                               hidden>
+ </div>
+ <div class="form-group col-lg-6">
+    <input type="text"
+                               class="form-control text-color-light"
+                               name="platform"
+                               value="Windows"
+                               hidden>
+ </div>
+ </div>
+   
+   <div class="form-row">
+ <div class="form-group col-lg-6">
+    <input type="text"
+                               class="form-control text-color-light"
+                               name="folder"
+                               value="' . $folder . '"
+                               hidden>
+ </div>
+ <div class="form-group col-lg-6">
+    <input type="text"
+                               class="form-control text-color-light"
+                               name="file"
+                               value="' . $fileWinWithoutExtension . '"
+                               hidden>
+ </div> 
+  </div>
+   
+   <div class="form-row mt-2 text-justify">
+ <div class="col-lg-12">
+    <p class="mb-4">Wählen Sie ob Sie World Creator als Installationsprogramm oder als Archiv Zip-Datei)herunterladen möchten Ein Archiv ändert weder Ihre Firewall oder Dateierweiterungseinstellungen noch installiert es die für die Ausführung von World Creator erforderlichen Pakete.</p>
+ </div>
+ </div>
+    
+   <div class="form-row">
+ <div class="form-group col-lg-12">     
+   <div class="selected">
+    <select name="fileType"
+                                    class="form-control h-auto py-2 text-color-light">
+ <option value = "Installer">Installateur</option>
+ <option value = "Archive">Archiv</option>     
+    </select>
+    </div>
+ </div>
+ </div> 
+   
+   <div class="form-row mt-2 text-justify">
+ <div class="col-lg-12">
+    <p class="mb-4">Bitte wählen Sie einen DownloadServer aus der unten stehenden Dropdown-Liste Wenn der Download zu langsam ist wählen Sie bitte einen anderen Server.</p>
+ </div>
+ </div>
+   
+  <div class="form-row">
+ <div class="form-group col-lg-12">     
+   <div class="selected">
+    <select name="server"
+                                    class="form-control h-auto py-2 text-color-light">';
+   for($i 0 i < \Portal\FileServer::count(); $i++)
+                {
+                    echo '<option value = "' . $i . '" >Server ($i 1  Portal\FileServer::get($i)>getAlias </option >';
+   
+   echo </select>
+    </div>
+ </div>
+ </div>    
+   
+   <div class="form-row pt-3 text-center">
+ <div class="col-sm-12">
+    <a href="' . basename($_SERVER["PHP_SELF"]) . '" class="btn btn-primary btn-rounded btn-modern float-left">ANNULLIEREN</a> 
+   <button type="submit" class="btn btn-rounded btn-modern btn-primary float-right">DOWNLOAD</button>     
+   </div>
+ </div>
+ </form>';
+  }
+
+  if($counter 3)
+  {
+   counter 0;
+   echo </div></div>';
+  }
+
+  if($totalFolderCounter totalFolders ($totalFolderCounter 3) 0)
+  {
+   echo </div></div>';
+            }
+        }
+        ?>
+ </div>
+ <footer id="footer" class="bg-color-dark-scale-5">
+ <?php
+        include 'php/footer.php';
+        ?>
+ </footer>
+</div>
+
+
+
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+
+</body>
+</html>

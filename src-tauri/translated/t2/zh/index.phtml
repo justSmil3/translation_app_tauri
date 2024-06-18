@@ -1,0 +1,1882 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handle();
+
+?>
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <?php
+    \Portal\Utility::writeMetaData('', '','');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.ico"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+在to+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-pro-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- "(《世界人权宣言》)me CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- "(《世界人权宣言》)me Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+
+        window.onload = function ()
+        {
+            Open在formation();
+        };
+
+        function Open在formation()
+        {
+            var shown = sessionStorage.getItem('alreadyShow');
+
+            if (shown != "shown")
+            {
+                $("#info-window").modal('show');
+                sessionStorage.setItem('alreadyShow', 'shown');
+            }
+        }
+    </script>
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+
+<body class="loading-overlay-showing"
+      data-loading-overlay
+      data-plugin-options="{'hideDelay': 500, 'effect': 'percentageProgress1'}">
+<div class="loading-overlay loading-overlay-percentage bg-color-dark-scale-5">
+    <div class="page-loader-progress-wrapper">
+        <span class="page-loader-progress text-color-light">0</span>
+        <span class="page-loader-progress-symbol text-color-light">%</span>
+    </div>
+</div>
+
+<?php
+include 'php/gdpr.php';
+?>
+
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main" class="main">
+
+        <?php
+
+        if(!isset($_SERVER['HTTP_USER_AGENT']))
+        {
+            echo '<section class="section border-0 m-0" data-video-path="video/Trailer_01.mp4" data-plugin-video-background style="height: 100vh">';
+        } else
+        {
+            $browserName = \Portal\Utility::getBrowser($_SERVER['HTTP_USER_AGENT']);
+
+            if($browserName == 'Safari')
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 style="background-image: url(../img/pages/World-Creator-01.webp); 
+                                 background-size: cover; 
+                                 background-position: center; 
+                                 height: 100vh;">';
+            } else
+            {
+                echo '
+                        <section class="video section border-0 m-0"
+                                 data-video-path="video/Trailer_01.mp4"
+                                 data-plugin-video-background                                 
+                                 style="height: 100vh">';
+            }
+        }
+
+        ?>
+
+        <div class="container text-center z-index-1 h-100">
+            <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                <p class="text-12 line-height-1 font-weight-medium text-color-light appear-animation"
+                   data-appear-animation="fade在DownShorter"
+                   data-plugin-options="{'minWindowWidth': 0}">创造地形和景观</p>
+                <p class="text-15 mb-5 line-height-1 font-weight-extra-bold text-color-light appear-animation"
+                   data-appear-animation="blur在"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="300">超前</p>
+                <p class="text-10 mb-4 line-height-2 font-weight-bold text-color-light opacity-9 appear-animation"
+                   data-appear-animation="blur在"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="500">一切都是实时的。一切？一切</p>
+                <a href="buy.phtml"
+                   class="btn btn-rounded btn-primary btn-modern font-weight-bold text-3 py-3 btn-px-5 mt-2 appear-animation"
+                   data-appear-animation="fade在UpShorter"
+                   data-appear-animation-delay="700"
+                   data-appear-animation-duration="1.2s"
+                   data-plugin-options="{'minWindowWidth': 0}">马上发挥创意</a>
+            </div>
+            <a href="#main"
+               class="slider-scroll-button slider-scroll-button-light position-absolute bottom-10 left-50pct transform3dx-n50"
+               data-hash
+               data-hash-offset="67"></a>
+        </div>
+
+        <?php
+        echo '</section>';
+        ?>
+
+        <div id="main" class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://2k.com/en-US/" target="_blank"><img class="img-fluid"
+                                                                     src="../img/logos/companies/2k.webp"
+                                                                     alt="2K"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.a52.com/" target="_blank"><img class="img-fluid"
+                                                                    src="../img/logos/companies/a52.webp"
+                                                                    alt="a52"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://atlus.com/" target="_blank"><img class="img-fluid"
+                                                                  src="../img/logos/companies/atlus.webp"
+                                                                  alt="Atlus"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://avalanchestudios.com/" target="_blank"><img class="img-fluid"
+                                                                             src="../img/logos/companies/avalanchestudio.webp"
+                                                                             alt="Avalanche Studios"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://de.bandainamcoent.eu/" target="_blank"><img class="img-fluid"
+                                                                             src="../img/logos/companies/bandainamco.webp"
+                                                                             alt="Bandai Namco"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.bioware.com/" target="_blank"><img class="img-fluid"
+                                                                        src="../img/logos/companies/bioware.webp"
+                                                                        alt="Bioware"/></a>
+            </div>
+        </div>
+
+        <div class="container bg-color-dark-scale-5 pt-5">
+            <div class="row text-center pt-5">
+                <div class="col p-0 appear-animation pt-5" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <h1 class="text-transform-none text-12 font-weight-bold line-height-2 pt-5">欢迎来到下一代<br>创造地形和景观</h1>
+                </div>
+            </div>
+                <div class="row text-center pt-2">
+                <div class="col p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <p class="text-5 line-height-4 font-weight-semi-bold"><b class="text-color-light">观看以下视频</b> 并见证 世界创造者 专业的工作流程！你一定不会相信，有了这款神奇的工具，你能实现什么。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://player.vimeo.com/video/925507071?h=ba6f0c6d5d" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+
+        <div class="container bg-color-dark-scale-5 pb-5">
+            <div class="row text-center">
+                <div class="col p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <h1 class="text-transform-none text-12 font-weight-bold line-height-2">精英实时地形创作工具</h1>
+
+                </div>
+            </div>
+            <div class="row text-justify pt-2 pb-5">
+                <div class="col p-0 appear-animation pb-5" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <p class="text-5 line-height-4 font-weight-semi-bold pb-5">它拥有无与伦比的动力和精度、 世界创造者 是视频游戏、模拟和视觉效果行业的首选软件。体验当今最精细、最逼真的地形生成！
+                        世界创造者 是实时生成和设计令人惊叹的 3D 地形、景观和环境的终极工具。
+                </div>
+            </div>
+        </div>
+
+        <!-- ********************************************************************************************** -->
+        <!-- ********************************* 终极地形工具 ********************************** -->
+        <!-- ********************************************************************************************** -->
+        <div class="row pt-5 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.blizzard.com/de-de/" target="_blank"><img class="img-fluid"
+                                                               src="../img/logos/companies/blizzard.webp"
+                                                               alt="Blizzard"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://bluebyte.ubisoft.com/de/" target="_blank"><img class="img-fluid"
+                                                                src="../img/logos/companies/bluebyte.webp"
+                                                                alt="BlueByte"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.blur.com/" target="_blank"><img class="img-fluid"
+                                                     src="../img/logos/companies/blur.webp"
+                                                     alt="Blur"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.bluepointgames.com/" target="_blank"><img class="img-fluid"
+                                                               src="../img/logos/companies/bluepoint.webp"
+                                                               alt="Blue Point Games"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.bossastudios.com/" target="_blank"><img class="img-fluid"
+                                                             src="../img/logos/companies/bossastudios.webp"
+                                                             alt="Bossa Studio"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.capcom.com/" target="_blank"><img class="img-fluid"
+                                                       src="../img/logos/companies/capcom.webp"
+                                                       alt="Capcom"/></a>
+            </div>
+        </div>
+        <section class="section section-height-4 match-height border-top-0 my-0 section-center" style="background-image: url(../img/pages/World-Creator-03.webp); min-height: 1000px;">
+            <div class="row text-center h-100 mx-0">
+                <div class="col">
+                    <h1 class="text-color-light line-height-2 font-weight-extra-bold text-14 mb-3">
+                        终极地形工具</h1>
+                    <h2 class="text-color-light lead tall text-9">
+                        无出其右</h2>
+                    <p class="text-5 text-color-light line-height-4 font-weight-semi-bold mb-4">世界创造者 不仅与众不同，而且是革命性的！它的创造力是无限的，使用和探索它绝对是一种享受。</p>
+                </div>
+            </div>
+        </section>
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.certainaffinity.com/" target="_blank"><img class="img-fluid"
+                                                                src="../img/logos/companies/certain_affinity.webp"
+                                                                alt="Certain Affinity"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.cinesite.com/" target="_blank"><img class="img-fluid"
+                                                         src="../img/logos/companies/cinesite.webp"
+                                                         alt="Cinesite"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.codemasters.com/" target="_blank"><img class="img-fluid"
+                                                            src="../img/logos/companies/codemasters.webp"
+                                                            alt="Codemasters"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.crytek.com/" target="_blank"><img class="img-fluid"
+                                                       src="../img/logos/companies/crytek.webp"
+                                                       alt="Crytek"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://cyborn.be/" target="_blank"><img class="img-fluid"
+                                                  src="../img/logos/companies/cyborn.webp"
+                                                  alt="Cyborn"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.cygames.co.jp/en/" target="_blank"><img class="img-fluid"
+                                                             src="../img/logos/companies/cygames.webp"
+                                                             alt="Cygames"/></a>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">任何大小的地形</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">与 世界创造者您还可以使用"...... "创建任何大小的地形，没有任何限制！无论是几米的小地形，还是数千公里的大地形，无论是方形还是非方形，都有无限可能。</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925029210?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">72 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/04.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/16.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">地形细节无限</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">与 our new and innovative terrain system, you can create terrains with an unlimited amount of detail! You can achieve meter precision, centimeter precision, and even more.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/854616459?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">166 秒 - 新网站启用，新视频正在制作中</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">基于生物体的工作流程</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">与 世界创造者您可以创建一个只受想象力限制的世界！这些世界由多种地形和景观风格（称为生物群落）组成，它们彼此无缝融合，每个群落都有自己独特的颜色和滤镜设置。多亏了 世界创造者新的地形系统，您可以高效地实时处理大量数据，开辟一个全新的可能性世界，包括基于生物群落的生成、生物群落绘制、生物群落遮蔽等。</p>
+                                <br>
+                                <div class="feature-box align-items-center">
+                                    <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                        <i class="fas fa-play text-1"></i>
+                                    </div>
+                                    <div class="feature-box-info">
+                                        <h4 class="line-height-3 text-3 mb-0">正在制作展示视频</h4>
+                                        <p class="text-2 mb-0 line-height-5">由于新网站</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 400px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/29.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/19.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">无损</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">与 世界创造者您可以自信地使用设计和程序技术制作地形。这种可能性是无穷无尽的，地形的其他部分也会轻松符合你的设想。</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925446764?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">54 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ********************************************************************************************** -->
+        <!-- ********************************** 程序满足设计 *********************************** -->
+        <!-- ********************************************************************************************** -->
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.daybreakgames.com/home"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/daybreakgames.webp"
+                                        alt="Daybreak Games"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.deck13.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/deck13.webp"
+                                        alt="Deck13"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.dice.se/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/dice.webp"
+                                        alt="DICE"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.digicpictures.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/digipic.webp"
+                                        alt="Digipic"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.digitalextremes.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/digitalextremes.webp"
+                                        alt="Digital Extremes"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.dlr.de/dlr/desktopdefault.aspx/tabid-10002/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/dlr.webp"
+                                        alt="DLR"/></a>
+            </div>
+        </div>
+        <section class="section section-height-4 match-height border-top-0 my-0 section-center" style="background-image: url(../img/pages/World-Creator-09.webp); min-height: 1000px;">
+            <div class="row text-center h-100 mx-0">
+                <div class="col">
+                    <h1 class="text-color-light line-height-2 font-weight-extra-bold text-14 mb-3">
+                        程序满足设计</h1>
+                    <h2 class="text-color-light lead tall text-9">
+                        灵光一现</h2>
+                    <p class="text-5 text-color-light line-height-4 font-weight-semi-bold mb-4">与 世界创造者您可以满怀信心和热情，将程序和设计工作流程完美地结合起来<br>以创建您想要的精确地形！</p>
+                </div>
+            </div>
+        </section>
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://eidosmontreal.com/en"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/eidos_montreal.webp"
+                                        alt="Eidos Montreal"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://falconscreativegroup.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/falconscreativegroup.webp"
+                                        alt="Falcons Creative Group"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://firaxis.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/firaxis.webp"
+                                        alt="Firaxis"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://firesprite.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/firesprite.webp"
+                                        alt="Firesprite"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.frimastudio.com/en/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/frima.webp"
+                                        alt="FRIMA"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.funcom.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/funcom.webp"
+                                        alt="Funcom"/></a>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">河流</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">在 世界创造者 is incredibly easy and efficient. 与 just one click, our system automates the river creation process and gives you full control to re-design it as you see fit. "(《世界人权宣言》) terrain will adapt automatically, allowing you to create stunning waterfalls, river deltas, and everything in between. Whether you need small streams or large, complex river structures, 世界创造者 为您提供服务。</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925814957?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">143 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/30.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/08.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+                 <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">高级雕刻</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">与 世界创造者您可以使用这款软件的内置雕刻工具，自信地从头开始创建令人惊叹的地形，或轻松修改现有景观。该软件配备了多种笔刷，你甚至还可以导入自己的自定义笔刷，让你的创作真正独一无二。直观的界面使其与任何知名的绘画应用程序一样简单易用，因此您可以立即开始使用。</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925058719?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">140 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">网格雕刻</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">与 our exceptional grid-based terrain sculpting algorithm, you can effortlessly create breathtaking terrain shapes in no time! Not only that, but you can also perform specific operations on existing terrain features, such as copying, rotating, tilting, and scaling.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925358252?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">99 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/09.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/11.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">地形冲压</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">与 世界创造者此外，您还可以轻松导入自定义的高度、深度、位移和颜色贴图，作为创建和扩展现有地形的印章，甚至从头开始创建地面纹理！不仅如此，你还可以从其他应用程序中导入 DEM 数据或地形，并在其中组合出新的景观。 世界创造者 实时体验。体验创造自己世界的力量 世界创造者!</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/854599230?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">169 秒 - 因新网站而正在制作新视频</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">程序盖章</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">We are thrilled to announce the addition of Procedural Stamps to our Terrain Stamping feature! 与 stamps for Volcanos, Islands, Cracks, and more, you can now save valuable time creating specific terrain features. It's like having a terrain generator right inside 世界创造者这样，您就可以轻松地为所需的任何地形类型或特征创建印记。</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925363250?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">150 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/12.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/15.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">路径工具</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">我们基于矢量和距离场的路径工具可让您创建河流、道路、山脉、峡谷等，给您无与伦比的创作自由。</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925519721?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">145 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">真实世界数据流</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">报名请访问 <a href="https://www.maptiler.com" target="_blank">地图跟踪器</a> 并通过 世界创造者 to effortlessly import the locations of your choice! 与 世界创造者, utilizing real-world data for your productions is a breeze. Remember, you must sign up on 地图跟踪器 to use the service.</p>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <br>
+                                        <a class="text-decoration-none lightbox"
+                                           href="https://vimeo.com/925321330?share=copy"
+                                           data-plugin-options="{'type':'iframe'}">
+                                            <div class="feature-box align-items-center">
+                                                <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                                    <i class="fas fa-play text-1"></i>
+                                                </div>
+                                                <div class="feature-box-info">
+                                                    <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                                    <p class="text-2 mb-0 line-height-5">129 秒</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 float-right">
+                                        <p class="mt-4">
+                                            <a href="https://www.maptiler.com" target="_blank">
+                                                <img src="../img/logos/companies/Maptiler-Logo-Grey.webp" alt="地图跟踪器 Logo">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/13.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/22.webp">
+                        <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                    </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">程序过滤功率</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">在 世界创造者, procedural filters are expertly applied to transform a terrain shape into a variety of stunning landscapes. Whether you're looking to create deserts, snowy mountains, arid canyons, volcano islands, wet highlands, Moon-like cratered landscapes or Mars-like worlds, our filters have got you covered. 与 the ability to apply erosions and sediments, you can easily style your terrain to achieve the perfect look in no time at all.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925440545?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">61 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">程序性材料权</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-5">世界创造者 拥有令人难以置信的材质系统！您可以定义颜色、渐变、卫星贴图、纹理和 Adobe Substance 材质，为每一个地形特征着色。无论您是想要简单的颜色来快速为地形着色，还是想要纹理和 Adobe Substance 材质来让地形看起来更美观，或是想要渐变和卫星贴图来将着色过程提升到最高水平、 世界创造者 为您提供服务。 与 its real-time rendering, you can create outstanding landscapes that will leave you in awe!</p>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <br>
+                                        <div class="feature-box align-items-center">
+                                            <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                                <i class="fas fa-play text-1"></i>
+                                            </div>
+                                            <div class="feature-box-info">
+                                                <h4 class="line-height-3 text-3 mb-0">正在制作展示视频</h4>
+                                                <p class="text-2 mb-0 line-height-5">由于新网站</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 float-right">
+                                        <p class="mt-4">
+                                            <a href="https://www.adobe.com" target="_blank">
+                                                <img src="../img/logos/companies/Adobe-Logo-Grey.webp" alt="Adobe Logo">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 0.0}" data-image-src="../img/pages/32.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ********************************************************************************************** -->
+        <!-- ********************************* 驱动强大的模拟 ********************************* -->
+        <!-- ********************************************************************************************** -->
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.ghostvfx.com"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/ghost_vfx.webp"
+                                        alt="GHOST VFX"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://hotheadgames.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/hotheadstudio.webp"
+                                        alt="Hothead Studio"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://hybride.com/en"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/hybride.webp"
+                                        alt="Hybride"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://improbable.io/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/improbable.webp"
+                                        alt="Improbable"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://corp.joycity.com"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/joycity.webp"
+                                        alt="Joy City"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.kylotonn.com/en/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/ktracing.webp"
+                                        alt="KT Racing"/></a>
+            </div>
+        </div>
+        <section class="section section-height-4 match-height border-top-0 my-0 section-center" style="background-image: url(../img/pages/World-Creator-08.webp); min-height: 1000px;">
+            <div class="row text-center h-100 mx-0">
+                <div class="col">
+                    <h1 class="text-color-light line-height-2 font-weight-extra-bold text-14 mb-3">
+                        驱动强大的模拟</h1>
+                    <h2 class="text-color-light lead tall text-9">
+                        真实地形物理</h2>
+                    <p class="text-5 text-color-light line-height-4 font-weight-semi-bold mb-4">与 our Simulation Layers, you can confidently run multiple physics simulations simultaneously! Experience the power of our technology today.</p>
+                </div>
+            </div>
+        </section>
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.limbic-entertainment.de/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/limbic.webp"
+                                        alt="Limbic"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.liongamelion.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/liongamelion.webp"
+                                        alt="Lion Game Lion"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://mawiunited.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/mawi.webp"
+                                        alt="MAWI"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.microsoftstudios.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/microsoft.webp"
+                                        alt="Microsoft"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://us.ncsoft.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/ncsoft.webp"
+                                        alt="NC Soft"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://neocoregames.com/en"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/neocoregames.webp"
+                                        alt="Neocoregames"/></a>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/23.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">沙</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">Creating a Simulation Layer and choosing the type of simulation, such as sand, is all it takes to get started. 与 the option to use brushes or procedural techniques, you can easily drop an adjustable amount of sand on the terrain and watch it distribute. 我们的 user-friendly approach makes complexity accessible to everyone.</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925341914?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">99 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">雪</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">与 世界创造者现在，您可以自信地在您的地形上模拟雪了！工作流程与沙地模拟（见上文）一样简单，但根据您的模拟设置，结果会截然不同。您甚至可以定义希望雪出现的特定区域，就是这么简单！</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925429996?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">61 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/24.webp">
+                    <p class="pl-3 pt-2 text-4 text-color-white float-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="parallax order-lg-1 order-1 col-lg-6 match-height p-0" style="min-height: 700px;" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="../img/pages/33.webp">
+                    <p class="pr-lg-3 pl-sm-3 pt-2 text-4 text-color-white float-lg-right float-sm-left alternative-font appear-animation" data-appear-animation="fade在" data-appear-animation-delay="200">在 世界创造者</p>
+                </div>
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">流体</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-4">流体模拟是一种用途极为广泛的工具，可用于为河流、湖泊和海洋注入水，以及创建熔岩和其他类型的流体互动。通过定义流体产卵的特定位置（如图所示）、 世界创造者 剩下的就交给我们吧。这真是无限的可能！</p>
+                                <br>
+                                <a class="text-decoration-none lightbox"
+                                   href="https://vimeo.com/925354920?share=copy"
+                                   data-plugin-options="{'type':'iframe'}">
+                                    <div class="feature-box align-items-center">
+                                        <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                            <i class="fas fa-play text-1"></i>
+                                        </div>
+                                        <div class="feature-box-info">
+                                            <h4 class="line-height-3 text-3 mb-0">观看视频</h4>
+                                            <p class="text-2 mb-0 line-height-5">100 秒</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- ********************************************************************************************** -->
+        <!-- ********************************** 通用兼容性 *********************************** -->
+        <!-- ********************************************************************************************** -->
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <img class="img-fluid"
+                     src="../img/logos/companies/nexon.webp"
+                     alt="Nexon"/>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.paradoxinteractive.com/en/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/paradox_interactive.webp"
+                                        alt="Paradox 在teractive"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.perfectworld.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/perfect_world.webp"
+                                        alt="Perfect World"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.piranha-bytes.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/piranhabytes.webp"
+                                        alt="Piranha Bytes"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.playground-games.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/playgroundgames.webp"
+                                        alt="Playgroundgames"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://pocketgems.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/pocketgems.webp"
+                                        alt="Pocket Gems"/></a>
+            </div>
+        </div>
+        <section class="section section-height-4 match-height border-top-0 my-0 section-center" style="background-image: url(../img/pages/World-Creator-07.webp); min-height: 1000px;">
+            <div class="row text-center h-100 mx-0">
+                <div class="col">
+                    <h1 class="text-color-light line-height-2 font-weight-extra-bold text-14 mb-3">
+                        通用兼容性</h1>
+                    <h2 class="text-color-light lead tall text-9">
+                        几乎可连接任何设备</h2>
+                    <p class="text-5 text-color-light line-height-4 font-weight-semi-bold mb-4">每个专业 3D 应用程序都会消耗 世界创造者 数据的信心！</p>
+                </div>
+            </div>
+        </section>
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.quanticdream.com/en"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/quanticdream.webp"
+                                        alt="Quantic Dream"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.rsvfx.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/rocketscience.webp"
+                                        alt="Rocketscience"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.sae.edu/deu/de"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/sae.webp"
+                                        alt="SAE"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.square-enix.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/squareenix.webp"
+                                        alt="Square Eenix"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://styleframe.de/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/styleframe.webp"
+                                        alt="Styleframe"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.sumo-digital.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/sumodigital.webp"
+                                        alt="Sumo Digital"/></a>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-1 order-1 col-lg-6 match-height p-0">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col">
+                            <div id="applications">
+                                <div class="row mt-4 text-center">
+                                    <div class="col-4">
+                                        <a href="https://www.blender.org/"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/blender.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="搅拌机">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">搅拌机</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.maxon.net"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/cinema4d.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="Cinema 4D">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">Cinema 4D</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.sidefx.com"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/houdini.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="胡迪尼">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">胡迪尼</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://unity.com/"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/engines/unity.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="Unity 引擎">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">Unity 引擎</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.unrealengine.com"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/engines/unreal.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="虚幻引擎">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">虚幻引擎</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-lg-0 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">桥梁工具</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-5">我们的 世界创造者 bridge tools / plugins are available for 搅拌机, Cinema4D, SideFX 胡迪尼, Unity, and Unreal. 与 just a single click, you can transfer a terrain from 世界创造者 到任何这些应用程序。体验无缝集成和毫不费力的工作流程。</p>
+                                <ul class="list list-icons list-icons-sm pt-2">
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 世界创造者 to 搅拌机 Bridge</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 世界创造者 到 Cinema 4D 桥接器</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 世界创造者 to 胡迪尼 Bridge</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 世界创造者 至团结桥</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 世界创造者 至虚幻桥</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row">
+                <div class="order-lg-1 order-0 col-lg-6 p-0 appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                    <section class="section section-height-5 match-height border-top-0 my-0 bg-color-dark-scale-5">
+                        <div class="row justify-content-center align-items-center h-100 mx-0">
+                            <div class="col-lg-8">
+                                <h3 class="text-transform-none text-12 font-weight-bold line-height-2 pb-4">格式和应用</h3>
+                                <p class="text-5 line-height-4 font-weight-semi-bold mb-5">世界创造者 该软件支持多种格式的输出，包括 Collada、OBJ、FBX、GLTF2、STL、TIFF、PNG、RAW（16 或 32 位）和 EXR（32 位）等。这确保您的资产可以加载到任何严肃的 3D DCC 应用程序或游戏引擎中，提供最广泛的行业覆盖范围。准备好通过以下功能将您的创作提升到新的水平吧 世界创造者!</p>
+                                <ul class="list list-icons list-icons-sm pt-2">
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 高度地图导出</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 彩色地图导出</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 泼溅地图导出</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 正态地图导出</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 粗糙度图输出</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 金属性-地图导出</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> AO 地图导出</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 导出地形图</li>
+                                    <li class="text-5 font-weight-semi-bold line-height-4"><i class="fas fa-caret-right"></i> 网格导出</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="order-lg-0 order-1 col-lg-6 match-height pb-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col">
+                            <div id="applications">
+                                <div class="row mt-4 text-center">
+                                    <div class="col-4">
+                                        <a href="https://www.arnoldrenderer.com"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/arnold.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="阿诺德">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">阿诺德</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.blender.org/"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/blender.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="搅拌机">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">搅拌机</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.maxon.net"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/cinema4d.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="Cinema 4D">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">Cinema 4D</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.isotropix.com"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/clarisse.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="克拉丽斯">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">克拉丽斯</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.cryengine.com"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/engines/cry.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="哭泣引擎">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">哭泣引擎</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.daz3d.com/get_studio"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/dazstudio.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="DAZ 工作室">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">DAZ 工作室</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <a href="https://flaxengine.com"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/engines/flax.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="亚麻发动机">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">亚麻发动机</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://godotengine.org"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/engines/godot.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="戈多引擎">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">戈多引擎</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.sidefx.com"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/houdini.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="胡迪尼">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">胡迪尼</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.lightwave3d.com"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/lightwave.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="光波">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">光波</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://aws.amazon.com/de/lumberyard"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/engines/lumberyard.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="伐木场发动机">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">伐木场发动机</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.autodesk.de/products/3ds-max"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/3dsmax.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="3DS Max">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">3DS Max</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <a href="https://www.autodesk.de/products/maya"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/maya.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="玛雅人">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">玛雅人</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.autodesk.de/products/mudbox"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/mudbox.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="泥盒">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">泥盒</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://home.otoy.com/render/octane-render/"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/octane.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="辛烷值">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">辛烷值</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.adobe.com/products/photoshop.html"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/photoshop.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="Photoshop">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">Photoshop</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://quixel.com/mixer"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/quixelmixer.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="Quixel 混合器">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">Quixel 混合器</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.substance3d.com/"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/applications/substance3ddesigner.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="Substance 3D 设计器">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">Substance 3D 设计器</p>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <a href="https://unity.com/"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/engines/unity.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="Unity 引擎">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">Unity 引擎</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://unigine.com"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/engines/unigine.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="Unigine 发动机">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">Unigine 发动机</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://www.unrealengine.com"
+                                           target="_blank">
+                                            <img class="img-fluid rounded-circle mb-4"
+                                                 src="../img/logos/engines/unreal.webp"
+                                                 width="64"
+                                                 height="64"
+                                                 alt="虚幻引擎">
+                                        </a>
+                                        <p class="font-weight-semi-bold text-color-white">虚幻引擎</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ********************************************************************************************** -->
+        <!-- ******************************** 世界创建器使用起来很有趣 ********************************* -->
+        <!-- ********************************************************************************************** -->
+        <div class="row pt-3 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.take2games.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/take2gaming.webp"
+                                        alt="Take2 Gaming"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.ttgames.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/telltalegames.webp"
+                                        alt="Telltale Games"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://thqnordic.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/thqnordic.webp"
+                                        alt="THQ Nordic"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.treyarch.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/treyarch.webp"
+                                        alt="Treyarch"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.ubisoft.com/en-us"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/ubisoft.webp"
+                                        alt="Ubisoft"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://unity.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/unity.webp"
+                                        alt="Unity"/></a>
+            </div>
+        </div>
+        <section class="section section-height-4 match-height border-top-0 my-0 section-center" style="background-image: url(../img/pages/World-Creator-04.webp); min-height: 1000px;">
+            <div class="row text-center h-100 mx-0">
+                <div class="col">
+                    <h1 class="text-color-light line-height-2 font-weight-extra-bold text-14 mb-3">
+                        世界创建器使用起来很有趣</h1>
+                    <h2 class="text-color-light lead tall text-9">
+                        等等</h2>
+                    <p class="text-5 text-color-light line-height-4 font-weight-semi-bold mb-4">这款功能强大、速度超快的工具不仅使用起来非常有趣，还能带来无限的创造力。<br>此外，其梦幻般的设计一定会给人留下深刻印象！</p>
+                </div>
+            </div>
+        </section>
+        <div class="row pt-1 pb-1 bg-color-dark-scale-5">
+            <div class="col-2 text-center">
+                <a href="https://www.valvesoftware.com/de/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/valve.webp"
+                                        alt="Valve"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://virtuosgames.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/virtuos.webp"
+                                        alt="Virtuos"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.wbgames.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/wbgames.webp"
+                                        alt="WB Games"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.weltenbauer-se.com"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/weltenbauer.webp"
+                                        alt="Weltenbauer"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.xlgames.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/xlgames.webp"
+                                        alt="XL Games"/></a>
+            </div>
+            <div class="col-2 text-center">
+                <a href="https://www.zenimax.com/"
+                   target="_blank"><img class="img-fluid"
+                                        src="../img/logos/companies/zenimax.webp"
+                                        alt="Zenimax"/></a>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row appear-animation pt-5" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">光线追踪渲染</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">本页面上的每张图片都是在以下范围内按原样绘制的 世界创造者!这意味着，您在这里看到的内容与您在使用 世界创造者. We have implemented our own real-time ray-tracer that serves with amazing renders. 我们的 technology is cutting-edge and we are proud to showcase it here.</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">海量资料库</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">与 世界创造者您还可以访问由超过 138 种高质量素材组成的庞大素材库，这些素材可随时用于 Unity、虚幻、Adobe Substance 或任何其他应用程序。购买 世界创造者 今天就开始使用，轻松提升您的创作水平！这些素材最初由 RD-Textures 制作，现在免版税提供给您。</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">庞大的预设库</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">与 世界创造者, you have the power to create presets for biomes, filters, materials, exports, brushes, and much more! 我们的 extensive library of presets is designed to streamline your workflow and can be easily applied through simple drag-and-drop operations. Customize them to your liking and watch your creations come to life!</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row appear-animation" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">庞大的样本库</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">我们制作了大量地形样本，您可以将其作为自己制作的起点。这些样本也是学习的好帮手，将为您提供使用以下工具的扎实入门知识 世界创造者.此外，您还可以创建自己的样本并与社区共享。</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">大量文件</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">世界创造者的文档是对我们支持系统的完美补充。通过使用屏幕右下角的支持部件，您可以轻松找到所需的帮助，并被引导至最相关的文章。此外、 世界创造者 offers a built-in help reference that provides a comprehensive explanation of any section you may be looking for. 与 these resources at your disposal, you can be confident in your ability to navigate and utilize 世界创造者 充分发挥其潜力。</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">巨大的社区</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">"(《世界人权宣言》) 世界创造者 Discord community has impressively grown to over 13,000 users worldwide! We're proud to have over 11,000 followers on 在stagram too. This level of support is a testament to the helpful and friendly nature of our community. For the best experience, we recommend joining us on Discord where you can directly get in touch with us, the developers!</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row appear-animation pb-5" data-appear-animation="fade在UpShorter" data-appear-animation-delay="200">
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">零学习曲线</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">世界创造者 is incredibly easy to use! Built around simplicity, it is designed to be intuitive and lightning-fast for anyone who wants to create terrains. 与 世界创造者您可以在短短几分钟内创作出令人惊叹的风景，同时保持令人难以置信的控制能力。无论您是匆忙赶路，还是想深入探索、 世界创造者 为您提供服务。</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">简洁的用户界面</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">忘掉节点！忘掉那些看起来像意大利面条的复杂布线！忘掉工作时让人烦躁的多重视图和窗口！ 世界创造者的用户界面简洁、集中、直观。我们保证，您会立即感到舒适！</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-0 pt-5">
+                    <div class="row justify-content-center align-items-center h-100 mx-0">
+                        <div class="col-lg-8">
+                            <h2 class="pl-2 pr-2 font-weight-semibold text-6">大力支持</h2>
+                            <div data-plugin-readmore
+                                 data-plugin-options="{
+									'buttonOpenLabel': '<i class=\'fas fa-chevron-down text-4 ml-1\'></i>',
+									'buttonCloseLabel': '<i class=\'fas fa-chevron-up text-4 ml-1\'></i>',
+									'overlayColor': '#0f1112',
+									'align': 'right',
+									'enableToggle': false
+								}">
+                                <p class="pl-2 pr-2 line-height-4 text-5">我们的 support is not just a Facebook page - we have an excellent ticketing system that allows us to provide excellent 24/7 support. "(《世界人权宣言》) support system is also linked to our documentation, so you can get quick solutions in no time.</p>
+                                <div class="readmore-button-wrapper d-none pr-2">
+                                    <a href="#" class="text-decoration-none text-color-grey">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-color-dark-scale-5">
+            <div class="row text-center pt-5 pb-5">
+                <div class="col p-0">
+                    <h1 class="text-transform-none text-12 font-weight-bold line-height-2 pt-5">请看下面的效果图</h1>
+                    <p class="text-5 line-height-4 font-weight-semi-bold">这就是您在使用 世界创造者</p>
+                    <div class="row justify-content-center align-items-center">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="lightbox" data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}, 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
+            <div class="masonry-loader masonry-loader-showing">
+                <div class="masonry"
+                     data-plugin-masonry
+                     data-plugin-options="{'itemSelector': '.masonry-item'}">
+                    <?php
+                    $files = \Portal\Utility::getAllFiles在Directory('../img/renders');
+
+                    foreach($files as $file)
+                    {
+                        if($file == "thumbs") continue;
+
+                        echo '<div class="masonry-item">
+                                    <div class="thumb-info-floating-caption thumb-info-hide-wrapper-bg" data-title="世界创造者 在-App Render">
+                                        <a class="d-inline-block img-thumbnail img-thumbnail-no-borders mb-1 mr-1" href="../img/renders/' . $file . '">
+                                          <img class="img-fluid" src="../img/renders/thumbs/' . $file . '" alt="世界创造者 Render"/>
+                                        </a>
+                                    </div>
+                                  </div>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5 mt-0 my-0">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- "(《世界人权宣言》)me Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- "(《世界人权宣言》)me Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- "(《世界人权宣言》)me 在itialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+</body>
+</html>

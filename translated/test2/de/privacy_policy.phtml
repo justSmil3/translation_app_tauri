@@ -1,0 +1,446 @@
+<?php
+
+session_start();
+
+include_once '../php/portal/portal.php';
+
+\Portal\Maintenance::handle();
+
+?>
+<!DOCTYPE html>
+<html class="dark bg-color-dark-scale-5"
+      lang="en">
+<head>
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015744886 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1015744886'); </script>
+
+    <?php
+    \Portal\Utility::writeMetaData('', '','','en');
+    ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+          href="../img/favicon.png"
+          type="image/x-icon"/>
+    <link rel="apple-touch-icon"
+          href="../img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
+          rel="stylesheet"
+          type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet"
+          href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+          href="../vendor/animate/animate.compat.css">
+    <link rel="stylesheet"
+          href="../vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="../vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="../vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet"
+          href="../vendor/twentytwenty/css/twentytwenty.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet"
+          href="../css/theme.css">
+    <link rel="stylesheet"
+          href="../css/theme-elements.css">
+    <link rel="stylesheet"
+          href="../css/theme-blog.css">
+    <link rel="stylesheet"
+          href="../css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet"
+          href="../vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS"
+          rel="stylesheet"
+          href="../css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet"
+          href="../css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="../vendor/modernizr/modernizr.min.js"></script>
+
+    <script
+        id="fsc-api"
+        src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.5/fastspring-builder.min.js"
+        type="text/javascript"
+        data-storefront="bitethebytes.onfastspring.com/popup-company">
+    </script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 44000002580
+        };
+        !function ()
+        {
+            if ("function" != typeof window.FreshworksWidget)
+            {
+                var n = function ()
+                {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }()
+
+        window.onload = function ()
+        {
+            OpenInformation();
+        };
+
+        function OpenInformation()
+        {
+            var shown = sessionStorage.getItem('alreadyShow');
+
+            if (shown != "shown")
+            {
+                $("#info-window").modal('show');
+                sessionStorage.setItem('alreadyShow', 'shown');
+            }
+        }
+    </script>
+    <script type="text/javascript"
+            src="https://widget.freshworks.com/widgets/44000002580.js"
+            async=""
+            defer=""></script>
+
+</head>
+
+<body class="loading-overlay-showing"
+      data-loading-overlay
+      data-plugin-options="{'hideDelay': 500, 'effect': 'percentageProgress1'}">
+<div class="loading-overlay loading-overlay-percentage bg-color-dark-scale-5">
+    <div class="page-loader-progress-wrapper">
+        <span class="page-loader-progress text-color-light">0</span>
+        <span class="page-loader-progress-symbol text-color-light">%</span>
+    </div>
+</div>
+
+<?php
+include 'php/gdpr.php';
+?>
+
+<div class="body bg-color-dark-scale-5">
+    <?php
+    include 'php/header.php';
+    ?>
+
+    <div role="main" class="main pb-5">
+
+        <?php
+
+        if(!isset($_SERVER['HTTP_USER_AGENT']))
+        {
+            echo '<section class="section border-0 m-0" data-video-path="video/Trailer_02.mp4" data-plugin-video-background style="height: 100vh">';
+        } else
+        {
+            $browserName = \Portal\Utility::getBrowser($_SERVER['HTTP_USER_AGENT']);
+
+            if($browserName == 'Safari')
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 style="background-image: url(../img/pages/World-Creator-01.webp); 
+                                 background-size: cover; 
+                                 background-position: center; 
+                                 height: 100vh;">';
+            } else
+            {
+                echo '
+                        <section class="section border-0 m-0"
+                                 data-video-path="video/Trailer_02.mp4"
+                                 data-plugin-video-background
+                                 style="height: 100vh">';
+            }
+        }
+
+        ?>
+        <div class="container text-center z-index-1 h-100">
+            <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                <p class="text-12 line-height-1 font-weight-bold text-color-light appear-animation"
+                   data-appear-animation="fadeInDownShorter"
+                   data-plugin-options="{'minWindowWidth': 0}">BiteTheBytes GmbH</p>
+                <p class="text-15 mb-5 line-height-1 font-weight-extra-bold text-color-light appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="300">DATENSCHUTZPOLITIK</p>
+                <p class="text-6 mb-4 line-height-2 font-weight-bold text-color-light opacity-9 appear-animation"
+                   data-appear-animation="blurIn"
+                   data-plugin-options="{'minWindowWidth': 0}"
+                   data-appear-animation-delay="500">Zuletzt aktualisiert: 3. September 2023</p>
+            </div>
+            <a href="#main"
+               class="slider-scroll-button slider-scroll-button-light position-absolute bottom-10 left-50pct transform3dx-n50"
+               data-hash
+               data-hash-offset="67"></a>
+        </div>
+
+        <?php
+        echo '</section>';
+        ?>
+
+        <div id="main" class="container bg-color-dark-scale-5">
+            <div class="row pt-5 pb-5">
+                <div class="col pl-3 pr-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Der Schutz Ihrer Privatsphäre und Ihrer Daten ist für uns sehr wichtig. Dies ist nicht erst seit der GDPR / DSGVO der Fall, sondern schon seit der Gründung des Unternehmens. Wir achten sehr darauf, dass nur die Daten gespeichert werden, die für den Betrieb des Unternehmens und für die Erbringung von Dienstleistungen im Zusammenhang mit unseren Produkten notwendig sind. In dieser Datenschutzrichtlinie legen wir vollständig offen, welche Daten wir sammeln, wie wir sie verwenden und wie wir mit ihnen umgehen.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">1. Was deckt diese Datenschutzrichtlinie ab?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Diese Datenschutzrichtlinie beschreibt, wie BitetheBytes (auch als "wir", "uns" oder "unser" bezeichnet) Ihre Daten im Rahmen von:</p>
+                    <ul>
+                        <li>BiteTheBytes-Websites</li>
+                        <li>Desktop-Apps</li>
+                        <li>Die Marketing-, Verkaufs- und Werbepraktiken von BiteTheByte</li>
+                    </ul>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">2. Welche Informationen sammelt BiteTheBytes über mich?</div>
+
+                    <div class="font-weight-normal text-color-light line-height-2 text-7 mb-3 mt-5">2.1. Webseiten von BiteTheBytes</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie bleiben anonym: Während Ihres gesamten Besuchs auf unserer Website geben Sie nichts von sich preis. Wir speichern keine persönlichen Informationen.</p>
+
+                    <div class="font-weight-normal text-color-light line-height-2 text-7 mb-3 mt-5">2.2. BiteTheBytes Kundenbetreuung</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Wenn Sie uns für Support oder andere Angebote kontaktieren, sammelt BiteTheBytes über Freshdesk (das von unserem Ticketsystem verwendet wird) Informationen, die Sie identifizieren. Dies umfasst:</p>
+                    <ul>
+                        <li>Name</li>
+                        <li>E-Mail Adresse</li>
+                    </ul>
+
+                    <div class="font-weight-normal text-color-light line-height-2 text-7 mb-3 mt-5">2.3. BiteTheBytes App kaufen</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Wenn Sie auf eine Kaufschaltfläche auf unserer Website klicken, werden Sie zu unserem Online-Shopping-Anbieter FastSpring weitergeleitet, der den Kaufvorgang abwickelt. Zu diesem Zweck müssen Sie bei FastSpring persönliche Daten eingeben. Dazu gehören:</p>
+                    <ul>
+                        <li>Unternehmen (falls zutreffend)</li>
+                        <li>Name</li>
+                        <li>Adresse</li>
+                        <li>Land</li>
+                        <li>E-Mail Adresse</li>
+                        <li>Umsatzsteuer-ID (falls zutreffend)</li>
+                        <li>Registrierungsnummer (falls zutreffend)</li>
+                        <li>Zahlungs-/Rechnungsinformationen</li>
+                    </ul>
+
+                    <div class="font-weight-normal text-color-light line-height-2 text-7 mb-3 mt-5">2.4. BiteTheBytes App-Aktivierung</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Nachdem Sie eine BiteTheBytes-App über FastSpring erworben haben, richten wir Ihr Konto auf unserem BiteTheBytes-Lizenzserver ein. Die folgenden persönlichen Informationen werden gespeichert:</p>
+                    <ul>
+                        <li>E-Mail Adresse</li>
+                        <li>Vorname</li>
+                        <li>Nachname</li>
+                        <li>Firmenname (falls zutreffend)</li>
+                    </ul>
+
+                    <p class="font-weight-normal text-4 mb-2">Darüber hinaus wird der BiteTheBytes-Lizenzserver zusätzliche Daten erstellen, die direkt nach dem Kauf mit Ihrem Konto verbunden werden:</p>
+                    <ul>
+                        <li>Produkt</li>
+                        <li>Version</li>
+                        <li>Lizenz</li>
+                        <li>Passwort (ausschließlich von uns erstellt; Sie können es jederzeit über die von Ihnen verwendete BiteTheBytes-Anwendung anfordern)</li>
+                        <li>Informationen darüber, ob Ihr Konto ein unbefristetes oder ein Abonnement-Konto ist</li>
+                        <li>Informationen, ob Ihr Konto aktiv oder deaktiviert ist</li>
+                        <li>Informationen darüber, bis zu welchem Datum Ihr Wartungsplan oder Abonnement gültig ist</li>
+                        <li>Informationen darüber, wann Sie Ihre Lizenz erworben haben</li>
+                        <li>Informationen über Ihr letztes Anmeldedatum</li>
+                        <li>Informationen über Ihre Workstation-IDs (vom Lizenzserver benötigt, um den Missbrauch von Aktivierungen zu verhindern)</li>
+                    </ul>
+                    <p class="font-weight-normal text-4 mb-2">Außerdem können Sie weitere zusätzliche Informationen eingeben und speichern, indem Sie sich bei Ihrem Konto anmelden. Und zwar:</p>
+                    <ul>
+                        <li>Nickname (wird auf einem Rendering angezeigt, das Sie in unsere öffentliche Galerie hochladen)</li>
+                        <li>Informationen über Ihre sozialen Konten (dies ist optional und kann nur verwendet werden, wenn Sie zum Hochladen von Renderings in unsere öffentliche Galerie eingeladen wurden)</li>
+                    </ul>
+
+                    <div class="font-weight-normal text-color-light line-height-2 text-7 mb-3 mt-5">2.5. BiteTheBytes App-Nutzung und App-Updates</div>
+                    <p class="font-weight-normal text-4 mb-2">Wenn Sie Ihre BiteTheBytes-App verwenden oder wenn Sie Updates für die App installieren, sammeln wir Informationen über:</p>
+                    <ul>
+                        <li>Ihr Gerät (Hardware-ID)</li>
+                        <li>Ihre BiteTheBytes-App (E-Mail, Passwort,Version)</li>
+                        <li>Datum der letzten Anmeldung</li>
+                    </ul>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">3. Wie verwendet BiteTheBytes die Informationen, die es über mich sammelt?</div>
+                    <p class="font-weight-normal text-4 mb-2">BiteTheBytes verwendet die Informationen, die wir über Sie sammeln, für die folgenden Zwecke:</p>
+                    <ul>
+                        <li>Um einen Vertrag zu erfüllen oder Schritte in Verbindung mit einem Vertrag zu unternehmen: Dies ist relevant, wenn Sie sich registrieren, um eine BiteTheBytes-App oder -Website zu nutzen (egal ob kostenpflichtig oder als kostenlose Testversion). Dies umfasst:</li>
+
+                        <ul>
+                            <li>Bereitstellung derBiteTheBytes-Websites und -Apps, für die Sie sich registriert haben, sowie anderer Dienstleistungen oder Produkte, die Sie angefordert haben</li>
+                            <li>Überprüfen Ihrer Identität</li>
+                            <li>Zahlungen entgegennehmen</li>
+                            <li>Zusendung notwendiger Mitteilungen an Sie (z.B. in Bezug auf Zahlungen oder das Auslaufen Ihres Abonnements)</li>
+                            <li>Kundendienst oder Unterstützung anbieten</li>
+                        </ul>
+
+                        <li>Wenn es für BiteTheBytes erforderlich ist, um unsere Geschäfte zu führen und unsere legitimen Interessen zu verfolgen, insbesondere:</li>
+
+                        <ul>
+                            <li>Bereitstellung derBiteTheBytes-Websites und -Apps, für die Sie sich registriert haben, sowie anderer Produkte und Dienstleistungen, die Sie angefordert haben</li>
+                            <li>Diagnose von Problemen in unseren Anwendungen</li>
+                            <li>Untersuchung und Beantwortung von Kommentaren oder Beschwerden, die Sie uns schicken</li>
+                            <li>Im Zusammenhang mit Rechtsansprüchen, der Einhaltung von Vorschriften, behördlichen Auflagen und Ermittlungszwecken, soweit erforderlich (einschließlich der Offenlegung von Informationen im Zusammenhang mit rechtlichen Verfahren oder Rechtsstreitigkeiten)</li>
+                        </ul>
+
+                        <li>Wenn Sie BiteTheBytes Ihre Zustimmung geben oder anderweitig mit Ihren Entscheidungen übereinstimmen:</li>
+
+                        <ul>
+                            <li>Zusendung von Informationen über Produkte und Dienstleistungen von BiteTheBytes, Sonderangebote und ähnliche Informationen sowie Weitergabe Ihrer Daten an Dritte für deren eigene Marketingzwecke (sofern Ihre Zustimmung erforderlich ist)</li>
+                            <li>Das Setzen von Cookies und die Verwendung ähnlicher Technologien auf unseren Websites, in unseren Apps und in der E-Mail-Kommunikation, in Übereinstimmung mit unserer Cookie-Richtlinie und den Informationen, die Ihnen bei der Verwendung dieser Technologien zur Verfügung gestellt werden</li>
+                            <li>Unfallberichte</li>
+                        </ul>
+
+                        <li>Aus rechtlichen Gründen:</li>
+
+                        <ul>
+                            <li>Beantwortung von Anfragen von Regierungs- oder Strafverfolgungsbehörden, die eine Untersuchung durchführen</li>
+                            <li>Um Betrug, Sicherheits- oder technische Probleme und Softwarepiraterie aufzudecken, zu verhindern oder anderweitig zu bekämpfen (z.B. um zu bestätigen, dass die Software echt und ordnungsgemäß lizenziert ist), um Sie und BiteTheBytes zu schützen</li>
+                        </ul>
+                    </ul>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">4. Gibt BiteTheBytes meine persönlichen Daten weiter?</div>
+                    <p class="font-weight-normal text-4 mb-2">Nein, BiteTheBytes gibt Ihre persönlichen Daten NICHT an Dritte weiter.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">5. Werden meine persönlichen Daten irgendwo angezeigt?</div>
+                    <p class="font-weight-normal text-4 mb-2">Die BiteTheBytes-Apps zeigen Ihre persönlichen Daten nicht an.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Auf den Websites und in den von BiteTheBytes genutzten Apps (z.B. Discord) gibt es mehrere Stellen, an denen Sie Kommentare posten, Bilder hochladen oder Inhalte für andere zugänglich machen können. Manchmal können Sie einschränken, wer sehen kann, was Sie teilen, aber es gibt auch Orte, an denen das, was Sie teilen, von der Allgemeinheit oder anderen Nutzern der App oder Website gesehen werden kann. Bitte seien Sie vorsichtig, wenn Sie Ihre persönlichen Informationen teilen. Geben Sie nichts weiter, was Sie nicht öffentlich bekannt geben möchten, es sei denn, Sie sind sicher, dass Sie es in einer App oder auf einer Website veröffentlichen, bei der Sie kontrollieren können, wer das, was Sie veröffentlichen, sehen kann.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Bitte beachten Sie, dass, wenn Sie Nachrichten in bestimmten Benutzerforen auf unseren Websites und in den von uns genutzten Apps veröffentlichen, Ihre E-Mail-Adresse oder IhrName und/oder Ihr Profilfoto mit Ihrer Nachricht angezeigt werden können.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Um Inhalte zu entfernen, die Sie auf unseren Websites und in den von uns verwendeten Apps geteilt haben, verwenden Sie bitte dieselbe App- oder Website-Funktion, die Sie zum Teilen der Inhalte verwendet haben. Wenn ein anderer Benutzer Sie einlädt, an der gemeinsamen Anzeige, Bearbeitung oder Kommentierung von Inhalten teilzunehmen, können Sie Ihre Beiträge möglicherweise löschen, aber normalerweise hat der Benutzer, der Sie eingeladen hat, die volle Kontrolle.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">6. Sind meine persönlichen Daten sicher?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Wir setzen technische und organisatorische Sicherheitsmaßnahmen ein, um Ihre personenbezogenen Daten gegen zufällige oder vorsätzliche Manipulationen, Verlust, Zerstörung oder gegen den Zugriff unberechtigter Personen zu schützen und um den Schutz Ihrer Rechte und die Einhaltung der geltenden Datenschutzbestimmungen der EU und der Bundesrepublik Deutschland zu gewährleisten.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Die getroffenen Maßnahmen sollen die Vertraulichkeit, Integrität, Verfügbarkeit und Widerstandsfähigkeit der Systeme und Dienste im Zusammenhang mit der Verarbeitung Ihrer Daten im Laufe der Zeit gewährleisten und sie im Falle eines physischen oder technischen Zwischenfalls schnell wiederherstellen. Dazu gehört auch die Verschlüsselung Ihrer Daten. Alle Informationen, die Sie online eingeben, werden mindestens mit der SSL-Technologie verschlüsselt und erst dann übertragen.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Daher können diese Informationen niemals von unbefugten Dritten eingesehen werden. Unsere Datenverarbeitungs- und Sicherheitsmaßnahmen werden entsprechend der technologischen Entwicklung fortlaufend verbessert. Unsere Mitarbeiter sind selbstverständlich schriftlich zur Verschwiegenheit verpflichtet (Datengeheimnis).</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">7. Wo speichert BiteTheBytes meine persönlichen Daten?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Ihre persönlichen Daten werden in einer passwortgeschützten SQL-Datenbank gespeichert. Diese Datenbank befindet sich auf einer virtuellen Maschine (Windows Server 2012), die von der Host Europe GmbH mit Sitz in Deutschland gehostet wird. Der Zugang zu dieser virtuellen Maschine und dem Betriebssystem ist ebenfalls passwortgeschützt.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">8. Übermittelt BiteTheBytes meine persönlichen Daten über nationale Grenzen hinweg?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Unsere Produkte werden international vermarktet und verkauft. Über einen in Deutschland ansässigen Lizenzserver werden die erworbenen Produkte aktiviert, validiert und aktualisiert.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Wenn Sie eine unserer Anwendungen außerhalb Deutschlands ausführen und sich zum Zwecke der Aktivierung/Validierung/Aktualisierung beim Lizenzserver anmelden, werden Ihre persönlichen Daten (E-Mail-Adresse und Hardware-ID) über die Landesgrenzen hinweg an unseren Lizenzserver übertragen. Diese Datenübertragung ist verschlüsselt und dient ausschließlich der Kommunikation zwischen Ihrer BiteTheBytes-App und dem BiteTheBytes-Lizenzserver.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">9. Welche Rechte habe ich in Bezug auf meine persönlichen Daten?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Nach dem Recht einiger Länder haben Sie das Recht, von uns eine Kopie Ihrer persönlichen Daten zu verlangen, sie zu korrigieren, zu löschen oder die Verarbeitung Ihrer persönlichen Daten einzuschränken (zu stoppen) und die persönlichen Daten, die Sie uns für einen Vertrag oder mit Ihrer Zustimmung zur Verfügung gestellt haben, in einem strukturierten, maschinenlesbaren Format zu erhalten und uns zu bitten, diese Daten an einen anderen Verantwortlichen weiterzugeben (zu portieren).</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Darüber hinaus können Sie der Verarbeitung Ihrer personenbezogenen Daten unter bestimmten Umständen widersprechen (insbesondere, wenn wir die Daten nicht verarbeiten müssen, um eine vertragliche oder andere gesetzliche Verpflichtung zu erfüllen).</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Diese Rechte können eingeschränkt sein, z.B. wenn die Erfüllung Ihrer Anfrage persönliche Informationen über eine andere Person preisgeben würde oder wenn Sie uns bitten, Informationen zu löschen, zu deren Aufbewahrung wir gesetzlich verpflichtet sind oder an deren Aufbewahrung wir ein zwingendes legitimes Interesse haben (z.B. zum Zwecke der Betrugsbekämpfung).</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Um eines dieser Rechte auszuüben (einschließlich der Deaktivierung Ihres BiteTheBytes-Kontos), können Sie uns - oder unseren Datenschutzbeauftragten - unter den unten angegebenen Kontaktdaten kontaktieren. Außerdem können Sie auf vielen unserer Websites Ihre persönlichen Daten bearbeiten, indem Sie auf "Mein Konto", "Mein Profil" oder eine ähnliche Funktion der von Ihnen genutzten Website zugreifen. Ebenso können Sie Dateien oder Fotos, die Sie auf unseren Websites gespeichert haben, löschen, indem Sie sich anmelden und die verfügbaren Löschfunktionen nutzen.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Wenn Sie ungelöste Bedenken haben, haben Sie das Recht, diese einer EU- oder einer anderen Datenschutzbehörde zu melden, in der Sie leben, arbeiten oder in der Sie glauben, dass ein möglicher Verstoß stattgefunden haben könnte.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Um einigeBiteTheBytes-Websites, -Apps, -Produkte oder -Dienste nutzen zu können, ist die Angabe einiger Informationen zwingend erforderlich: Wenn die relevanten Informationen nicht angegeben werden, können wir Ihnen kein BiteTheBytes-Konto einrichten oder Ihnen die gewünschten Websites, Apps, Produkte oder Dienste zur Verfügung stellen. Die Angabe aller anderen Informationen ist optional. Die Bereitstellung optionaler Informationen hilft uns, Ihnen ein besseres Erlebnis zu bieten, wie z.B. stärker personalisierte oder maßgeschneiderte Inhalte oder Angebote.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Wenn Sie uns auffordern, Ihre persönlichen Daten zu löschen, die für die Nutzung von BiteTheBytes-Anwendungen, -Produkten oder -Dienstleistungen erforderlich sind, haben Sie keinen Anspruch auf Rückerstattung des Kaufpreises.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">10. Online-Marketing-Praktiken von BiteTheBytes</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">BiteTheBytes nutzt verschiedene Arten von Online-Werbung, einschließlich BiteTheBytes-Anzeigen auf Websites und anderen Geschäftsanwendungen sowie auf Social-Media-Plattformen wie Facebook, YouTube, Twitter, Instagram, Vimeo, Twitch und Discord. Wir betreiben kein Direktmarketing per E-Mail, Telefon und Post. BiteTheBytes sendet keine E-Mails an unbekannte Personen, um Produkte zu bewerben.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">11. Seiten von BiteTheBytes in sozialen Netzwerken und Login-Diensten</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie können sich bei einigenBiteTheBytes-Websites über ein Konto bei einem sozialen Netzwerk wie Facebook anmelden. Wenn Sie die entsprechenden Berechtigungen erteilen, erhalten wir Informationen über Sie von Ihrem Konto bei einem sozialen Netzwerk, wie z.B. Ihren Namen, Ihren Standort und grundlegende demografische Informationen.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">BiteTheBytes betreibt eigene Seiten in vielen sozialen Netzwerken (z. B. die Facebook-Seite des World Creator Teams). Wir sammeln Informationen, die Sie in Ihrem Konto bei einem sozialen Netzwerk veröffentlicht haben, wie z.B. den Namen unserer Produkte und Dienstleistungen, für die Sie sich interessieren, wenn Sie mit unseren sozialen Netzwerkseiten interagieren.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">12. Cookies</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Cookies sind kleine Textdateien, die von Ihrem Webbrowser gespeichert werden, wenn Sie Websites nutzen. Sie können die Verwendung von Cookies durch Websites kontrollieren, indem Sie die Datenschutzeinstellungen Ihres Browsers konfigurieren (weitere Informationen über die Kontrolle von Cookies finden Sie in der Hilfefunktion Ihres Browsers). Beachten Sie, dass dieBiteTheBytes-Websites möglicherweise nicht richtig funktionieren, wenn Sie Cookies vollständig deaktivieren.</p>
+                    <p class="font-weight-normal text-4 mb-2">BiteTheBytes und die Unternehmen, die uns beim Betrieb unseres Unternehmens helfen, verwenden Cookies auf verschiedene Weise, z. B:</p>
+
+                    <ul>
+                        <li>Ihre Authentifizierung und Identifizierung auf unseren Websites, damit wir Ihnen die von Ihnen angeforderten Dienste anbieten können</li>
+                        <li>Nachverfolgung von Informationen, die Sie uns zur Verfügung gestellt haben - z.B. die Aufbewahrung von Artikeln in Ihrem Einkaufswagen</li>
+                        <li>um die Website benutzerfreundlich zu gestalten und optimal auf Ihre Bedürfnisse abzustimmen</li>
+                    </ul>
+
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sitzungscookies werden nur für die Sitzung verwendet. Diese Cookies werden nach Beendigung der Sitzung angezeigt oder nach Verlassen unserer Website oder Schließen des Browserfensters gelöscht.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Andere Cookies verbleiben für einen längeren Zeitraum auf Ihrem Gerät und ermöglichen es uns oder Dritten, Ihren Browser bei Ihrem nächsten Besuch wiederzuerkennen (dauerhafte Cookies).</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">13. Newsletter</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">BiteTheBytes bietet überhaupt keinen Newsletter-Service an.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">14. YouTube</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie können sich einige YouTube-Videos auf unserer Website ansehen. YouTube ist ein Dienst der YouTube LLC, 901 Cherry Ave., San Bruno, CA 94066, USA. Das Unternehmen ist mit Google LLC, 1600 Amphitheater Parkway, Mountain View, CA 94043, USA, verbunden.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Um zu verhindern, dass Daten an YouTube übertragen werden, wenn die Website, in die das Video eingebettet ist, gestartet wird, haben wir die Videos im erweiterten Datenschutzmodus eingebettet. Dadurch werden keine Daten an YouTube gesendet, bis Sie die Videowiedergabe durch Antippen oder Anklicken des Videos aktivieren.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Um das Video abzuspielen, werden Daten wie die IP-Adresse des von Ihnen verwendeten Computers an YouTube gesendet. Außerdem wird eine Verbindung zum Werbenetzwerk DoubleClick, einer Tochtergesellschaft von Google LLC, hergestellt. Hier werden Cookies gesetzt. Dabei handelt es sich um kleine Textdateien, die vom Browser auf Ihrem Computer abgelegt und gespeichert werden, wenn Sie eine Website besuchen. Der Zweck von Cookies ist es, für den Nutzer relevante Werbung zu schalten, Berichte über die Kampagnenleistung zu verbessern oder zu verhindern, dass ein Nutzer dieselbe Werbung mehrmals sieht.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Mit den Videos möchten wir unsere Website für Sie informativer und unterhaltsamer gestalten. Wir haben die Videos auf unserer Website eingebettet, damit Sie die Videos einfach und schnell abspielen können und unsere Website benutzerfreundlicher wird. Die Rechtsgrundlage ist Art. 6 (1) Satz 1 f DSGVO. Die Einbettung der YouTube-Videos zu den vorgenannten Zwecken stellt unser berechtigtes Interesse im Sinne der GDPR dar.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Sie können die Speicherung von Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern. Sie können die personalisierte Werbung von Google über die Einstellungen für Werbung aktivieren oder deaktivieren. Wenn Sie die personalisierte Werbung deaktivieren, sehen Sie zwar weiterhin Anzeigen, aber die Anzeigen sind nicht mehr auf Ihre Interessen zugeschnitten. Eine Anleitung zur Deaktivierung finden Sie hier.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Alternativ können Sie ein Browser-Plugin installieren, um personalisierte Werbung zu deaktivieren. Dieses setzt ein Opt-Out-Cookie, das das DoubleClick-Cookie verhindert und die interessenbezogene Werbung deaktiviert. Das Browser-Plugin können Sie hier herunterladen.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Google LLC. ist unter dem EU-US Privacy Shield zertifiziert, einem Abkommen, das die Einhaltung der EU-Datenschutzbestimmungen gewährleistet. Die Datenschutzbestimmungen von Google finden Sie hier.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">15. Vimeo</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Auf unseren Websites sind Plug-ins des Videoportals Vimeo von Vimeo, LLC, 555 West 18th Street, New York, New York 10011, USA eingebunden. Jedes Mal, wenn Sie eine Seite besuchen, die einen oder mehrere Vimeo-Videoclips anbietet, wird eine direkte Verbindung zwischen Ihrem Browser und einem Vimeo-Server in den Vereinigten Staaten hergestellt. Diese Informationen über Ihren Besuch und Ihre IP-Adresse werden dort gespeichert. Durch Interaktionen mit den Vimeo-Plugins (z.B. Klicken auf die Schaltfläche Start) werden diese Informationen ebenfalls an Vimeo übermittelt und dort gespeichert.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Um eine direkte Verbindung mit Vimeo zu verhindern, sind alle unsere Videos, die sich auf den Servern von Vimeo befinden, in Pop-up-Fenster eingebettet, die Sie aktiv öffnen müssen, indem Sie auf die entsprechenden Bilder auf unseren Websites klicken oder tippen. Wenn Sie dies jedoch tun, werden Ihre persönlichen Daten, wie z.B. Ihre IP-Adresse, an Vimeo übermittelt.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Wenn Sie ein Vimeo-Benutzerkonto haben und nicht möchten, dass Vimeo über diese Website Daten über Sie sammelt und diese mit Ihren bei Vimeo gespeicherten Mitgliedsdaten verknüpft, müssen Sie sich vor dem Besuch dieser Website bei Vimeo abmelden.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Die Datenschutzbestimmungen von Vimeo mit detaillierteren Informationen über die Erfassung und Verwendung Ihrer Daten durch Vimeo finden Sie unter https://vimeo.com/privacy.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Darüber hinaus ruft Vimeo den Google Analytics-Tracker über einen Iframe auf, der das Video aufruft. Dies ist ein separates Tracking von Vimeo, auf das wir keinen Zugriff haben. Sie können das Tracking durch Google Analytics beenden, indem Sie die Opt-out-Tools verwenden, die Google für einige Internetbrowser anbietet. Sie können darüber hinaus die Erfassung der durch Google Analytics erzeugten und auf Ihre Nutzung der Website bezogenen Daten (einschließlich Ihrer IP-Adresse) sowie die Verarbeitung dieser Daten durch Google verhindern, indem Sie das unter folgendem Link verfügbare Browser-Plugin herunterladen und installieren: https://tools.google.com/dlpage/gaoptout.</p>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Einige unserer Websites enthalten sogenannte Einbettungen von Videos auf Vimeo oder Videos aus den von uns betriebenen Vimeo-Kanälen. Diese ermöglichen jedoch nur die Verbindung zu Vimeo. Wenn Sie sich über Zweck und Umfang der Datenerhebung und -nutzung durch Vimeo sowie über Ihre Rechte und Schutzmöglichkeiten als Vimeo-Kunde informieren möchten, beachten Sie bitte die Datenschutzhinweise von Vimeo (https://vimeo.com/privacy).</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">16. Wie lange bewahrt BiteTheBytes meine Daten auf?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Wenn Sie ein Produkt von BiteTheBytes auf Basis einer unbefristeten Nutzung erworben haben, verarbeiten und speichern wir die personenbezogenen Daten, die wir über Sie haben, solange Sie ein Nutzer unserer Produkte, Dienste oder Apps sind. Wenn Sie ein Produkt von BiteTheBytes auf der Grundlage einer Mietnutzung erworben haben und die Mietdauer nicht verlängern, werden wir Ihre personenbezogenen Daten nach Ablauf der Mietdauer unverzüglich löschen. Wenn Sie uns um eine Rückerstattung bitten und wir diese gewähren, werden wir Ihre persönlichen Daten sofort löschen, nachdem die Rückerstattung bearbeitet wurde.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">17. Wird sich diese Datenschutzrichtlinie ändern?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">Gelegentlich können wir diese Datenschutzrichtlinie (oder andere Dokumente im BiteTheBytes Privacy Center) ändern, um BiteTheBytes zu erlauben, Ihre persönlichen Daten auf eine andere Art und Weise zu verwenden oder weiterzugeben. Wenn wir dies tun, werden die Links zu den Richtlinien auf unseren Websites (die sich in der Regel in der Fußzeile der Website befinden) darauf hinweisen, dass die Richtlinien geändert wurden. Für neue Nutzer tritt die Änderung mit der Veröffentlichung in Kraft. Für bestehende Nutzer tritt die Änderung 30 Tage nach der Veröffentlichung in Kraft, wenn es sich um eine wesentliche Änderung handelt. Wir empfehlen Ihnen, das BiteTheBytes-Datenschutzzentrum regelmäßig zu besuchen, um die neuesten Informationen über unsere Datenschutzpraktiken zu erhalten.</p>
+
+                    <div class="font-weight-bold text-color-light line-height-2 text-8 mb-3 mt-5">18. An wen kann ich mich mit Fragen oder Anliegen wenden?</div>
+                    <p class="font-weight-normal text-4 mb-2 text-justify">BiteTheBytes hat einen Datenschutzbeauftragten ernannt. Wenn Sie der Meinung sind, dass Ihre persönlichen Daten auf eine Art und Weise verwendet wurden, die nicht mit dieser Richtlinie oder den von Ihnen angegebenen Präferenzen übereinstimmt, oder wenn Sie weitere Fragen zu dieser Richtlinie haben, wenden Sie sich bitte an den Datenschutzbeauftragten, indem Sie eine E-Mail an support@bitethebytes.com schreiben.</p>
+
+                    <p class="font-weight-normal text-4 mb-4 mt-5">Schriftliche Anfragen können gerichtet werden an:</p>
+
+                    <p class="font-weight-normal text-4 mb-2">BiteTheBytes GmbH</p>
+                    <p class="font-weight-normal text-4 mb-2">Datenschutzbeauftragter</p>
+                    <p class="font-weight-normal text-4 mb-2">Mainzer Str. 9</p>
+                    <p class="font-weight-normal text-4 mb-2">36039 Fulda</p>
+                    <p class="font-weight-normal text-4 mb-2">Deutschland</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-color-dark-scale-5">
+        <?php
+        include 'php/footer.php';
+        ?>
+    </footer>
+</div>
+<!-- Vendor -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/jquery.appear/jquery.appear.min.js"></script>
+<script src="../vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery.cookie/jquery.cookie.min.js"></script>
+<script src="../vendor/popper/umd/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery.validation/jquery.validate.min.js"></script>
+<script src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../vendor/jquery.gmap/jquery.gmap.min.js"></script>
+<script src="../vendor/lazysizes/lazysizes.min.js"></script>
+<script src="../vendor/isotope/jquery.isotope.min.js"></script>
+<script src="../vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../vendor/vide/jquery.vide.min.js"></script>
+<script src="../vendor/vivus/vivus.min.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.event.move.js"></script>
+<script src="../vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+
+<!-- Current Page Vendor and Views -->
+<script src="../vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+<script src="../js/views/view.home.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="../js/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../js/custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../js/theme.init.js"></script>
+
+<!-- Examples -->
+<script src="../js/examples/examples.lightboxes.js"></script>
+</body>
+</html>
