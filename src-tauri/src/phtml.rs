@@ -6,7 +6,7 @@ use std::error::Error;
 use reqwest::Client;
 use reqwest::header::{HeaderMap, CONTENT_TYPE};
 use tokio;
-use std::fs;
+use std::{fs, result};
 use std::path::{ Path, PathBuf };
 use std::cmp;
 use std::io::Write;
@@ -26,7 +26,7 @@ static SIGNIN:&str = "<[span translate='no']>";
 
 const PHP_SIG:&str = "!!!!PHP!!!!";
 // TODO if this is to become a full fledge tool, the user needs to be able to define this
-const IGNORE_IN_TRANSLATION:[&str; 28] = [
+const IGNORE_IN_TRANSLATION:[&str; 29] = [
     "&nbsp",
     "BiteTheBytes GmbH", 
     "world creator", 
@@ -49,6 +49,7 @@ const IGNORE_IN_TRANSLATION:[&str; 28] = [
     "Photoshop",
     "Quixel Mixer",
     "Substance 3D Designer",
+    "Unity",
     "Unity Engine",
     "Unigine Engine",
     "Unreal Engine",
@@ -113,15 +114,24 @@ pub async fn translate_text(file_path: &str, save_path: &str, target_lang_key: &
         texts_to_translate_replaced.push(replaced_text);
     }
     
-    let mut translated_texts_php:Vec<String> = translate_vec_req(texts_to_translate_php_replaced, target_lang_key, source_lang_key, api_key).await.unwrap();
-    let mut translated_texts:Vec<String> = translate_vec_req(texts_to_translate_replaced.clone(), target_lang_key, source_lang_key, api_key).await.unwrap();
+    let mut translated_texts_php_map:HashMap<String,String> = translate_vec_req(texts_to_translate_php_replaced, target_lang_key, source_lang_key, api_key).await.unwrap();
+    for value in translated_texts_php_map.values_mut(){
+        *value = set_ignore_translate(value, true);
+        *value = value.replace("'", r"\'"); 
+    }
+
+    let translated_texts_map:HashMap<String, String> = translate_vec_req(texts_to_translate_replaced.clone(), target_lang_key, source_lang_key, api_key).await.unwrap();
     //let re_delimitors = Regex::new(r"(?s)>(.*?)<").unwrap();
+
+    let mut translated_texts_php:Vec<(String, String)> = translated_texts_php_map.iter().map(|(k,v)| (k.to_string(),v.to_string())).collect();
+    let mut translated_texts:Vec<(String, String)> = translated_texts_map.iter().map(|(k, v)| (k.to_string(),v.to_string())).collect();
     translated_texts.append(&mut translated_texts_php);
-    translated_texts.sort_by(|a, b| b.len().cmp(&a.len()));
+    translated_texts.sort_by(|a, b| b.0.len().cmp(&a.0.len()));
 
     for (idx ,t) in translated_texts.iter().enumerate(){
-        let post_translation = set_ignore_translate(t, true);
-        let pre_translation = texts_to_translate.get(idx).unwrap();
+        let post_translation = set_ignore_translate(&t.1, true);
+        //let pre_translation = texts_to_translate.get(idx).unwrap();
+        let pre_translation = set_ignore_translate(&t.0, true);
         let re_escape_pre_translation = regex::escape(&pre_translation);
         let re_final_pattern = format!(r"(?s)(\b|>|\r\n|\W)({})(\b|<|\r\n|\W)", re_escape_pre_translation);
         //let re_final_pattern = format!(r"(?s)>{}<", re_escape_pre_translation);
@@ -131,115 +141,18 @@ pub async fn translate_text(file_path: &str, save_path: &str, target_lang_key: &
         let re_tags = Regex::new(r"(?s)>(.*?)<([^>]*?)").unwrap();
         for caps in re_tags.captures_iter(&translated_text.clone()){
             let text = caps.get(0).unwrap().as_str();
-            if !text.contains(pre_translation) || text.contains(r"/script") || text.contains('{') || text.contains('}'){
+            if !text.contains(&pre_translation) || text.contains(r"/script") || text.contains('{') || text.contains('}'){
                 continue;
             }
             let rep_text = regex_final.replace_all(text, |capst:&Captures|{
                 let full_match = capst.get(0).unwrap().as_str();
-                let full_match_str = full_match.replace(pre_translation, &post_translation);
+                let full_match_str = full_match.replace(&pre_translation, &post_translation);
                 full_match_str
-                //println!("{full_match}");
-                //if full_match.starts_with('>') && full_match.ends_with('<'){
-                //    format!(">{}<", &post_translation)
-                //}
-                //else if full_match.starts_with('>'){
-                //    if full_match.ends_with("\r\n"){
-                //        format!(">{}\r\n", &post_translation)
-                //    }
-                //    else {
-                //        format!(">{}", &post_translation)
-                //    }
-                //}
-                //else if full_match.ends_with('<'){
-                //    if full_match.starts_with("\r\n"){
-                //        format!("\r\n{}<", &post_translation)
-                //    }
-                //    else {
-                //        format!("{}<", &post_translation)
-                //    } 
-                //}
-                //else if full_match.starts_with("\r\n") && full_match.ends_with("\r\n"){
-                //    format!("\r\n{}\r\n", &post_translation)
-                //}
-                //else if full_match.starts_with("\r\n"){
-                //    format!("\r\n{}", &post_translation)
-                //}
-                //else if full_match.ends_with("\r\n"){
-                //    format!("{}\r\n", &post_translation)
-                //}
-                //else{
-                //    post_translation.to_string()
-                //}
             }).to_string();
             translated_text = translated_text.replace(text, &rep_text);
         }
 
-        // translated_text = regex_final.replace_all(&translated_text, |caps:&Captures|{
-        //     let full_match = caps.get(0).unwrap().as_str();
-        //     if full_match.starts_with('>') && full_match.ends_with('<'){
-        //         format!(">{}<", &post_translation)
-        //     }
-        //     else if full_match.starts_with('>'){
-        //         if full_match.ends_with("\r\n"){
-        //             format!(">{}\r\n", &post_translation)
-        //         }
-        //         else {
-        //             format!(">{}", &post_translation)
-        //         }
-        //     }
-        //     else if full_match.ends_with('<'){
-        //         if full_match.starts_with("\r\n"){
-        //             format!("\r\n{}<", &post_translation)
-        //         }
-        //         else {
-        //             format!("{}<", &post_translation)
-        //         } 
-        //     }
-        //     else if full_match.starts_with("\r\n") && full_match.ends_with("\r\n"){
-        //         format!("\r\n{}\r\n", &post_translation)
-        //     }
-        //     else if full_match.starts_with("\r\n"){
-        //         format!("\r\n{}", &post_translation)
-        //     }
-        //     else if full_match.ends_with("\r\n"){
-        //         format!("{}\r\n", &post_translation)
-        //     }
-        //     else{
-        //         post_translation.to_string()
-        //     }
-        // }).to_string();
-
-        // TODO this was not the solution. attack here tomorrow
-        // let _ = re_delimitors.replace_all(&translated_text.clone(), |caps: &Captures| {
-        //     let matched = &caps[1];
-        //     let replaced = matched.replace(pre_translation, &post_translation);
-        //     let rep_res = format!(">{}<", replaced);
-        //     translated_text = translated_text.replace(&caps[0], &rep_res);
-        //     ""
-        // });
-
-        // translated_text = translated_text.replace(pre_translation, &post_translation);
     }
-    // for t in texts_to_translate{
-    //     //translate t; 
-    //     //push t in Vec
-    //     //let text_to_translate = set_ignore_translate(t, false);
-    //     let res: String = translate_req(&t, target_lang_key, source_lang_key, api_key).await.unwrap();
-    //     let complete_res: String = set_ignore_translate(&res, true);
-    //     // let ts: String = t.to_string();
-    //     // let mut res: String = t.to_string();
-    //     
-    //     translated_text = translated_text.replace(t.trim(), &complete_res);
-    //     // let res:String = t.replace(SIGNIN, word_buffer.pop().expect("").as_str());
-    //     //println!("{}", res);
-    //     //pair replaced words with t buffer
-    //     //replace text snippets
-    //     //
-    //     //
-    //     //
-    //     // let (word_buffer, replaced_text):(Vec<String>, String) = replace_between_tags(t, max_length);
-    //     // println!("{:?}", word_buffer);
-    // }
     println!("translated");
 
     // replace the html language code 
@@ -597,9 +510,15 @@ async fn translate_req(text:&str, target_lang: &str, source_lang:&str, api_key: 
     Ok(String::from(text))
 }
 
-async fn translate_vec_req(texts:Vec<String>, target_lang: &str, source_lang:&str, api_key: &str) -> Result<Vec<String>, Box<dyn Error>>{
+async fn translate_vec_req(texts:Vec<String>, target_lang: &str, source_lang:&str, api_key: &str) -> Result<HashMap<String, String>, Box<dyn Error>>{
+    
+    let mut result_map:HashMap<String, String> = HashMap::new();
+    for text in texts.clone(){
+        result_map.insert(text, "".to_string());
+    }
+ 
     let client = Client::new();
-
+    
     let mut headers = HeaderMap::new();
     headers.insert("Authorization", api_key.parse().unwrap());
     headers.insert(CONTENT_TYPE, "application/json".parse().unwrap());
@@ -648,17 +567,22 @@ async fn translate_vec_req(texts:Vec<String>, target_lang: &str, source_lang:&st
     //let resulting_translations = res["translations"].as_array();
     if let Some(resulting_translations) = res["translations"].as_array(){
         let mut results:Vec<String> = Vec::new();
-        for translation in resulting_translations{
+        for (idx, translation) in resulting_translations.iter().enumerate(){
             if let Some(result) = translation["text"].as_str(){
                 results.push(result.to_string());
+                result_map.entry(texts.get(idx).unwrap().clone())
+                    .and_modify(|str| *str = result.to_string())
+                    .or_insert(result.to_string());
+
             }
             else {
-                return Ok(texts);
+                return Ok(result_map);
             }
         }
-        return Ok(results);
+        println!("{:#?}", result_map);
+        return Ok(result_map);
     }
-    Ok(texts)
+    Ok(result_map)
 }
 
 
